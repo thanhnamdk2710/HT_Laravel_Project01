@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('frontend.master')
 @section('title','HOME')
 @section('content')
 	<section id="slider-area">
@@ -288,7 +288,4 @@
 			</div> <!-- End Of /.Row -->
 		</div> <!-- End Of /.Container -->
 	</section>	<!-- End of Section -->
-	
-	
-
 @endsection

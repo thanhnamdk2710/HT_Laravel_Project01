@@ -1,5 +1,5 @@
-@extends('user.master')
-@section('title','PRODUCT')
+@extends('frontend.master')
+@section('title','CATEGORY')
 @section('content')
 	<section id="topic-header">
 		<div class="container">
@@ -17,18 +17,14 @@
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of /#Topic-header -->
-
-
-
 	<!-- PRODUCTS Start
     ================================================== -->
-
 	<section id="shop">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-9">
 					<div class="products-heading">
-						<h2>NEW PRODUCTS</h2>
+						<h2>CATEGORIES</h2>
 					</div>	<!-- End of /.Products-heading -->
 					<div class="product-grid">
 					    <ul>
@@ -170,42 +166,6 @@
 							<img src="images/food-ad.png" alt="">
 						</div>
 						<div class="block">
-							<h4>Book Items</h4>
-							<ul class="media-list">
-							 	<li class="media">
-							    	<a class="pull-left" href="#">
-							      		<img class="media-object" src="images/post-img.png" alt="...">
-							    	</a>
-							    	<div class="media-body">
-							      		<a href="" class="media-heading">Lamb leg roast
-							      		<p>Lorem ipsum dolor sit amet.</p></a>
-							    	</div>
-							  	</li>
-							  	<li class="media">
-							    	<a class="pull-left" href="#">
-							      		<img class="media-object" src="images/post-img-2.png" alt="...">
-							    	</a>
-							    	<div class="media-body">
-							      		<a href="" class="media-heading"> Lamingtons
-							      		<p>Lorem ipsum dolor.</p></a>
-							    	</div>
-							  	</li>
-							  	<li class="media">
-							    	<a class="pull-left" href="#">
-							      		<img class="media-object" src="images/post-img-3.png" alt="...">
-							    	</a>
-							    	<div class="media-body">
-							      		<a href="" class="media-heading">
-							      		Anzac Salad
-							      		<p>Lorem ipsum dolor sit.</p>
-
-							      		</a>
-							    	</div>
-							  	</li>
-							  </ul>
-						</div>
-
-						<div class="block">
 							<h4>Book Tag</h4>
 							<div class="tag-link">
 								<a href="">BALLET</a>
@@ -217,9 +177,7 @@
 							</div>	
 						</div>
 				</div>	<!-- End of /.col-md-3 -->
-			
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of Section -->
-
 @endsection

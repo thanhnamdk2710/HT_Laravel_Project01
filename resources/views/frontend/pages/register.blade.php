@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('frontend.master')
 @section('title','Regristered')
 @section('content')
 	<section id="topic-header">
@@ -29,39 +29,33 @@
 						<div class="login-header">
 							<h1></h1>
 						</div>
-						@if ( Session::has('error') )
+						
 							<div class="alert alert-danger alert-dismissible" role="alert">
-								<strong>{{ Session::get('error') }}</strong>
+								<strong></strong>
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 									<span class="sr-only">Close</span>
 								</button>
 							</div>
-						@endif
-
-						@if ( Session::has('success') )
+						
 							<div class="alert alert-danger alert-dismissible" role="alert">
-								<strong>{{ Session::get('success') }}</strong>
+								<strong></strong>
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 									<span class="sr-only">Close</span>
 								</button>
 							</div>
-						@endif
 
-						@if ($errors->any())
 						    <div class="alert alert-danger">
 						        <ul>
-						            @foreach ($errors->all() as $error)
-						                <li>{{ $error }}</li>
-						            @endforeach
+					                <li></li>
 						        </ul>
 						    </div>
-						@endif
-						<form class="login-form" action="{{ URL('registered')}}" method="POST">
-							{{ csrf_field() }}
+						<form class="login-form" action="" method="">
 							<h3>Name:</h3>
 							<input type="text" placeholder="Name" name="name"/>
+							<h3>Avatar:</h3>
+							<input type="file"/>
 							<h3>Bithday:</h3>
 							<input type="date" placeholder="Bithday" name="birthday" />
 							<h3>Phone:</h3>
@@ -81,5 +75,4 @@
 			</div>
 		</div>
 	</section>
-
 @endsection

@@ -1,7 +1,24 @@
-@extends('user.master')
+@extends('frontend.master')
 @section('title','CONTACT')
 @section('content')
-
+	<section id="topic-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<h1>Shop</h1>
+					<p>A Bunch Of Products</p>
+				</div>	<!-- End of /.col-md-4 -->
+				<div class="col-md-8 hidden-xs">
+					<ol class="breadcrumb pull-right">
+					  	<li><a href="{{ route('/index')}}">Home</a></li>
+					  	<li class="active">Contact</li>
+					</ol>
+				</div>	<!-- End of /.col-md-8 -->
+			</div>	<!-- End of /.row -->
+		</div>	<!-- End of /.container -->
+	</section>	<!-- End of /#Topic-header -->
+	<!-- PRODUCTS Start
+    ================================================== -->
 	<section id="shop">
 		<div class="container">
 			<div class="row">
@@ -51,5 +68,3 @@
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of Section -->
 @endsection
-
-

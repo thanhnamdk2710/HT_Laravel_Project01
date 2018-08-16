@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('frontend.master')
 @section('title','LOGIN')
 @section('content')
 	<section id="topic-header">
