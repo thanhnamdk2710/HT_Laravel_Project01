@@ -11,6 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::group([ 'namespace' => 'User'], function () {
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/index', 'HomeController@index')->name('/index');  
+    Route::get('/book','BookController@show_all_book')->name('all_book');
+    Route::get('/author','AuthorController@show_all_author')->name('all_author');
+	Route::get('/contact','ContactController@show_form')->name('contact');
 });
+
+Route::group(['namespace' => 'Auth'], function () {
+    Route::group(['middleware' => 'guest'], function () {
+        Route::get('login', 'LoginController@index')->name('login');
+        Route::get('registered' , 'RegisterController@index')->name('registered');
+    });
+});
+
