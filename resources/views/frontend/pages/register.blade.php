@@ -10,14 +10,13 @@
 				</div>	<!-- End of /.col-md-4 -->
 				<div class="col-md-8 hidden-xs">
 					<ol class="breadcrumb pull-right">
-					  	<li><a href="{{ route('/index')}}">Home</a></li>
+					  	<li><a href="{{ route('index')}}">Home</a></li>
 					  	<li class="active">Login</li>
 					</ol>
 				</div>	<!-- End of /.col-md-8 -->
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of /#Topic-header -->
-
 	<section id="shop">
 		<div class="container">
 			<div class="row">
@@ -29,7 +28,6 @@
 						<div class="login-header">
 							<h1></h1>
 						</div>
-						
 							<div class="alert alert-danger alert-dismissible" role="alert">
 								<strong></strong>
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">

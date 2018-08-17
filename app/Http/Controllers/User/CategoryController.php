@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
-    public function show_book_in_category(){
+    public function show(){
     	return View('frontend.pages.category');
     }
 }

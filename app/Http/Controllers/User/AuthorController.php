@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class AuthorController extends Controller
 {
-    public function show_all_author(){
+    public function show(){
     	return View('frontend.pages.author');
     }
 }

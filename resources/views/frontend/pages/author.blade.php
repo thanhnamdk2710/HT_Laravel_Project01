@@ -10,19 +10,15 @@
 				</div>	<!-- End of /.col-md-4 -->
 				<div class="col-md-8 hidden-xs">
 					<ol class="breadcrumb pull-right">
-					  	<li><a href="{{ route('/index')}}">Home</a></li>
+					  	<li><a href="{{ route('index')}}">Home</a></li>
 					  	<li class="active">Author</li>
 					</ol>
 				</div>	<!-- End of /.col-md-8 -->
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of /#Topic-header -->
-
-
-
 	<!-- PRODUCTS Start
     ================================================== -->
-
 	<section id="shop">
 		<div class="container">
 			<div class="row">
@@ -125,9 +121,7 @@
 					        <!--  ... -->
 					    </ul>
 					</div>	<!-- End of /.products-grid -->
-
 					<!-- Pagination -->
-
 					<div class="pagination-bottom">
 						<ul class="pagination">
 						  	<li class="disabled"><a href="#">&laquo;</a></li>
@@ -160,5 +154,4 @@
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of Section -->
-
 @endsection

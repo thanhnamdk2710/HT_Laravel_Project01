@@ -14,10 +14,8 @@
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section> <!-- End of Section -->
-
 	<!-- FEATURES Start
     ================================================== -->
-
 	<section id="features">
 		<div class="container">
 			<div class="row">
@@ -63,12 +61,8 @@
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of section -->
-
-
-
 	<!-- CATAGORIE Start
     ================================================== -->
-
 	<section id="catagorie">
 		<div class="container">
 			<div class="row">
@@ -132,13 +126,8 @@
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of Section -->
-
-
-
-	
 		<!-- PRODUCTS Start
     ================================================== -->
-
 	<section id="products">
 		<div class="container">
 			<div class="row">
@@ -258,13 +247,8 @@
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of Section -->
-
-
-	
-	
 		<!-- CALL TO ACTION Start
     ================================================== -->
-
 	<section id="call-to-area">
 		<div class="container">
 			<div class="row">

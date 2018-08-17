@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>EBOOK - @yield('title')</title>
+	<title>EBOOK-@yield('title')</title>
     @include('frontend.layouts.head')
 </head>
 <body>

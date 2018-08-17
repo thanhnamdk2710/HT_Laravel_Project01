@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
 {
-   	public function show_form(){
+   	public function show(){
     	return View('frontend.pages.contact');
     }
 }

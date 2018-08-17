@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class DetailController extends Controller
 {
-    public function show_detail(Request $id){
+    public function show(Request $id){
     	return View('frontend.pages.detail');
     }
 }

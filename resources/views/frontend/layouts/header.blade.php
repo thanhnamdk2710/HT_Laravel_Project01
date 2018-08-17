@@ -33,8 +33,6 @@
 		</div>	<!-- End Of /.Container -->
 	</section>  <!-- End of /Section -->
 	
-
-
 	<!-- LOGO Start
     ================================================== -->
 	
@@ -49,9 +47,6 @@
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</header> <!-- End of /Header -->
-
-	
-
 
 	<!-- MENU Start
     ================================================== -->

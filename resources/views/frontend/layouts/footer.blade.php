@@ -78,8 +78,6 @@
 			</div> <!-- End Of /.row -->
 		</div> <!-- End Of /.Container -->
 		
-
-
 	<!-- FOOTER-BOTTOM Start
     ================================================== -->
 
@@ -120,6 +118,5 @@
 			</div>	<!-- End Of /.container -->	
 		</div>	<!-- End Of /.footer-bottom -->
 	</footer> <!-- End Of Footer -->
-	
 	<a id="back-top" href="#"></a>
 	
