@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAliasToBooksTable extends Migration
+class AddCountToBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddAliasToBooksTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->string('alias');
+            $table->integer('count')->after('publisher');
+            $table->float('average')->after('category_id');
         });
     }
 
@@ -26,7 +27,7 @@ class AddAliasToBooksTable extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-             $table->dropColumn('alias');
+            $table->dropColumn(['count', 'average']);
         });
     }
 }
