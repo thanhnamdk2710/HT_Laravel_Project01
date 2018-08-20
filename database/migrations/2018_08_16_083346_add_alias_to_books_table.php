@@ -26,7 +26,7 @@ class AddAliasToBooksTable extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            //
+             $table->dropColumn('alias');
         });
     }
 }
