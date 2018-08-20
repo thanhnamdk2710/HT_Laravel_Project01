@@ -14,3 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('customers', function(){
+    $faker = Faker\Factory::create();
+    $limit = 10;
+    $customers = [];
+    for ($i = 0; $i < $limit; $i++) {
+        $customers[$i] = [
+            'Họ và tên'     => $faker->name,
+            'Email'         => $faker->unique()->email,
+            'Số điện thoại' => $faker->phoneNumber,
+            'Website'       => $faker->domainName,
+            'Tuổi'          => $faker->numberBetween(20,100),
+            'Địa chỉ'       => $faker->address
+        ];
+    }
+    return response()->json($customers);
+});
