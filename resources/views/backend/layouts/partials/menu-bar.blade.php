@@ -26,7 +26,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             <li class="{{Request::is('admin/home') ? 'active' : ''}}">
-                <a href="{{ route('home.index') }}"><i class="fas fa-home"></i><span>Home</span></a>
+                <a href="{{ route('admin.dashboard') }}"><i class="fas fa-home"></i><span>Home</span></a>
             </li>
             <li class="{{Request::is('admin/books') ? 'active' : ''}}">
                 <a href="{{ route('books.show') }}"><i class="fas fa-book"></i><span>Books</span>
