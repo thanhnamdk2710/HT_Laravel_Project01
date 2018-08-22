@@ -16,11 +16,15 @@ class UsersTableSeeder extends Seeder
         //    ['username' => str_random(10), 'avatar' => 'aaa', 'email' => str_random(255), 'password' => bcrypt('secret'),'role'=>1],         
         // ]);
         // 
-        factory(App\User::class,10)->create();
+        factory(App\User::class,10)->create([
+            'gender'=>1,
+            'status'=>"rất hay",
+            'role'=>1,
+        ]);
 
         // factory(App\User::class, 50)->create()->each(function ($u) {
         //     $u->posts()->save(factory(App\Post::class)->make());
-        // });
+        // });  
 
 	}
     
