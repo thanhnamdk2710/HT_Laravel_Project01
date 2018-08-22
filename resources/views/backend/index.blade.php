@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 
-@section('title','HOME')
+@section('title', 'HOME')
 
 @section('content')
 <!-- Content Header (Page header) -->

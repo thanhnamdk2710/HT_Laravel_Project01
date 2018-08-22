@@ -25,24 +25,24 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="{{Request::is('admin/home') ? 'active' : ''}}">
-                <a href="{{ route('admin.dashboard') }}"><i class="fas fa-home"></i><span>Home</span></a>
+            <li class="{{Request::is('admin') ? 'active' : ''}}">
+                <a href="{{ route('admin.dashboard') }}"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
-            <li class="{{Request::is('admin/books') ? 'active' : ''}}">
-                <a href="{{ route('books.show') }}"><i class="fas fa-book"></i><span>Books</span>
+            <li class="#">
+                <a href="#"><i class="fa fa-book"></i> <span>Books</span>
                 </a>
             </li>
             <li class="#">
-                <a href="#"><i class="fas fa-clipboard-list"></i><span>Categories</span></a>
+                <a href="#"><i class="fa fa-clipboard-list"></i> <span>Categories</span></a>
             </li>
             <li class="">
-                <a href="#"><i class="fas fa-user-alt"></i><span>Authors</span></a>
+                <a href="#"><i class="fa fa-user-alt"></i> <span>Authors</span></a>
             </li>
             <li>
-                <a href="#"><i class="fas fa-users"></i> <span>Users</span></a>
+                <a href="#"><i class="fa fa-users"></i> <span>Users</span></a>
             </li>
             <li>
-                <a href="#"><i class="far fa-envelope"></i> <span>Feedback</span></a>
+                <a href="#"><i class="fa fa-envelope"></i> <span>Feedback</span></a>
             </li>
         </ul>
     </section>
