@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Facades\Config;
 
 class CategoryController extends Controller
 {
@@ -15,8 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = DB:table('categories')->get();
-        return view('backend.categories.index');
+        $categories = Category::orderBy('created_at', 'desc')->paginate(config('define.CATEGORY_PAGINATE')); 
+
+        return view('backend.categories.index', compact('categories'));
     }
 
     /**
