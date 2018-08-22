@@ -15,6 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('backend.home.index');
+Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
 });
