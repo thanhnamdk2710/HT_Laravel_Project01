@@ -17,4 +17,7 @@ Route::get('/', function () {
 
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
 	Route::get('/','HomeController@index')->name('dashboard');
+
+	Route::get('categories/create', 'CategoryController@create')->name('category.create'); 
+	Route::post('categories/create',  'CategoryController@store')->name('category.save');
 });
