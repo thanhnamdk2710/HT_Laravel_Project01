@@ -32,8 +32,8 @@
                 <a href="#"><i class="fa fa-book"></i> <span>Books</span>
                 </a>
             </li>
-            <li class="#">
-                <a href="#"><i class="fa fa-clipboard-list"></i> <span>Categories</span></a>
+            <li class="{{ Request::is('admin/categories') ? 'active' : '' }}">
+                <a href="{{ route('admin.categories.index') }}"><i class="fa fa-clipboard-list"></i> <span>Categories</span></a>
             </li>
             <li class="">
                 <a href="#"><i class="fa fa-user-alt"></i> <span>Authors</span></a>
