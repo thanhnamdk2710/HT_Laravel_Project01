@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ValidationInsertCategory;
+use App\Http\Requests\ValidationCategory;
 use App\Http\Controllers\Controller;
-use DB;
 use Session;
+use App\Models\Category;
+use Illuminate\Support\Facades\Config;
 
 class CategoryController extends Controller
 {
@@ -17,7 +18,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::orderBy('created_at', 'desc')->paginate(config('define.CATEGORY_PAGINATE')); 
+
+        return view('backend.categories.index', compact('categories'));
     }
 
     /**
@@ -36,19 +39,21 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidationInsertCategory $request)
+    public function store(ValidationCategory $request)
     {
-        $check = DB::table('categories')->select('*')->where('name',$request->get('category'))->get();
+        $check = Category::where('name',$request->category)->first();
 
-        if( count($check) ==0 ){
-            $category = DB::table('categories')->insert(['name' => $request->get('category')]
-        );
-           return view('backend.categories.index');
+        if( $check == null ){
+            $category = Category::create(['name' => $request->category]);
+            Session::flash('success', 'Add a successful category'); 
+
+            return redirect('admin/categories');
         }else{
             Session::flash('error', 'Exist category');
+            
             return redirect('admin/categories/create');
-       }  
-   }
+        }  
+    }
     /**
      * Display the specified resource.
      *

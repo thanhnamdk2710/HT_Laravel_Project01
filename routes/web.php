@@ -16,8 +16,10 @@ Route::get('/', function () {
 });
 
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
-	Route::get('/','HomeController@index')->name('dashboard');
+	Route::get('/', 'HomeController@index')->name('dashboard');
 
-	Route::get('categories/create', 'CategoryController@create')->name('category.create'); 
-	Route::post('categories/create',  'CategoryController@store')->name('category.save');
+	// CRUD Category
+	Route::get('categories', 'CategoryController@index')->name('categories.index');
+	Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
+	Route::post('categories', 'CategoryController@store')->name('categories.store');
 });
