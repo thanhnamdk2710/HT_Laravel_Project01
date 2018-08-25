@@ -2,12 +2,16 @@
 
 @section('title', 'List Categories')
 
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endpush
+
 @section('content')
 <section class="content-header">
 	<h1>Category table</h1>
 	<ol class="breadcrumb">
 		<li>
-			<a href="#">
+			<a href="{{ route('admin.categories.index') }}">
 				<i class="fas fa-tachometer-alt"></i> Home
 			</a>
 		</li>
@@ -24,21 +28,32 @@
 					<i class="fa fa-plus"></i> Insert category
 				</a>
 			</div>
+			@if (Session::has('success'))
+			<div class="box-header with-border">
+				<div class="col-md-6">
+					<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Success!</h4>
+						<p>* {{ Session::get('success') }}</p>
+					</div>
+				</div>
+			</div>
+			@endif
 			<!-- /.box-header -->
 			<div class="box-body">
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<th style="width: 40px">#</th>
+							<th style="width: 100px ">STT</th>
 							<th>Name</th>
-							<th style="width: 150px">Action</th>
+							<th style="width: 350px">Action</th>
 						</tr>
 						@foreach($categories as $key => $category)
 						<tr>
 							<td>{{ $key + 1 }}</td>
 							<td>{{ $category->name }}</td>
 							<td>
-								<a href="#" class="btn btn-warning">Edit</a>
+								<a href="{{url("admin/categories/{$category->id}/edit")}}" class="btn btn-warning">Edit</a>
 								<a href="#" class="btn btn-danger">Delete</i></a>
 							</td>
 						</tr>
