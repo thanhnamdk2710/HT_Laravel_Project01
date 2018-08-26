@@ -1,13 +1,15 @@
 @extends('backend.layouts.master')
 
 @section('title', 'List Categories')
-
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endpush
 @section('content')
 <section class="content-header">
 	<h1>Category table</h1>
 	<ol class="breadcrumb">
 		<li>
-			<a href="#">
+			<a href="{{ route('admin.categories.index') }}">
 				<i class="fas fa-tachometer-alt"></i> Home
 			</a>
 		</li>
@@ -24,12 +26,23 @@
 					<i class="fa fa-plus"></i> Insert category
 				</a>
 			</div>
+			@if (Session::has('success'))
+			<div class="box-header with-border">
+				<div class="col-md-6">
+					<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Success!</h4>
+						<p>* {{ Session::get('success') }}</p>
+					</div>
+				</div>
+			</div>
+			@endif
 			<!-- /.box-header -->
 			<div class="box-body">
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<th style="width: 40px">#</th>
+							<th style="width: 80px">#</th>
 							<th>Name</th>
 							<th style="width: 150px">Action</th>
 						</tr>
@@ -39,7 +52,29 @@
 							<td>{{ $category->name }}</td>
 							<td>
 								<a href="#" class="btn btn-warning">Edit</a>
-								<a href="#" class="btn btn-danger">Delete</i></a>
+								<button type='submit'class="btn btn-danger" data-toggle="modal" data-target="#myModal{{$category->id}}">Delete</button>
+								<!-- Modal -->
+								<div class="modal fade" id="myModal{{$category->id}}" role="dialog">
+									<div class="modal-dialog modal-sm">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Delete category?</h4>
+											</div>
+											<div class="modal-body">
+												<p>Are you sure you want to delete <strong>"{{ $category->name }}"</strong></p>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+												<form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}" class="inline">
+													{{ csrf_field() }}
+													{{ method_field('PUT') }}
+													<button type="submit" class="btn btn-default">Delete</button>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
 							</td>
 						</tr>
 						@endforeach

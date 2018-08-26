@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Support\Facades\Config;
+use Session;
 
 class CategoryController extends Controller
 {
@@ -84,6 +85,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        Session::flash('success', 'Delete a successful category');
+
+        return redirect('admin/categories');
     }
 }

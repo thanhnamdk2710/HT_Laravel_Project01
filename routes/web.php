@@ -12,11 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
 	Route::get('/', 'HomeController@index')->name('dashboard');
 
+	//CRUD Category
 	Route::get('/categories', 'CategoryController@index')->name('categories.index');
+	Route::put('/categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
 });
