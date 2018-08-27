@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidationCategory;
 use App\Http\Controllers\Controller;
+use Session;
 use App\Models\Category;
 use Illuminate\Support\Facades\Config;
 
@@ -28,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.categories.create');
     }
 
     /**
@@ -37,11 +39,21 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidationCategory $request)
     {
-        //
-    }
+        $check = Category::where('name',$request->category)->first();
+        
+        if($check){
+            Session::flash('error', 'Exist category');
 
+            return redirect('admin/categories/create');
+        }else{
+            $category = Category::create(['name' => $request->category]);
+            Session::flash('success', 'Add a successful category'); 
+
+            return redirect('admin/categories');
+        }  
+    }
     /**
      * Display the specified resource.
      *

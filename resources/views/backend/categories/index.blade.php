@@ -7,7 +7,7 @@
 	<h1>Category table</h1>
 	<ol class="breadcrumb">
 		<li>
-			<a href="#">
+			<a href="{{ route('admin.dashboard') }}">
 				<i class="fas fa-tachometer-alt"></i> Home
 			</a>
 		</li>
@@ -20,16 +20,27 @@
 	<div class="row">
 		<div class="box">
 			<div class="box-header with-border">
-				<a class="btn btn-flat margin btn-social btn-dropbox" href="#">
+				<a class="btn btn-flat margin btn-social btn-dropbox" href=" {{ route('admin.categories.create') }} ">
 					<i class="fa fa-plus"></i> Insert category
 				</a>
+			</div>
+			<div class="box-header with-border">
+				<div class="col-md-6">
+					@if (Session::has('success'))
+					<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Success!</h4>
+						{{ Session::get('success') }}
+					</div>
+					@endif
+				</div>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<th style="width: 40px">#</th>
+							<th style="width: 40px">STT</th>
 							<th>Name</th>
 							<th style="width: 150px">Action</th>
 						</tr>
