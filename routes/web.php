@@ -15,20 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+	Route::get('/', 'HomeController@index')->name('dashboard');
 
-// Route::get('customers', function(){
-//     $faker = Faker\Factory::create();
-//     $limit = 10;
-//     $customers = [];
-//     for ($i = 0; $i < $limit; $i++) {
-//         $customers[$i] = [
-//             'Họ và tên'     => $faker->name,
-//             'Email'         => $faker->unique()->email,
-//             'Số điện thoại' => $faker->phoneNumber,
-//             'Website'       => $faker->domainName,
-//             'Tuổi'          => $faker->numberBetween(20,100),
-//             'Địa chỉ'       => $faker->address
-//         ];
-//     }
-//     return response()->json($customers);
-// });
+	// CRUD Category
+	Route::get('categories', 'CategoryController@index')->name('categories.index');
+	Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
+	Route::post('categories', 'CategoryController@store')->name('categories.store');
+});
+
