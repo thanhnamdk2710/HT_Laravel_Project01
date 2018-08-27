@@ -39,8 +39,9 @@
 					</div>
 				</div>
 				<div class="box-footer">
-					{!! Form::reset('Cancel', ['class' => 'btn btn-default']) !!}
+					<a href="{{ route('admin.categories.index')}}" class="btn btn-info btn-default">Back</a>
 					{!! Form::submit('Insert', ['class' => 'btn btn-info pull-right']) !!}
+					{!! Form::reset('Cancel', ['class' => 'btn btn-default pull-right']) !!}
 				</div>
 				{!! Form::close() !!}	
 			</div>

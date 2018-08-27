@@ -42,16 +42,16 @@ class CategoryController extends Controller
     public function store(ValidationCategory $request)
     {
         $check = Category::where('name',$request->category)->first();
+        
+        if($check){
+            Session::flash('error', 'Exist category');
 
-        if( $check == null ){
+            return redirect('admin/categories/create');
+        }else{
             $category = Category::create(['name' => $request->category]);
             Session::flash('success', 'Add a successful category'); 
 
             return redirect('admin/categories');
-        }else{
-            Session::flash('error', 'Exist category');
-            
-            return redirect('admin/categories/create');
         }  
     }
     /**
