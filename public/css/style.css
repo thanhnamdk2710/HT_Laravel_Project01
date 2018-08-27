@@ -1,0 +1,9 @@
+table tbody tr th{
+    text-align: center;
+}
+table tbody tr td{
+    text-align: center;
+}
+.attachment-img{
+	width: 100px;
+}

@@ -22,4 +22,7 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], f
 	Route::get('categories', 'CategoryController@index')->name('categories.index');
 	Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
 	Route::post('categories', 'CategoryController@store')->name('categories.store');
+
+	// CRUD User
+	Route::get('users', 'UserController@index')->name('users.index');
 });
