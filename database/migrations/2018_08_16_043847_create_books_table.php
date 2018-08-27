@@ -21,7 +21,6 @@ class CreateBooksTable extends Migration
             $table->string('image');
             $table->string('editor');
             $table->string('publisher');
-            $table->float('everage');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

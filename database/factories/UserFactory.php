@@ -16,13 +16,12 @@ use Faker\Generator as Faker;
 $factory->define(App\User::class, function (Faker $faker) {
     return [
         'username' => $faker->username,
-        // 'avatar' => 'avatar.png',
         'avatar' => $faker->imageUrl($width = 200, $height = 200),
         'email' => $faker->unique()->safeEmail,
-        'gender'=>$faker->gender,
-        'password' => bcrypt('secret') // secret
-        'status'=>$faker->status,
-        'role'=>$faker->role,
+        'gender'=>$faker->numberBetween(0,1),
+        'password' => bcrypt('secret'),
+        'status'=>$faker->numberBetween(0,1),
+        'role'=>$faker->numberBetween(0,1),
         'remember_token' => str_random(10),
     ];
 });

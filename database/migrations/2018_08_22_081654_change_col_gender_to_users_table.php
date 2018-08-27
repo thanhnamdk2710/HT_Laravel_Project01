@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeFieldStarToRatingsTable extends Migration
+class ChangeColGenderToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ChangeFieldStarToRatingsTable extends Migration
      */
     public function up()
     {
-        Schema::table('ratings', function (Blueprint $table) {
-            $table->tinyInteger('star')->after('content');
+        Schema::table('users', function (Blueprint $table) {
+            DB::statement('ALTER TABLE `users` CHANGE `gender` `gender` TINYINT(4)');
         });
     }
 
@@ -25,8 +25,8 @@ class ChangeFieldStarToRatingsTable extends Migration
      */
     public function down()
     {
-        Schema::table('ratings', function (Blueprint $table) {
-            $table->dropColumn('star');
+        Schema::table('users', function (Blueprint $table) {
+            DB::statement('ALTER TABLE `users` CHANGE `gender` `gender` TINYINT(4)');
         });
     }
 }
