@@ -19,6 +19,8 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], f
 	Route::get('/', 'HomeController@index')->name('dashboard');
 
 	//CRUD Category
-	Route::get('/categories', 'CategoryController@index')->name('categories.index');
-	Route::put('/categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
+	Route::get('categories', 'CategoryController@index')->name('categories.index');
+	Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
+	Route::post('categories', 'CategoryController@store')->name('categories.store');
+	Route::put('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
 });

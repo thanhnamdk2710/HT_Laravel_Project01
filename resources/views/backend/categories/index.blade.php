@@ -1,15 +1,17 @@
 @extends('backend.layouts.master')
 
 @section('title', 'List Categories')
+
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @endpush
+
 @section('content')
 <section class="content-header">
 	<h1>Category table</h1>
 	<ol class="breadcrumb">
 		<li>
-			<a href="{{ route('admin.categories.index') }}">
+			<a href="{{ route('admin.dashboard') }}">
 				<i class="fas fa-tachometer-alt"></i> Home
 			</a>
 		</li>
@@ -22,7 +24,7 @@
 	<div class="row">
 		<div class="box">
 			<div class="box-header with-border">
-				<a class="btn btn-flat margin btn-social btn-dropbox" href="#">
+				<a class="btn btn-flat margin btn-social btn-dropbox" href=" {{ route('admin.categories.create') }} ">
 					<i class="fa fa-plus"></i> Insert category
 				</a>
 			</div>
@@ -42,9 +44,9 @@
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<th style="width: 80px">#</th>
+							<th style="width: 100px">STT</th>
 							<th>Name</th>
-							<th style="width: 150px">Action</th>
+							<th style="width: 250px">Action</th>
 						</tr>
 						@foreach($categories as $key => $category)
 						<tr>
@@ -52,7 +54,7 @@
 							<td>{{ $category->name }}</td>
 							<td>
 								<a href="#" class="btn btn-warning">Edit</a>
-								<button type='submit'class="btn btn-danger" data-toggle="modal" data-target="#myModal{{$category->id}}">Delete</button>
+								<button type='submit'class="btn btn-danger form-delete" data-toggle="modal" data-target="#myModal{{$category->id}}">Delete</button>
 								<!-- Modal -->
 								<div class="modal fade" id="myModal{{$category->id}}" role="dialog">
 									<div class="modal-dialog modal-sm">

@@ -1,5 +1,6 @@
 .form-delete{
 	display: inline;
+	margin-left: 20px;
 }
 table tbody tr th{
     text-align: center;
