@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidationCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Support\Facades\Config;
-use App\Http\Requests\ValidationCategory;
-use DateTime;
 use Session;
 
 class CategoryController extends Controller
@@ -31,7 +30,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.categories.create');
     }
 
     /**
@@ -40,11 +39,21 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidationCategory $request)
     {
-        //
-    }
+        $check = Category::where('name',$request->category)->first();
+        
+        if($check){
+            Session::flash('error', 'Exist category');
 
+            return redirect('admin/categories/create');
+        }else{
+            $category = Category::create(['name' => $request->category]);
+            Session::flash('success', 'Add a successful category'); 
+
+            return redirect('admin/categories');
+        }  
+    }
     /**
      * Display the specified resource.
      *
@@ -78,17 +87,17 @@ class CategoryController extends Controller
      */
     public function update(ValidationCategory $request, $id)
     {
-        $check = Category::where('name',$request->get('category'))->first();
+        $check = Category::where('name',$request->category)->first();
 
-        if( $check == null ){
+        if($check){
+            Session::flash('error', 'Exist category');
+
+            return redirect()->route('admin.categories.edit', [$id]);
+        }else{
             $category = Category::where('id', $id)->update(['name' => $request->category]);
             Session::flash('success', 'Update a successful category'); 
 
             return redirect('admin/categories');
-        }else{
-            Session::flash('error', 'Exist category');
-
-            return redirect()->route('admin.categories.edit', [$id]);
         }
     }
 

@@ -11,7 +11,7 @@
 	<h1>Category table</h1>
 	<ol class="breadcrumb">
 		<li>
-			<a href="{{ route('admin.categories.index') }}">
+			<a href="{{ route('admin.dashboard') }}">
 				<i class="fas fa-tachometer-alt"></i> Home
 			</a>
 		</li>
@@ -24,7 +24,7 @@
 	<div class="row">
 		<div class="box">
 			<div class="box-header with-border">
-				<a class="btn btn-flat margin btn-social btn-dropbox" href="#">
+				<a class="btn btn-flat margin btn-social btn-dropbox" href=" {{ route('admin.categories.create') }} ">
 					<i class="fa fa-plus"></i> Insert category
 				</a>
 			</div>
