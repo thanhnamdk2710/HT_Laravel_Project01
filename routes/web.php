@@ -16,10 +16,18 @@ Route::get('/', function () {
 });
 
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+	
 	Route::get('/', 'HomeController@index')->name('dashboard');
 
 	// CRUD Category
 	Route::get('categories', 'CategoryController@index')->name('categories.index');
 	Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
 	Route::post('categories', 'CategoryController@store')->name('categories.store');
+
+	// CRUD Book
+	Route::get('books', 'BookController@index')->name('books.index');
+
 });
+
+
+
