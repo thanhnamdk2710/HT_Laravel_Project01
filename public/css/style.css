@@ -1,10 +1,7 @@
 .cancel{
 	margin-right: 5px;
 }
-
-table tbody tr th{
-    text-align: center;
-}
-table tbody tr td{
-    text-align: center;
+.form-delete{
+	display: inline;
+	margin-left: 10px;
 }

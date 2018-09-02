@@ -44,17 +44,17 @@
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<th style="width: 100px ">STT</th>
-							<th>Name</th>
-							<th style="width: 350px">Action</th>
+							<th style="width: 100px; text-align: center;">STT</th>
+							<th style="text-align: center;">Name</th>
+							<th style="width: 350px;text-align: center;">Action</th>
 						</tr>
 						@foreach($categories as $key => $category)
 						<tr>
-							<td>{{ $key + 1 }}</td>
+							<td style="text-align: center;">{{ $key + 1 }}</td>
 							<td>{{ $category->name }}</td>
-							<td>
+							<td style="text-align: center;">
 								<a href="{{url("admin/categories/{$category->id}/edit")}}" class="btn btn-warning">Edit</a>
-								<a href="#" class="btn btn-danger">Delete</i></a>
+								<a href="#" class="btn btn-danger form-delete">Delete</i></a>
 							</td>
 						</tr>
 						@endforeach
