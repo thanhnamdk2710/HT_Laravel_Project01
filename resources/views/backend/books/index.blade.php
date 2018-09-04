@@ -1,5 +1,6 @@
 @extends('backend.layouts.master')
-@section('title', 'List Categories')
+@section('title', 'List Books')
+
 @section('content')
 <section class="content-header">
 	<h1>Book table</h1>
@@ -129,3 +130,4 @@ $(function () {
 })
 </script>
 @endpush
+
