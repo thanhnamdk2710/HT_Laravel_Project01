@@ -41,22 +41,9 @@ $factory->define(App\Models\Tag::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Models\Author::class, function (Faker $faker) {
-    return [
-        'name'=>$faker->name,
-    ];
-});
-
 $factory->define(App\Models\Tag_Book::class, function (Faker $faker) {
     return [
         'tag_id' => factory('App\Models\Tag')->create()->id,
-        'book_id' => factory('App\Models\Book')->create()->id,
-    ];
-});
-
-$factory->define(App\Models\Author_Book::class, function (Faker $faker) {
-    return [
-        'author_id' => factory('App\Models\Author')->create()->id,
         'book_id' => factory('App\Models\Book')->create()->id,
     ];
 });
