@@ -58,29 +58,14 @@
 										@foreach($books as $key => $book)
 										<tr role="row" class="odd">
 											<td class="sorting_1" style="text-align: center;" >{{ $key + 1 }}</td>
-											<td>{{ $book['ISBN'] }}</td>
-											<td>{{ $book['name'] }}</td>
+											<td>{{ $book->ISBN }}</td>
+											<td>{{ $book->name }}</td>
 											<td><img src="images/books/{{  $book->image }}" height="90px"></td>
-											<td>
-												<?php
-													$author = DB::table('author_books')
-															->join('authors','authors.id','=','author_books.author_id')
-															->where('id',$book['id'])
-															->first()
-												?>
-												@if(!empty($author->name))
-													{{ $author->name }}
-												@endif
-											</td>
-											<td>{{ $book['publisher'] }}</td>
-											<td>
-												 <?php $cate = DB::table('categories')->where('id',$book['category_id'])->first() ?>
-									               	@if(!empty($cate->name))
-									                    {{ $cate->name }}
-									                @endif
-											</td>
-											<td>{{ $book['count'] }}</td>
-											<td>{{ $book['average'] }}</td>
+											<td>{{ $book->author }}</td>
+											<td>{{ $book->publisher }}</td>
+											<td>{{ $book->name_category }}</td>
+											<td>{{ $book->count }}</td>
+											<td>{{ $book->average }}</td>
 											<td>
 												<a href="#" class="btn btn-warning">Edit</a>
 												<a href="#" class="btn btn-danger">Delete</i></a>

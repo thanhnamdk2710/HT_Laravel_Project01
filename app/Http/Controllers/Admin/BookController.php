@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
-
+use DB;
 class BookController extends Controller
 {
     /**
@@ -15,7 +15,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::orderBy('created_at', 'desc')->paginate(config('define.books.limit_rows')); 
+        $books = DB::table('categories')
+                ->join('books','books.category_id','=','categories.id')
+                ->select('books.*','categories.name as name_category')
+                ->get();
         return view('backend.books.index', compact('books'));
     }
 
