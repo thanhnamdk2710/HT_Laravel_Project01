@@ -26,7 +26,7 @@ class ChangeIsbnToBooksTable extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->dropColum('ISBN');
+            $table->dropColumn('ISBN');
         });
     }
 }
