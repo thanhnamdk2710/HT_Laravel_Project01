@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
@@ -22,4 +22,16 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], f
 	Route::get('categories', 'CategoryController@index')->name('categories.index');
 	Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
 	Route::post('categories', 'CategoryController@store')->name('categories.store');
+
+	// CRUD User
+	Route::get('users', 'UserController@index')->name('users.index');
+	Route::get('users/{id}', 'UserController@show')->name('users.show');
+	// // Route::get('users/{id}/edit', 'UserController@edit')->name('users.edit');
+	// Route::post('users/{id}/update', 'UserController@updateStatus')->name('users.update');
+
+	Route::POST('users/update/{aid}', 'UserController@getAjax');
+
+	// Route::get('users/updateY/{id}', 'UserController@updateYesStatus')->name('users.edit');
+	// Route::get('users/updateN/{id}', 'UserController@updateNoStatus')->name('users.edit');
+
 });
