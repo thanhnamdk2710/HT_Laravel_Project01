@@ -1,6 +1,6 @@
 <?php 
 return [
 	'categories' => [
-		'limit_rows' => 10,
-	],
+       'limit_rows' => 10,
+   ],
 ];
