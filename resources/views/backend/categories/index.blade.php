@@ -44,20 +44,20 @@
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
-							<th style="width: 100px">STT</th>
-							<th>Name</th>
-							<th style="width: 250px">Action</th>
+							<th style="width: 100px; text-align: center;">STT</th>
+							<th style="text-align: center;">Name</th>
+							<th style="width: 350px;text-align: center;">Action</th>
 						</tr>
 						@foreach($categories as $key => $category)
 						<tr>
-							<td>{{ $key + 1 }}</td>
+							<td style="text-align: center;">{{ $key + 1 }}</td>
 							<td>{{ $category->name }}</td>
-							<td>
+							<td style="text-align: center;">
 								<a href="#" class="btn btn-warning">Edit</a>
 								<button type='submit'class="btn btn-danger form-delete" data-toggle="modal" data-target="#myModal{{$category->id}}">Delete</button>
 								<!-- Modal -->
 								<div class="modal fade" id="myModal{{$category->id}}" role="dialog">
-									<div class="modal-dialog modal-sm">
+									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
