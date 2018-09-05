@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeIsbnToBooksTable extends Migration
+class RenameCountToBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class ChangeIsbnToBooksTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->bigInteger('ISBN')->unsigned()->change();
+            $table->renameColumn('count', 'total_rating')->after('category_id');
         });
     }
 
@@ -26,7 +26,7 @@ class ChangeIsbnToBooksTable extends Migration
     public function down()
     {
         Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('ISBN');
+            $table->renameColumn('total_rating', 'count');
         });
     }
 }
