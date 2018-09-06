@@ -8,14 +8,19 @@
 
 @section('content')
 <section class="content-header">
-	<h1>User table</h1>
+	<h1>Review table</h1>
 	<ol class="breadcrumb">
 		<li>
 			<a href="{{ route('admin.dashboard') }}">
 				<i class="fas fa-tachometer-alt"></i> Home
 			</a>
 		</li>
-		<li class="active">User</li>
+		<li>
+			<a href="{{ route('admin.users.index') }}">
+				<i class="fas fa fa-users"></i> Users
+			</a>
+		</li>
+		<li class="active">Review</li>
 	</ol>
 </section>
 <!-- Main content -->
@@ -51,7 +56,7 @@
 									<td style="text-align: center;">{{ $detail->star }}</td>
 									<td style="text-align: center;" class="text-green">
 										@if($detail->content)
-										<i>{{ $detail->content }}</i>
+										<i>" {{ $detail->content }} "</i>
 										@else
 										NULL
 										@endif

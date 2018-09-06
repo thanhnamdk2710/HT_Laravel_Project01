@@ -61,7 +61,11 @@
 										@endif
 									</td>
 									<td style="text-align: center;">
+										@if( $user->count == 0 )
+										<strong>{{ $user->count}}</strong>
+										@else
 										<a href="{{ route('admin.users.show', ['id'=>$user->id]) }}" class="text-yellow"><strong>{{ $user->count}}</strong></a>
+										@endif
 									</td>
 									<td style="text-align: center;">
 										<a href="#" class="btn btn-danger">Delete</i></a>
