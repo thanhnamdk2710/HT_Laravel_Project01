@@ -1,4 +1,9 @@
 <?php 
 return [
-	'CATEGORY_PAGINATE' => 5,
+	'categories' => [
+    	'limit_rows' => 10,
+    ],
+    'books' => [
+        'limit_rows' => 10,
+    ]
 ];

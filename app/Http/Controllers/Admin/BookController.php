@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ValidationBook;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
-use App\Models\Author;
-
+use DB;
 class BookController extends Controller
 {
     /**
@@ -17,7 +16,10 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::orderBy('created_at', 'desc')->paginate(config('define.CATEGORY_PAGINATE')); 
+        $books = DB::table('categories')
+                ->join('books','books.category_id','=','categories.id')
+                ->select('books.*','categories.name as name_category')
+                ->get();
         return view('backend.books.index', compact('books'));
     }
 
@@ -41,12 +43,11 @@ class BookController extends Controller
     {
         $file_name = $request_book->file('fImages')->getClientOriginalName();
         $book = new Book();
-        $author = new Author();
         $book->isbn = $request_book->isbn;
         $book->name = $request_book->name;
         $book->alias = str_slug($request_book->name);
         $book->image = $file_name;  
-        $author->name = $request_book->author;   
+        $book->author = $request_book->author;   
         $book->editor = $request_book->editor;
         $book->publisher = $request_book->publisher;
         $book->count = 5;
