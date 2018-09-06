@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use DB;
 
 class UserController extends Controller
 {
@@ -15,9 +16,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('created_at', 'desc')->where('role',0)->get();
+        $users = DB::table('users')
+                ->join('ratings','users.id','=','ratings.user_id')
+                ->join('books','books.id','=','ratings.book_id')
+                ->select('users.*',DB::raw('COUNT(ratings.star) as count'))
+                ->groupBy('username')
+                ->get();
 
-        return view('backend.users.index', compact('users'));
+        return view('backend.users.index', compact('users','count'));
     }
 
     /**
@@ -49,7 +55,15 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $details = DB::table('users')
+                ->join('ratings','users.id','=','ratings.user_id')
+                ->join('books','books.id','=','ratings.book_id')
+                ->join('categories','books.category_id','=','categories.id')
+                ->select('books.name','books.author as name_author','books.image','ratings.star','ratings.content','categories.name as name_category')
+                ->where('user_id',$id)
+                ->get();
+
+        return view('backend.users.show', compact('details'));
     }
 
     /**

@@ -25,4 +25,5 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], f
 
 	// CRUD User
 	Route::get('users', 'UserController@index')->name('users.index');
+	Route::get('users/{id}', 'UserController@show')->name('users.show');
 });

@@ -1,7 +1,6 @@
 @extends('backend.layouts.master')
 
-@section('title', 'List Users')
-
+@section('title', 'Detail')
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}">
@@ -31,37 +30,31 @@
 							<thead>
 								<tr role="row">
 									<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 80px; text-align: center;">STT</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;text-align: center;">Username</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Avatar</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Email</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Gender</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Status</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Count(review)</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;text-align: center;">Book name</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Image</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Author</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Category</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Star</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Review</th>
 									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 199px;text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($users as $key => $user)
+								@foreach ($details as $key => $detail)
 								<tr role="row" class="odd">
 									<td class="sorting_1" style="text-align: center;">{{ $key + 1 }}</td>
-									<td style="text-align: center;">{{ $user->username }}</td>
-									<td style="text-align: center;"><img src="images/users/{{ $user->avatar }}" class="attachment-img" alt="User Image"></td>
-									<td style="text-align: center;">{{ $user->email }}</td>
-									<td style="text-align: center;">
-										@if($user->gender == 0)
-										Nam
-										@else
-										Nữ
-										@endif
+									<td style="text-align: center;" class="text-red"><strong>{{ $detail->name }}</strong></td>
+									<td style="text-align: center;"><img src="images/books/{{ $detail->image }}" class="attachment-img" alt="book Image"></td>
+									<td style="text-align: center;">{{ $detail->name_author }}</td>
+									<td style="text-align: center;">{{ $detail->name_category }}
 									</td>
-									<td style="text-align: center;">@if($user->status == 0)
-										<button type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
+									<td style="text-align: center;">{{ $detail->star }}</td>
+									<td style="text-align: center;" class="text-green">
+										@if($detail->content)
+										<i>{{ $detail->content }}</i>
 										@else
-										<button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
+										NULL
 										@endif
-									</td>
-									<td style="text-align: center;">
-										<a href="{{ route('admin.users.show', ['id'=>$user->id]) }}" class="text-yellow"><strong>{{ $user->count}}</strong></a>
 									</td>
 									<td style="text-align: center;">
 										<a href="#" class="btn btn-danger">Delete</i></a>
@@ -72,12 +65,12 @@
 							<tfoot>
 								<tr>
 									<th rowspan="1" colspan="1" style="text-align: center;">STT</th>
-									<th rowspan="1" colspan="1" style="text-align: center;">Username</th>
-									<th rowspan="1" colspan="1" style="text-align: center;">Avatar</th>
-									<th rowspan="1" colspan="1" style="text-align: center;">Email</th>
-									<th rowspan="1" colspan="1" style="text-align: center;">Gender</th>
-									<th rowspan="1" colspan="1" style="text-align: center;">Status</th>
-									<th rowspan="1" colspan="1" style="text-align: center;">Count(review)</th>
+									<th rowspan="1" colspan="1" style="text-align: center;">Book name</th>
+									<th rowspan="1" colspan="1" style="text-align: center;">image</th>
+									<th rowspan="1" colspan="1" style="text-align: center;">Author</th>
+									<th rowspan="1" colspan="1" style="text-align: center;">Category</th>
+									<th rowspan="1" colspan="1" style="text-align: center;">Star</th>
+									<th rowspan="1" colspan="1" style="text-align: center;">Review</th>
 									<th rowspan="1" colspan="1" style="text-align: center;">Action</th>
 								</tr>
 							</tfoot>
