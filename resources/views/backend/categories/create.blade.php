@@ -2,6 +2,10 @@
 
 @section('title', 'Create Category')
 
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endpush
+
 @section('content')
 <section class="content-header">
 	<h1>Create Category</h1>
@@ -41,7 +45,7 @@
 				<div class="box-footer">
 					<a href="{{ route('admin.categories.index')}}" class="btn btn-info btn-default">Back</a>
 					{!! Form::submit('Insert', ['class' => 'btn btn-info pull-right']) !!}
-					{!! Form::reset('Cancel', ['class' => 'btn btn-default pull-right']) !!}
+					{!! Form::reset('Cancel', ['class' => 'btn btn-default pull-right cancel']) !!}
 				</div>
 				{!! Form::close() !!}	
 			</div>

@@ -4,7 +4,7 @@
 
 @section('content')
 <section class="content-header">
-	<h1>Create Category</h1>
+	<h1>Create Book</h1>
 	<ol class="breadcrumb">
 		<li>
 			<a href="{{ route('admin.dashboard') }}">
