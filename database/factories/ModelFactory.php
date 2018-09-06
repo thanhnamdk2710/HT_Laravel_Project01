@@ -28,6 +28,7 @@ $factory->define(App\Models\Book::class, function (Faker $faker) {
         'name'=>$faker->name,
         'alias'=>$faker->slug,
         'image'=>$faker->imageUrl($width = 200, $height = 200),
+        'author' =>$faker->name,
         'editor'=>$faker->name,
         'publisher'=>$faker->name,
         'count'=>$faker->numberBetween(1,10), 
