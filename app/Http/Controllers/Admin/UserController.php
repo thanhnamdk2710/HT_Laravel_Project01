@@ -18,13 +18,14 @@ class UserController extends Controller
     public function index()
     {
         $users = DB::table('users')
-        ->leftJoin('ratings','users.id','=','ratings.user_id')
-        ->leftJoin('books','books.id','=','ratings.book_id')
-        ->select('users.*',DB::raw('COUNT(ratings.star) as count'))
-        ->where('users.role','0')
-        ->orderBy('count', 'desc')
-        ->groupBy('email')
-        ->get();
+                ->leftJoin('ratings','users.id','=','ratings.user_id')
+                ->leftJoin('books','books.id','=','ratings.book_id')
+                ->select('users.*',DB::raw('COUNT(ratings.star) as count'))
+                ->where('users.role','0')
+                ->orderBy('count', 'desc')
+                ->groupBy('email')
+                ->get();
+                
         return view('backend.users.index', compact('users','count'));
     }
 
@@ -58,12 +59,12 @@ class UserController extends Controller
     public function show($id)
     {
         $details = DB::table('users')
-        ->join('ratings','users.id','=','ratings.user_id')
-        ->join('books','books.id','=','ratings.book_id')
-        ->join('categories','books.category_id','=','categories.id')
-        ->select('books.name','books.author as name_author','books.image','ratings.star','ratings.content','categories.name as name_category')
-        ->where('user_id',$id)
-        ->get();
+                ->join('ratings','users.id','=','ratings.user_id')
+                ->join('books','books.id','=','ratings.book_id')
+                ->join('categories','books.category_id','=','categories.id')
+                ->select('books.name','books.author as name_author','books.image','ratings.star','ratings.content','categories.name as name_category')
+                ->where('user_id',$id)
+                ->get();
 
         return view('backend.users.show', compact('details'));
     }

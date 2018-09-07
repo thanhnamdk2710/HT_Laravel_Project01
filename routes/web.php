@@ -27,5 +27,4 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], f
 	Route::get('users', 'UserController@index')->name('users.index');
 	Route::get('users/{id}', 'UserController@show')->name('users.show');
 	Route::post('users/update/{aid}', 'UserController@getAjax');
-
 });
