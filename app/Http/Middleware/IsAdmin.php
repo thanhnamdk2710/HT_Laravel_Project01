@@ -22,7 +22,7 @@ class IsAdmin
             if($user->role == 1){
                 return $next($request);
             }else{
-                return response()->view('backend.errors.404');
+                return response()->view('backend.errors.403');
             }
         }else{
             return redirect('login');

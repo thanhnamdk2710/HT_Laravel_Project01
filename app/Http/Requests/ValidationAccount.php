@@ -25,7 +25,7 @@ class ValidationAccount extends FormRequest
     {
         return [
             'email' => 'required|email',
-            'password' => 'required|min:8',
+            'password' => 'required|min:6',
         ];
     }
 }
