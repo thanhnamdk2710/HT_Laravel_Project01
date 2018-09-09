@@ -28,11 +28,11 @@
             <li class="{{Request::is('admin') ? 'active' : ''}}">
                 <a href="{{ route('admin.dashboard') }}"><i class="fa fa-home"></i> <span>Dashboard</span></a>
             </li>
-            <li class="#">
-                <a href="#"><i class="fa fa-book"></i> <span>Books</span>
+            <li class="{{ Request::is('admin/books') ? 'active' : '' }}">
+                <a href="{{ route('admin.books.index') }}"><i class="fa fa-book"></i> <span>Books</span>
                 </a>
             </li>
-            <li class="{{ Request::is('admin/categories') ? 'active' : '' }}">
+            <li class="c">
                 <a href="{{ route('admin.categories.index') }}"><i class="fa fa-clipboard-list"></i> <span>Categories</span></a>
             </li>
             <li class="">
