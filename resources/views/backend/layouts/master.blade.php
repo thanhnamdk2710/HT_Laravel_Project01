@@ -14,11 +14,12 @@
         <div class="wrapper">
         @include('backend.layouts.partials.header')
         @include('backend.layouts.partials.menu-bar')
-            <div class="content-wrapper">
-                @yield('content')
-            </div>
+        <div class="content-wrapper">
+            @yield('content')
+        </div>
         @include('backend.layouts.partials.footer')
         @include('backend.layouts.partials.scripts')
         @stack('js')
-    </body>
+    </div>
+</body>
 </html>
