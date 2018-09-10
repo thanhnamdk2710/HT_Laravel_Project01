@@ -32,18 +32,11 @@
                 <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
                 <p>
                     We could not find the page you were looking for.
-                    Meanwhile, you may <a href="#">return to dashboard</a> or try using the search form.
+                    Meanwhile, you may <a href="javascript:history.go(-1)"><h3>go to back</h3></a>
                 </p>
             </div>
             <!-- /.error-content -->
         </div>
-    </div>
-    <div class="login-box">
-        <a href=" {{ URL::to('frontend') }} ">
-            <h2 class="text-green">
-                <i class="fa fa-hand-o-right" style="margin-right:5px;"></i>Go to back HomePage
-            </h2>
-        </a>
     </div>
 </body>
 </html>

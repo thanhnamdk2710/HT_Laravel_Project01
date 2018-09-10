@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Auth;
+use Illuminate\Support\Facades\Config;
 
 class IsAdmin
 {
@@ -19,13 +20,13 @@ class IsAdmin
         if (Auth::check()){
             $user = Auth::user();
 
-            if($user->role == 1){
+            if($user->role == config('define.admin.role_admin')){
                 return $next($request);
             }else{
                 return response()->view('backend.errors.403');
             }
         }else{
-            return redirect('login');
+            return redirect()->route('login.index');
         }
     }
 }

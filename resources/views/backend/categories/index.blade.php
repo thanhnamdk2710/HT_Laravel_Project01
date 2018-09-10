@@ -28,19 +28,20 @@
 					<i class="fa fa-plus"></i> Insert category
 				</a>
 			</div>
+			@if (Session::has('success'))
 			<div class="box-header with-border">
 				<div class="col-md-6">
-					@if (Session::has('success'))
 					<div class="alert alert-success alert-dismissible">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
-						{{ Session::get('success') }}
+						<p>* {{ Session::get('success') }}</p>
 					</div>
-					@endif
 				</div>
 			</div>
+			@endif
 			<!-- /.box-header -->
 			<div class="box-body">
+				@include('backend.layouts.partials.modal')
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
@@ -53,21 +54,34 @@
 							<td style="text-align: center;">{{ $key + 1 }}</td>
 							<td>{{ $category->name }}</td>
 							<td style="text-align: center;">
-								<a href="#" class="btn btn-warning">Edit</a>
-								<a href="#" class="btn btn-danger form-delete">Delete</i></a>
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
-				<div class="box-footer clearfix">
-					<ul class="pagination pagination-sm no-margin pull-right">
-						{{ $categories->links() }}
-					</ul>
-				</div>
-			</div>
+								<a href="{{url("admin/categories/{$category->id}/edit")}}" class="btn btn-warning">Edit</a>
+								<!-- Modal -->
+								<form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}" class="inline">
+									{{ csrf_field() }}
+									{{ method_field('DELETE') }}
+									<button type="button" class="btn btn-danger form-delete btn-delete-item"
+									data-title="Delete Category"
+									data-confirm="Are you sure you want to delete <strong>{{ $category->name }}</strong>">Delete
+								</button>
+							</form> 
+						</td>
+					</td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
+		<div class="box-footer clearfix">
+			<ul class="pagination pagination-sm no-margin pull-right">
+				{{ $categories->links() }}
+			</ul>
 		</div>
 	</div>
+</div>
+</div>
 </section>
 <!-- /.content -->
 @endsection
+
+@push('js')
+<script src="{{ asset('js/main.js') }}"></script>
+@endpush
