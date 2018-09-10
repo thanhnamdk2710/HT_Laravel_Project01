@@ -32,12 +32,12 @@
 								<tr role="row">
 									<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 80px; text-align: center;">STT</th>
 									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;text-align: center;">Username</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Avatar</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Email</th>
+									<th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;text-align: center;">Avatar</th>
+									<th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;text-align: center;">Email</th>
 									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Gender</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Status</th>
+									<th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;text-align: center;">Status</th>
 									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Count(review)</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 199px;text-align: center;">Action</th>
+									<th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 199px;text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -48,23 +48,20 @@
 									<td style="text-align: center;"><img src="images/users/{{ $user->avatar }}" class="attachment-img" alt="User Image"></td>
 									<td style="text-align: center;">{{ $user->email }}</td>
 									<td style="text-align: center;">
-										@if($user->gender == 0)
-										Nam
-										@else
-										Nữ
-										@endif
+										{{ $user->gender == 0 ? 'Nam' : 'Nữ' }}
 									</td>
-									<td style="text-align: center;">@if($user->status == 0)
-										<button type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
+									<td style="text-align: center;">
+										@if($user->status == 0)
+											<button type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
 										@else
-										<button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
+											<button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
 										@endif
 									</td>
 									<td style="text-align: center;">
 										@if( $user->count == 0 )
-										<strong>{{ $user->count}}</strong>
+											<strong>{{ $user->count}}</strong>
 										@else
-										<a href="{{ route('admin.users.show', ['id'=>$user->id]) }}" class="text-yellow"><strong>{{ $user->count}}</strong></a>
+											<a href="{{ route('admin.users.show', ['id' => $user->id]) }}" class="text-yellow"><strong>{{ $user->count}}</strong></a>
 										@endif
 									</td>
 									<td style="text-align: center;">
@@ -116,14 +113,6 @@
 <script>
 	$(function () {
 		$('#example1').DataTable()
-		$('#example2').DataTable({
-			'paging'      : true,
-			'lengthChange': false,
-			'searching'   : false,
-			'ordering'    : true,
-			'info'        : true,
-			'autoWidth'   : false
-		})
 	})
 </script>
 @endpush

@@ -16,11 +16,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select('users.*',DB::raw('COUNT(ratings.star) as count'))
+        $users = User::select('users.*', DB::raw('COUNT(ratings.star) as count'))
             ->leftJoin('ratings','users.id','=','ratings.user_id')
             ->leftJoin('books','books.id','=','ratings.book_id')
             ->where('users.role','0')
-            ->orderBy('count', 'desc')
+            ->orderBy('count', config('define.categories.order_by_desc'))
             ->groupBy('email')
             ->get();
 

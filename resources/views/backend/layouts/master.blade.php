@@ -13,7 +13,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         @include('backend.layouts.partials.header')
-        @include('backend.layouts.partials.me-bar')
+        @include('backend.layouts.partials.menu-bar')
         <div class="content-wrapper">
             @yield('content')
         </div>
