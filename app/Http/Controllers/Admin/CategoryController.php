@@ -73,7 +73,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view ('backend.categories.edit',compact('category'));
+
     }
 
     /**
@@ -83,9 +85,20 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidationCategory $request, $id)
     {
-        //
+        $check = Category::where('name',$request->category)->first();
+
+        if($check){
+            Session::flash('error', 'Exist category');
+
+            return redirect()->route('admin.categories.edit', [$id]);
+        }else{
+            $category = Category::where('id', $id)->update(['name' => $request->category]);
+            Session::flash('success', 'Update a successful category'); 
+
+            return redirect('admin/categories');
+        }
     }
 
     /**

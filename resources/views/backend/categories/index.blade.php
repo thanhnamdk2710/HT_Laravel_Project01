@@ -41,6 +41,7 @@
 			@endif
 			<!-- /.box-header -->
 			<div class="box-body">
+				@include('backend.layouts.partials.modal')
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
@@ -53,43 +54,34 @@
 							<td style="text-align: center;">{{ $key + 1 }}</td>
 							<td>{{ $category->name }}</td>
 							<td style="text-align: center;">
-								<a href="#" class="btn btn-warning">Edit</a>
-								<button type='submit'class="btn btn-danger form-delete" data-toggle="modal" data-target="#myModal{{$category->id}}">Delete</button>
+								<a href="{{url("admin/categories/{$category->id}/edit")}}" class="btn btn-warning">Edit</a>
 								<!-- Modal -->
-								<div class="modal fade" id="myModal{{$category->id}}" role="dialog">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="modal-title">Delete category?</h4>
-											</div>
-											<div class="modal-body">
-												<p>Are you sure you want to delete <strong>"{{ $category->name }}"</strong></p>
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-												<form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}" class="inline">
-													{{ csrf_field() }}
-													{{ method_field('PUT') }}
-													<button type="submit" class="btn btn-default">Delete</button>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
-							</td>
-						</tr>
-						@endforeach
-					</tbody>
-				</table>
-				<div class="box-footer clearfix">
-					<ul class="pagination pagination-sm no-margin pull-right">
-						{{ $categories->links() }}
-					</ul>
-				</div>
-			</div>
+								<form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}" class="inline">
+									{{ csrf_field() }}
+									{{ method_field('DELETE') }}
+									<button type="button" class="btn btn-danger form-delete btn-delete-item"
+									data-title="Delete Category"
+									data-confirm="Are you sure you want to delete <strong>{{ $category->name }}</strong>">Delete
+								</button>
+							</form> 
+						</td>
+					</td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
+		<div class="box-footer clearfix">
+			<ul class="pagination pagination-sm no-margin pull-right">
+				{{ $categories->links() }}
+			</ul>
 		</div>
 	</div>
+</div>
+</div>
 </section>
 <!-- /.content -->
 @endsection
+
+@push('js')
+<script src="{{ asset('js/main.js') }}"></script>
+@endpush
