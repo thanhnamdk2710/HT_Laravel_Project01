@@ -7,7 +7,6 @@ use App\Http\Requests\ValidationCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Support\Facades\Config;
-use Session;
 
 class CategoryController extends Controller
 {
@@ -18,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(config('define.categories.limit_rows')); 
+        $categories = Category::orderBy('created_at', config('define.categories.order_by_desc'))->paginate(config('define.categories.limit_rows'));
 
         return view('backend.categories.index', compact('categories'));
     }
@@ -41,17 +40,14 @@ class CategoryController extends Controller
      */
     public function store(ValidationCategory $request)
     {
-        $check = Category::where('name',$request->category)->first();
+        $checkName = Category::where('name', $request->category)->first();
         
-        if($check){
-            Session::flash('error', 'Exist category');
-
-            return redirect('admin/categories/create');
+        if($checkName){
+            return redirect()->back()->with('error', 'Exist category');
         }else{
             $category = Category::create(['name' => $request->category]);
-            Session::flash('success', 'Add a successful category'); 
 
-            return redirect('admin/categories');
+            return redirect()->route('admin.categories.index')->with('success', 'Add a successful category');
         }  
     }
     /**
@@ -74,8 +70,12 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view ('backend.categories.edit',compact('category'));
 
+        if($category){
+            return view ('backend.categories.edit',compact('category'));
+        }else{
+            return redirect()->route('admin.categories.index')->with('error','category is not Exist');
+        }
     }
 
     /**
@@ -87,17 +87,14 @@ class CategoryController extends Controller
      */
     public function update(ValidationCategory $request, $id)
     {
-        $check = Category::where('name',$request->category)->first();
+        $checkName = Category::where('name',$request->category)->first();
 
-        if($check){
-            Session::flash('error', 'Exist category');
-
-            return redirect()->route('admin.categories.edit', [$id]);
+        if($checkName){
+            return redirect()->back()->with('error','Exist category');
         }else{
             $category = Category::where('id', $id)->update(['name' => $request->category]);
-            Session::flash('success', 'Update a successful category'); 
 
-            return redirect('admin/categories');
+            return redirect('admin/categories')->with('success','Update a successful category');
         }
     }
 
@@ -109,10 +106,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        Session::flash('success', 'Delete a successful category');
+        $category = Category::find($id);
 
-        return redirect('admin/categories');
+        if($category){
+            $category->delete();
+
+            return redirect()->route('admin.categories.index')->with('success','Delete a successful category');
+        }else{
+            return redirect()->route('admin.categories.index')->with('error','category is not Exist');
+        }
     }
 }

@@ -27,7 +27,7 @@ class ValidationBook extends FormRequest
             'isbn' => 'required|string|max:13',
             'name' => 'required|string',
             'fImages' => 'required',
-            //'publication_date' => 'required|date',
+            'publication_date' => 'required|date',
         ];
     }
 }

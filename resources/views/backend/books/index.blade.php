@@ -58,7 +58,7 @@
 											<td class="sorting_1" style="text-align: center;" >{{ $key + 1 }}</td>
 											<td>{{ $book->ISBN }}</td>
 											<td>{{ $book->name }}</td>
-											<td><img src="images/books/{{  $book->image }}" height="90px"></td>
+											<td><img src="images/books/{{ $book->image }}" height="90px"></td>
 											<td>{{ $book->author }}</td>
 											<td>{{ $book->name_category }}</td>
 											<td>{{ $book->publication_date }}</td>
