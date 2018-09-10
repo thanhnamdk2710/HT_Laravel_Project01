@@ -24,11 +24,10 @@ class ValidationBook extends FormRequest
     public function rules()
     {
         return [
-            'isbn' => 'required|string',
+            'isbn' => 'required|string|max:13',
             'name' => 'required|string',
             'fImages' => 'required',
-            'editor'=> 'required',
-            'publisher' => 'required',
+            //'publication_date' => 'required|date',
         ];
     }
 }

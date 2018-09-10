@@ -30,13 +30,19 @@
 					<div class="form-group">
 						{!! Form::label('isbn', 'ISBN', ['class' => 'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-							{!! Form::text('isbn', old('isbn'), ['class' => 'form-control']) !!}
+							{!! Form::text('isbn', '', ['class' => 'form-control']) !!}
 						</div>
 					</div>
 					<div class="form-group">
 						{!! Form::label('name', 'Name', ['class' => 'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-							{!! Form::text('name', old('name'), ['class' => 'form-control', 'id' => 'name']) !!}
+							{!! Form::text('name', '', ['class' => 'form-control', 'id' => 'name']) !!}
+						</div>
+					</div>
+					<div class="form-group">
+						{!! Form::label('category', 'Category', ['class' => 'col-sm-2 control-label']) !!}
+						<div class="col-sm-10">
+							{!! Form::select('category', $categories, null, ['class' => 'form-control', 'id' => 'category', 'placeholder' => 'Chọn danh mục sách...']) !!}
 						</div>
 					</div>
 					<div class="form-group">
@@ -48,22 +54,16 @@
 					<div class="form-group">
 						{!! Form::label('author', 'Author', ['class' => 'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-							{!! Form::text('author', old('author'), ['class' => 'form-control']) !!}
+							{!! Form::text('author', '', ['class' => 'form-control']) !!}
 						</div>
 					</div>
-					<div class="form-group">
-						{!! Form::label('editor', 'Editor', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('editor', old('editor'), ['class' => 'form-control']) !!}
-						</div>
+					    
+			       <div class="form-group">
+					  <label for="example-date-input" class="col-sm-2 control-label">Publication Date</label>
+					  <div class="col-sm-10" id="publication_date">
+							{!! Form::date('publication_date', '', ['class' => 'form-control']) !!}
+					  </div>
 					</div>
-					<div class="form-group">
-						{!! Form::label('publisher', 'Publisher', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('publisher', old('publisher'), ['class' => 'form-control']) !!}
-						</div>
-					</div>
-				</div>
 				<div class="box-footer">
 					<a href="{{ route('admin.books.index')}}" class="btn btn-info btn-default">Back</a>
 					{!! Form::submit('Insert', ['class' => 'btn btn-info pull-right']) !!}

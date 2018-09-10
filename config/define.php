@@ -3,7 +3,7 @@ return [
 	'categories' => [
     	'limit_rows' => 10,
         ],
-        'books' => [
+    'books' => [
             'limit_rows' => 10,
         ]
 ];

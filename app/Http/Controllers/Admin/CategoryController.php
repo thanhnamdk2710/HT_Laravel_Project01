@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ValidationBook;
+use App\Http\Requests\ValidationCategory;
 use App\Http\Controllers\Controller;
-use App\Models\Book;
 use App\Models\Category;
-use DB;
-class BookController extends Controller
+use Illuminate\Support\Facades\Config;
+use Session;
 
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +18,9 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = DB::table('categories')
-                ->join('books','books.category_id','=','categories.id')
-                ->select('books.*','categories.name as name_category')
-                ->get();
-        return view('backend.books.index', compact('books'));
+        $categories = Category::orderBy('created_at', 'desc')->paginate(config('define.categories.limit_rows')); 
+
+        return view('backend.categories.index', compact('categories'));
     }
 
     /**
@@ -32,13 +30,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        $selectCategory = [];
-        foreach ($categories as $category) {
-            $selectCategory[$category->id] = $category->name;
-        }
-
-        return view('backend.books.create', ['categories' => $selectCategory]);
+        return view('backend.categories.create');
     }
 
     /**
@@ -47,22 +39,21 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidationBook $request_book)
+    public function store(ValidationCategory $request)
     {
-        $file_name = $request_book->file('fImages')->getClientOriginalName();
-        $book = new Book();
-        $book->isbn = $request_book->isbn;
-        $book->name = $request_book->name;
-        $book->alias = str_slug($request_book->name);
-        $book->image = $file_name;  
-        $book->author = $request_book->author;   
-        $book->publication_date = $request_book->publication_date;   
-        $book->category_id = $request_book->category;   
-        $request_book->file('fImages')->move('images/books/',$file_name);
-        $book->save(); 
-        return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Add Book']);
-    }
+        $check = Category::where('name',$request->category)->first();
+        
+        if($check){
+            Session::flash('error', 'Exist category');
 
+            return redirect('admin/categories/create');
+        }else{
+            $category = Category::create(['name' => $request->category]);
+            Session::flash('success', 'Add a successful category'); 
+
+            return redirect('admin/categories');
+        }  
+    }
     /**
      * Display the specified resource.
      *
