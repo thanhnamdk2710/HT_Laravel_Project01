@@ -28,8 +28,6 @@ class ValidationBook extends FormRequest
             'name' => 'required|string',
             // 'fImages' => 'required',
             'category'=>'required|string',
-            'editor'=> 'required',
-            'publisher' => 'required',
         ];
     }
 }

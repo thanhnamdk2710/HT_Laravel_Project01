@@ -31,7 +31,12 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('backend.books.create');
+       categories = Category::all();
+        $selectCategory = [];
+        foreach ($categories as $category) {
+            $selectCategory[$category->id] = $category->name;
+        }
+         return view('backend.books.create', ['categories' => $selectCategory]);
     }
 
     /**
@@ -49,11 +54,8 @@ class BookController extends Controller
         $book->alias = str_slug($request_book->name);
         $book->image = $file_name;  
         $book->author = $request_book->author;   
-        $book->editor = $request_book->editor;
-        $book->publisher = $request_book->publisher;
-        $book->count = 5;
-        $book->category_id = 1;
-        $book->average = 1;
+        $book->publication_date = $request_book->publication_date;   
+        $book->category_id = $request_book->category;   
         $request_book->file('fImages')->move('images/books/',$file_name);
         $book->save(); 
         return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Add Book']);
