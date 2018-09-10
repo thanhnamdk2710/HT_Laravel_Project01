@@ -16,7 +16,6 @@ Route::get('/', function () {
 });
 
 Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
-	
 	Route::get('/', 'HomeController@index')->name('dashboard');
 
 	// CRUD Category
@@ -25,8 +24,4 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], f
 	Route::post('categories', 'CategoryController@store')->name('categories.store');
 	//CRUD Book
 	Route::get('books', 'BookController@index')->name('books.index');
-
 });
-
-
-
