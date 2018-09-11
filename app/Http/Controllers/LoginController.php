@@ -13,11 +13,10 @@ class LoginController extends Controller
 {
 	public function create() 
     {
-        $user = Auth::user();
+        if(Auth::check()){
+            return redirect(Auth::user()->role == config('define.admin.role_admin') ? '/admin' : '/frontend');
+        }
 
-        if($user){
-            return redirect($user->role == config('define.admin.role_admin') ? '/admin' : '/frontend');
-        } 
         return view('auth.login'); 
     }
 
@@ -28,11 +27,10 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
         $checkLogin = Auth::attempt($login);
-        $user = Auth::user();
 
-        if($checkLogin){
-            return redirect($user->role == config('define.admin.role_admin') ? '/admin' : '/frontend');
-        }else{
+        if($checkLogin) {
+            return redirect(Auth::user()->role == config('define.admin.role_admin') ? '/admin' : '/frontend');
+        } else {
             return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
         }
     }

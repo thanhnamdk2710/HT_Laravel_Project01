@@ -18,14 +18,14 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         if (Auth::check()){
-            $user = Auth::user();
 
-            if($user->role == config('define.admin.role_admin')){
+            if(Auth::user()->role == config('define.admin.role_admin')){
                 return $next($request);
-            }else{
+            } else {
                 return response()->view('backend.errors.403');
             }
-        }else{
+            
+        } else {
             return redirect()->route('login.index');
         }
     }
