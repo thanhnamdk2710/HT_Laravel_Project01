@@ -46,6 +46,7 @@
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 100px;text-align: center;">Image</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Author</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;text-align: center;">Category</th>
+										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;text-align: center;">Publication Date</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Total rating</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Average</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 200px;text-align: center;">Action</th>
@@ -60,6 +61,7 @@
 											<td><img src="images/books/{{  $book->image }}" height="90px"></td>
 											<td>{{ $book->author }}</td>
 											<td>{{ $book->name_category }}</td>
+											<td>{{ $book->publication_date }}</td>
 											<td>{{ $book->total_rating }}</td>
 											<td>{{ $book->average }}</td>
 											<td>

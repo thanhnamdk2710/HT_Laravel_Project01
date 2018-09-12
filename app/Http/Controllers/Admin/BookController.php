@@ -106,7 +106,7 @@ class BookController extends Controller
     {
        $book = DB::table('books')
                 ->where('books.id',$id)
-                ->update(['isbn' => $request_book->isbn,'name'=>$request_book->name,'author'=>$request_book->author,'category_id'=>$request_book->category]);
+                ->update(['isbn' => $request_book->isbn,'name'=>$request_book->name,'author'=>$request_book->author,'category_id'=>$request_book->category,'publication_date'=>$request_book->publication_date]);
         return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Edit Book']);
     }
 

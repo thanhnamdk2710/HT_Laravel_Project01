@@ -41,7 +41,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<img class="col-sm-8 control-label" width="200px" src="{{ 'images/books/'.$value->image }}">
+						<img class="col-sm-4 control-label" width="100px" src="{{ 'images/books/'.$value->image }}">
 					</div>
 					<div class="form-group">
 						{!! Form::label('img', 'Image', ['class' => 'col-sm-2 control-label']) !!}
@@ -68,17 +68,11 @@
 						</div>
 		                <br>
 		            </div>
-					<div class="form-group">
-						{!! Form::label('total_rating', 'Total rating', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('total_rating', "$value->total_rating", ['class' => 'form-control']) !!}
-						</div>
-					</div>
-					<div class="form-group">
-						{!! Form::label('average', 'Average', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('average', "$value->average", ['class' => 'form-control', 'id' => 'name']) !!}
-						</div>
+		            <div class="form-group">
+					  <label for="example-date-input" class="col-sm-2 control-label">Publication Date</label>
+					  <div class="col-sm-10" id="publication_date">
+							{!! Form::date('publication_date', "$value->publication_date", ['class' => 'form-control']) !!}
+					  </div>
 					</div>
 					@endforeach
 				</div>
