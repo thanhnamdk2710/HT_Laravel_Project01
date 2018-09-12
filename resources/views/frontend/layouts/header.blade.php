@@ -7,14 +7,14 @@
 				<div class="col-md-3 clearfix">
 					<ul class="login-cart">
 						<li>
-							<a data-toggle="modal" href="{{ route('login') }}">
+							<a data-toggle="modal" href="">
 								<i class="fas fa-sign-in-alt"></i>
 								Login
 							</a>
 						</li>
 						<li>
 							<div class="cart dropdown">
-								<a href="{{ route('registered') }}"><i class="far fa-user "></i>Registered</a>
+								<a href=""><i class="far fa-user "></i>Registered</a>
 							</div>
 						</li>
 					</ul>
@@ -60,10 +60,18 @@
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav nav-main">
-						<li><a href="{{ route('index')}}">HOME</a></li>
-						<li><a href="{{ route('all_book') }}">BOOK</a></li>
-						<li><a href="{{ route('all_author') }}">AUTHOR</a></li>
-						<li><a href="{{ route('contact') }}">CONTACT</a></li>
+						<li class="{{Request::is('/') ? 'active' : ''}}">
+							<a href="{{ route('user.index')}}">HOME</a>
+						</li>
+						<li>
+							<a href="">BOOK</a>
+						</li>
+						<li>
+							<a href="">AUTHOR</a>
+						</li>
+						<li>
+							<a href="">CONTACT</a>
+						</li>
 					</ul> <!-- End of /.nav-main -->
 				</div>	<!-- /.navbar-collapse -->
 			</div>	<!-- /.container-fluid -->
