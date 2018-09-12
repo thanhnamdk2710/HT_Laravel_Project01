@@ -15,14 +15,20 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
-	Route::get('/', 'HomeController@index')->name('dashboard');
+Route::get('login','LoginController@create')->name('login.index');
+Route::post('login','LoginController@store')->name('login.store');
+Route::get('logout','LogoutController@logout')->name('logout');
+
+Route::group(['middleware' => 'admin'], function () {
+	Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+		Route::get('/', 'HomeController@index')->name('dashboard');
 
 	//CRUD Category
-	Route::get('categories', 'CategoryController@index')->name('categories.index');
-	Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
-	Route::post('categories', 'CategoryController@store')->name('categories.store');
-	Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('categories.edit');
-	Route::put('/categories/update/{id}', 'CategoryController@update')->name('categories.update');
-	Route::delete('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
+		Route::get('categories', 'CategoryController@index')->name('categories.index');
+		Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
+		Route::post('categories', 'CategoryController@store')->name('categories.store');
+		Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('categories.edit');
+		Route::put('/categories/update/{id}', 'CategoryController@update')->name('categories.update');
+		Route::delete('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
+	});
 });
