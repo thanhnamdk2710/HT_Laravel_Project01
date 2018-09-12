@@ -28,97 +28,22 @@
 					</div>	<!-- End of /.Products-heading -->
 					<div class="product-grid">
 					    <ul>
+					    	@foreach($book as $key => $value)
 					        <li>
 					            <div class="products">
 									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
+										<img src="images/{{ $value->image }}" alt="" height="350px">
 									</a>
 									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
+										<h4>{{ $value->name }}</h4>
 									</a>
-									<p class="price">From: £69.99</p>
 									<div >
 										<a class="view-link shutter" href="#">
 										<i class="fas fa-info"></i>Detail of book</a>
 									</div>
 								</div>	<!-- End of /.products -->
 					        </li>
-					        <li>
-					            <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <li>
-					            <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <li>
-					            <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <li>
-					            <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <li>
-					           <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <!--  ... -->
+					        @endforeach
 					    </ul>
 					</div>	<!-- End of /.products-grid -->
 
