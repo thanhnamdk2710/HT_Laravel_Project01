@@ -6,7 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
-    public function cate(){
-    	return $this->belongsTo('App\Category');
-    }
+    protected $fillable = ['ISBN','name','image','author'];
 }

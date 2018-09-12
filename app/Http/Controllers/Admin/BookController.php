@@ -1,16 +1,13 @@
 <?php
-
-namespace App\Http\Controllers\Admin;
-
-use Illuminate\Http\Request;
+ namespace App\Http\Controllers\Admin;
+ use Illuminate\Http\Request;
 use App\Http\Requests\ValidationBook;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use DB;
 class BookController extends Controller
-
-{
+ {
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +21,7 @@ class BookController extends Controller
                 ->get();
         return view('backend.books.index', compact('books'));
     }
-
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -37,11 +33,9 @@ class BookController extends Controller
         foreach ($categories as $category) {
             $selectCategory[$category->id] = $category->name;
         }
-
-        return view('backend.books.create', ['categories' => $selectCategory]);
+         return view('backend.books.create', ['categories' => $selectCategory]);
     }
-
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -62,8 +56,7 @@ class BookController extends Controller
         $book->save(); 
         return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Add Book']);
     }
-
-    /**
+     /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -73,8 +66,7 @@ class BookController extends Controller
     {
         //
     }
-
-    /**
+     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -92,10 +84,8 @@ class BookController extends Controller
                 ->where('books.id',$id)
                 ->get();
         return view('backend.books.edit',compact('book','cate'));
-
-    }
-
-    /**
+     }
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -109,8 +99,7 @@ class BookController extends Controller
                 ->update(['isbn' => $request_book->isbn,'name'=>$request_book->name,'author'=>$request_book->author,'category_id'=>$request_book->category,'publication_date'=>$request_book->publication_date]);
         return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Edit Book']);
     }
-
-    /**
+     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

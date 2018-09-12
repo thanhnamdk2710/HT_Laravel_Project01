@@ -38,8 +38,8 @@
             <li class="">
                 <a href="#"><i class="fa fa-user-alt"></i> <span>Authors</span></a>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-users"></i> <span>Users</span></a>
+            <li class="{{ Request::is('admin/users') ? 'active' : '' }}">
+                <a href="{{ route('admin.users.index') }}"><i class="fa fa-users"></i> <span>Users</span></a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-envelope"></i> <span>Feedback</span></a>
