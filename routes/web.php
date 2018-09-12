@@ -35,4 +35,5 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::group([ 'namespace' => 'User','as' => 'user.'], function () {
     Route::get('/', 'HomeController@getBook')->name('index'); 
+    Route::post('search', 'HomeController@search')->name('search'); 
 });

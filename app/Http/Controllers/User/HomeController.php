@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidationSearch;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use Session;
 
 class HomeController extends Controller
 {
-	public function getbook()
+	public function getBook()
 	{
 		$fields =[
 			'books.name',
@@ -16,6 +18,7 @@ class HomeController extends Controller
 			'author',
 			'categories.name as name_category'
 		];
+
 		$randomBooks = Book::select($fields)
 			->join('categories','books.category_id','=','categories.id')
 			->inRandomOrder()
@@ -29,5 +32,22 @@ class HomeController extends Controller
 			->get();
 
 		return view('frontend.pages.index',compact('randomBooks','newBooks'));
+	}
+	public function search (ValidationSearch $request)
+	{
+		$fields =[
+			'books.name',
+			'image',
+			'author',
+			'categories.name as name_category'
+		];
+		
+		$searchBooks = Book::select($fields)
+			->join('categories','books.category_id','=','categories.id')
+			->where('books.name','like','%'.$request->book.'%')
+			->get()
+			->toArray();
+
+		return view('frontend.pages.search',compact('searchBooks'));
 	}
 }
