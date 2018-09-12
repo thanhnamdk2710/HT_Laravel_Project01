@@ -19,6 +19,7 @@ class BookController extends Controller
                 ->join('books','books.category_id','=','categories.id')
                 ->select('books.*','categories.name as name_category')
                 ->get();
+                
         return view('backend.books.index', compact('books'));
     }
 
