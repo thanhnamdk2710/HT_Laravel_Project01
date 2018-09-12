@@ -4,12 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Book;
 use DB;
-
-use Session;
-
-class UserController extends Controller
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,15 +15,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select('users.*', DB::raw('COUNT(ratings.star) as count'))
-            ->leftJoin('ratings','users.id','=','ratings.user_id')
-            ->leftJoin('books','books.id','=','ratings.book_id')
-            ->where('users.role','0')
-            ->orderBy('count', config('define.categories.order_by_desc'))
-            ->groupBy('email')
-            ->get();
-
-        return view('backend.users.index', compact('users'));
+        $books = DB::table('categories')
+                ->join('books','books.category_id','=','categories.id')
+                ->select('books.*','categories.name as name_category')
+                ->get();
+                
+        return view('backend.books.index', compact('books'));
     }
 
     /**
@@ -58,22 +52,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $fields = [
-            'books.name',
-            'books.author as name_author',
-            'books.image',
-            'ratings.star',
-            'ratings.content',
-            'categories.name as name_category'
-        ];
-        $details = User::select($fields)
-            ->join('ratings','users.id','=','ratings.user_id')
-            ->join('books','books.id','=','ratings.book_id')
-            ->join('categories','books.category_id','=','categories.id')
-            ->where('user_id',$id)
-            ->get();
-
-        return view('backend.users.show', compact('details'));
+        //
     }
 
     /**
@@ -96,7 +75,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-       //
+        //
     }
 
     /**
@@ -108,17 +87,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getAjax(Request $request,$aid)
-    {
-        if($request->astatus == 0){
-            $user = User::where('id', $aid)->update(['status' => 1]);
-            echo "images/icon/deactive.gif";
-        }
-        else{
-            $user = User::where('id', $aid)->update(['status' => 0]);
-            echo "images/icon/active.gif";
-        }
     }
 }

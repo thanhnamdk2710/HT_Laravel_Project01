@@ -1,14 +1,11 @@
 @extends('backend.layouts.master')
-
-@section('title', 'List Users')
-
-@push('css')
+ @section('title', 'List Users')
+ @push('css')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}">
 @endpush
-
-@section('content')
+ @section('content')
 <section class="content-header">
 	<h1>User table</h1>
 	<ol class="breadcrumb">
@@ -50,11 +47,7 @@
 									<td style="text-align: center;"><img src="images/users/{{ $user->avatar }}" class="attachment-img" alt="User Image"></td>
 									<td style="text-align: center;">{{ $user->email }}</td>
 									<td style="text-align: center;">
-										@if($user->gender == 0)
-										Nam
-										@else
-										Nữ
-										@endif
+										{{ $user->gender == 0 ? 'Nam' : 'Nữ' }}
 									</td>
 									<td style="text-align: center;">
 										<a  href="javascript:void(0) " type="button" class="btn active1" status= "{{$user->status}}" id_users="{{ $user->id }}">
@@ -100,8 +93,7 @@
 </section>
 <!-- /.content -->
 @endsection
-
-@push('js')
+ @push('js')
 <!-- jQuery 3 -->
 <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -131,8 +123,7 @@
 		})
 	})
 </script>
-
-<script type="text/javascript">
+ <script type="text/javascript">
 	$(document).ready(function() {
 		$(".active1").click(function() {
 			var position = $(this);

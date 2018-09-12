@@ -23,16 +23,15 @@ $factory->define(App\Models\Category::class, function (Faker $faker) {
 
 $factory->define(App\Models\Book::class, function (Faker $faker) {
     return [   
-        'category_id' => factory('App\Models\Category')->create()->id,	
+       'category_id' => factory('App\Models\Category')->create()->id,   
         'ISBN'=>$faker->ean13,
         'name'=>$faker->name,
         'alias'=>$faker->slug,
         'image'=>$faker->imageUrl($width = 200, $height = 200),
         'author' =>$faker->name,
-        'editor'=>$faker->name,
-        'publisher'=>$faker->name,
-        'count'=>$faker->numberBetween(1,10), 
-        'average'=>12.34,
+        'publication_date' =>$faker->date,
+        'total_rating'=>$faker->numberBetween(1,10), 
+        'average'=>$faker->numberBetween(0,5),
     ];
 });
 
