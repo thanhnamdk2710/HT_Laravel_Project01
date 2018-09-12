@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidationCategory;
 use App\Http\Controllers\Controller;
-use Session;
 use App\Models\Category;
 use Illuminate\Support\Facades\Config;
 
@@ -18,7 +17,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('created_at', 'desc')->paginate(config('define.categories.limit_rows')); 
+        $categories = Category::orderBy('created_at', config('define.categories.order_by_desc'))->paginate(config('define.categories.limit_rows'));
 
         return view('backend.categories.index', compact('categories'));
     }
@@ -41,17 +40,14 @@ class CategoryController extends Controller
      */
     public function store(ValidationCategory $request)
     {
-        $check = Category::where('name',$request->category)->first();
+        $checkName = Category::where('name', $request->category)->first();
         
-        if($check){
-            Session::flash('error', 'Exist category');
-
-            return redirect('admin/categories/create');
+        if($checkName){
+            return redirect()->back()->with('error', 'Exist category');
         }else{
             $category = Category::create(['name' => $request->category]);
-            Session::flash('success', 'Add a successful category'); 
 
-            return redirect('admin/categories');
+            return redirect()->route('admin.categories.index')->with('success', 'Add a successful category');
         }  
     }
     /**
@@ -73,7 +69,13 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+
+        if($category){
+            return view ('backend.categories.edit',compact('category'));
+        }else{
+            return redirect()->route('admin.categories.index')->with('error','category is not Exist');
+        }
     }
 
     /**
@@ -83,9 +85,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ValidationCategory $request, $id)
     {
-        //
+        $checkName = Category::where('name',$request->category)->first();
+
+        if($checkName){
+            return redirect()->back()->with('error','Exist category');
+        }else{
+            $category = Category::where('id', $id)->update(['name' => $request->category]);
+
+            return redirect('admin/categories')->with('success','Update a successful category');
+        }
     }
 
     /**
@@ -96,6 +106,14 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        if($category){
+            $category->delete();
+
+            return redirect()->route('admin.categories.index')->with('success','Delete a successful category');
+        }else{
+            return redirect()->route('admin.categories.index')->with('error','category is not Exist');
+        }
     }
 }

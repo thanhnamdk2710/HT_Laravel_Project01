@@ -56,18 +56,6 @@
 						</div>
 					</div>
 					<div class="form-group">
-						{!! Form::label('editor', 'Editor', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('editor', "$value->editor", ['class' => 'form-control']) !!}
-						</div>
-					</div>
-					<div class="form-group">
-						{!! Form::label('publisher', 'Publisher', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('publisher', "$value->publisher", ['class' => 'form-control']) !!}
-						</div>
-					</div>
-					<div class="form-group">
 		            <label class="col-sm-2 control-label">Category</label>
 						<div class="col-sm-10 control-label">
 		                    <select class="col-sm-12 control-label" name="category" id="category">
@@ -81,9 +69,9 @@
 		                <br>
 		            </div>
 					<div class="form-group">
-						{!! Form::label('count', 'Total rating', ['class' => 'col-sm-2 control-label']) !!}
+						{!! Form::label('total_rating', 'Total rating', ['class' => 'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-							{!! Form::text('count', "$value->count", ['class' => 'form-control']) !!}
+							{!! Form::text('total_rating', "$value->total_rating", ['class' => 'form-control']) !!}
 						</div>
 					</div>
 					<div class="form-group">

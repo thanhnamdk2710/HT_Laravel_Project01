@@ -9,6 +9,7 @@ use App\Models\Book;
 use App\Models\Category;
 use DB;
 class BookController extends Controller
+
 {
     /**
      * Display a listing of the resource.
@@ -31,12 +32,13 @@ class BookController extends Controller
      */
     public function create()
     {
-       categories = Category::all();
+        $categories = Category::all();
         $selectCategory = [];
         foreach ($categories as $category) {
             $selectCategory[$category->id] = $category->name;
         }
-         return view('backend.books.create', ['categories' => $selectCategory]);
+
+        return view('backend.books.create', ['categories' => $selectCategory]);
     }
 
     /**
@@ -90,6 +92,7 @@ class BookController extends Controller
                 ->where('books.id',$id)
                 ->get();
         return view('backend.books.edit',compact('book','cate'));
+
     }
 
     /**
@@ -101,9 +104,9 @@ class BookController extends Controller
      */
     public function update(ValidationBook $request_book, $id)
     {
-        $book = DB::table('books')
+       $book = DB::table('books')
                 ->where('books.id',$id)
-                ->update(['isbn' => $request_book->isbn,'name'=>$request_book->name,'author'=>$request_book->author,'editor'=>$request_book->editor,'publisher'=>$request_book->publisher,'category_id'=>$request_book->category]);
+                ->update(['isbn' => $request_book->isbn,'name'=>$request_book->name,'author'=>$request_book->author,'category_id'=>$request_book->category]);
         return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Edit Book']);
     }
 
