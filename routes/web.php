@@ -30,5 +30,9 @@ Route::group(['middleware' => 'admin'], function () {
 		Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('categories.edit');
 		Route::put('/categories/update/{id}', 'CategoryController@update')->name('categories.update');
 		Route::delete('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
+
+	// CRUD User
+		Route::get('users', 'UserController@index')->name('users.index');
+		Route::get('users/{id}', 'UserController@show')->name('users.show');
 	});
 });
