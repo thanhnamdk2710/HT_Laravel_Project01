@@ -32,10 +32,8 @@
 			</div> <!-- End Of /.row -->
 		</div>	<!-- End Of /.Container -->
 	</section>  <!-- End of /Section -->
-	
 	<!-- LOGO Start
     ================================================== -->
-	
 	<header>
 		<div class="container">
 			<div class="row">
@@ -47,10 +45,8 @@
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</header> <!-- End of /Header -->
-
 	<!-- MENU Start
     ================================================== -->
-
 	<nav class="navbar navbar-default">
 		<div class="container">
 		    <div class="navbar-header">
