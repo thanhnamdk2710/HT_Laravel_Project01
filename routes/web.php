@@ -15,8 +15,13 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
-	Route::get('/', 'HomeController@index')->name('dashboard');
+Route::get('login','LoginController@create')->name('login.index');
+Route::post('login','LoginController@store')->name('login.store');
+Route::get('logout','LogoutController@logout')->name('logout');
+
+Route::group(['middleware' => 'admin'], function () {
+	Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+		Route::get('/', 'HomeController@index')->name('dashboard');
 
 	//CRUD Category
 	Route::get('categories', 'CategoryController@index')->name('categories.index');
@@ -28,4 +33,5 @@ Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], f
 	Route::post('books', 'BookController@store')->name('books.store');
 	Route::get('books/{id}/edit', 'BookController@edit')->name('books.edit');
 	Route::put('books/update/{id}', 'BookController@update')->name('books.update');
+	});
 });
