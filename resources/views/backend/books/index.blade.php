@@ -37,6 +37,7 @@
 					        </div>
 							<div class="box-header with-border">
 							</div>
+
 							<table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 								<thead>
 									<tr role="row">
@@ -47,8 +48,8 @@
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Author</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;text-align: center;">Category</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;text-align: center;">Publication Date</th>
-										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Total rating</th>
-										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Average</th>
+										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 50px;text-align: center;">Total rating</th>
+										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 50px;text-align: center;">Average</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 200px;text-align: center;">Action</th>
 									</tr>
 									</thead>
@@ -99,7 +100,6 @@
 <script src="{{ asset('bower_components/admin-lte/dist/js/demo.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}" />
 <script src="{{ url('js/myscrip.js') }}"></script>
-
 <!-- page script -->
 <script>
 $(function () {

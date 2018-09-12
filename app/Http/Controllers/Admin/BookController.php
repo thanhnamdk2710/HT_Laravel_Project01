@@ -8,8 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use DB;
-class BookController extends Controller
 
+class BookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,8 +24,7 @@ class BookController extends Controller
                 ->get();
         return view('backend.books.index', compact('books'));
     }
-
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -37,11 +36,9 @@ class BookController extends Controller
         foreach ($categories as $category) {
             $selectCategory[$category->id] = $category->name;
         }
-
-        return view('backend.books.create', ['categories' => $selectCategory]);
+         return view('backend.books.create', ['categories' => $selectCategory]);
     }
-
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -62,8 +59,7 @@ class BookController extends Controller
         $book->save(); 
         return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Add Book']);
     }
-
-    /**
+     /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -73,8 +69,7 @@ class BookController extends Controller
     {
         //
     }
-
-    /**
+     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -82,12 +77,9 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view ('backend.categories.edit',compact('category'));
-
+        //
     }
-
-    /**
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -96,21 +88,9 @@ class BookController extends Controller
      */
     public function update(ValidationCategory $request, $id)
     {
-        $check = Category::where('name',$request->category)->first();
-
-        if($check){
-            Session::flash('error', 'Exist category');
-
-            return redirect()->route('admin.categories.edit', [$id]);
-        }else{
-            $category = Category::where('id', $id)->update(['name' => $request->category]);
-            Session::flash('success', 'Update a successful category'); 
-
-            return redirect('admin/categories');
-        }
+       //
     }
-
-    /**
+     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -118,10 +98,6 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        Session::flash('success', 'Delete a successful category');
-
-        return redirect('admin/categories');
+       //
     }
 }
