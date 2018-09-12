@@ -109,112 +109,21 @@
 				</div>
 			</div>
 			<div class="row">
+				@foreach ($newBooks as $key => $newBook)
 				<div class="col-md-3">
 					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image.jpg" alt="">
+						<a href="">
+							<img src="frontend/images/{{ $newBook->image }}" alt="image book">
 						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
+						<a href="">
+							<h4>{{ $newBook->name }}</h4>
 						</a>
-						<p class="price">From: £69.99</p>
+						<p class="category">Danh mục : {{ $newBook->name_category }}</p>
 						<a class="view-link shutter" href="#">
 							<i class="fas fa-info"></i>Detail of book</a>
 					</div>	<!-- End of /.products -->
 				</div>	<!-- End of /.col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-2.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-3.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-4.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-5.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-6.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-7.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-8.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<div >
-							<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-						</div>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
+				@endforeach
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of Section -->

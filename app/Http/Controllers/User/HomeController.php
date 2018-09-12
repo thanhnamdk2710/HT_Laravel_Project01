@@ -19,14 +19,14 @@ class HomeController extends Controller
 		$randomBooks = Book::select($fields)
 			->join('categories','books.category_id','=','categories.id')
 			->inRandomOrder()
-			->limit(3)
+			->limit(config('define.user.limit_random_book'))
 			->get();
 
 		$newBooks = Book::select($fields)
 			->join('categories','books.category_id','=','categories.id')
-			->orderBy('created_at', config('define.categories.order_by_desc'))
-			->limit(9);
-			->get()
+			->orderBy('books.created_at', config('define.categories.order_by_desc'))
+			->limit(config('define.user.limit_new_book'))
+			->get();
 
 		return view('frontend.pages.index',compact('randomBooks','newBooks'));
 	}
