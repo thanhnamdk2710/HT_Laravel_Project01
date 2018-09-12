@@ -20,7 +20,7 @@ class BooksTableSeeder extends Seeder
 	 	for ($i = 0; $i <= 10; $i++) {
 	        factory(App\Models\Book::class, 10)->create([
 	        	'category_id' => $faker->randomElement($categoryId)
-	        	]);
-	    	}
+        	]);
+    	}
     }
 }
