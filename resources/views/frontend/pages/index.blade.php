@@ -76,7 +76,7 @@
 						  	<div class="col-sm-6 col-md-4">
 							    <div class="thumbnail">
 							    	<a class="catagotie-head" href="#">
-										<img src="frontend/images/{{ $randomBook->image }}" alt="image book">
+										<img src="images/books/{{ $randomBook->image }}" alt="image book">
 										<h3>{{ $randomBook->name }}</h3>
 									</a>
 							      	<div class="caption">
@@ -113,7 +113,7 @@
 				<div class="col-md-3">
 					<div class="products">
 						<a href="">
-							<img src="frontend/images/{{ $newBook->image }}" alt="image book">
+							<img src="images/books/{{ $newBook->image }}" alt="image book">
 						</a>
 						<a href="">
 							<h4>{{ $newBook->name }}</h4>
