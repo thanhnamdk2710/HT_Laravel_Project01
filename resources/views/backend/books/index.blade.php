@@ -105,7 +105,6 @@
 <script src="{{ asset('bower_components/admin-lte/dist/js/demo.js') }}"></script>
 <link rel="stylesheet" type="text/css" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}" />
 <script src="{{ url('js/myscrip.js') }}"></script>
-
 <!-- page script -->
 <script>
 $(function () {

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use DB;
+
 class BookController extends Controller
 {
     /**
@@ -23,18 +24,21 @@ class BookController extends Controller
                 ->get();
         return view('backend.books.index', compact('books'));
     }
-
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('backend.books.create');
+        $categories = Category::all();
+        $selectCategory = [];
+        foreach ($categories as $category) {
+            $selectCategory[$category->id] = $category->name;
+        }
+         return view('backend.books.create', ['categories' => $selectCategory]);
     }
-
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -49,17 +53,14 @@ class BookController extends Controller
         $book->alias = str_slug($request_book->name);
         $book->image = $file_name;  
         $book->author = $request_book->author;   
-        $book->editor = $request_book->editor;
-        $book->publisher = $request_book->publisher;
-        $book->count = 5;
-        $book->category_id = 1;
-        $book->average = 1;
+        $book->publication_date = $request_book->publication_date;   
+        $book->category_id = $request_book->category;   
         $request_book->file('fImages')->move('images/books/',$file_name);
         $book->save(); 
         return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Add Book']);
     }
-
     /**
+
      * Display the specified resource.
      *
      * @param  int  $id
@@ -69,8 +70,8 @@ class BookController extends Controller
     {
         //
     }
-
     /**
+
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -91,6 +92,7 @@ class BookController extends Controller
     }
 
     /**
+
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -116,6 +118,5 @@ class BookController extends Controller
         $book = Book::find($id);
         $book->delete();
         return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Delete Book']);
-
     }
 }
