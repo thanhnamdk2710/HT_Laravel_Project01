@@ -19,6 +19,12 @@
 	</section>	<!-- End of /#Topic-header -->
 	<!-- PRODUCTS Start
     ================================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+		.checked {
+		    color: orange;
+		}
+	</style>
 	<section id="shop">
 		<div class="container">
 			<div class="row">
@@ -28,97 +34,27 @@
 					</div>	<!-- End of /.Products-heading -->
 					<div class="product-grid">
 					    <ul>
+					    	@foreach($books as $key => $value)
 					        <li>
 					            <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
+									<a href="{{ route('detail') }}">
+										<img src="images/{{ $value->image }}" alt="" height="300px" width="50px">
 									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
+									<a href="{{ route('detail') }}">
+										<h4>{{ $value->name }}</h4>
 									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
+										<h6>by {{ $value->author }}</h6>
+									<p>avg rating {{ $value->average }}</p>
+									<div class="single_product_ratings mb-15">
+		                                <span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+		                            </div>
 								</div>	<!-- End of /.products -->
 					        </li>
-					        <li>
-					            <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <li>
-					            <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <li>
-					            <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <li>
-					            <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <li>
-					           <div class="products">
-									<a href="#">
-										<img src="images/product-image-8.jpg" alt="">
-									</a>
-									<a href="#">
-										<h4>Amazing Italian Sauces</h4>
-									</a>
-									<p class="price">From: £69.99</p>
-									<div >
-										<a class="view-link shutter" href="#">
-										<i class="fas fa-info"></i>Detail of book</a>
-									</div>
-								</div>	<!-- End of /.products -->
-					        </li>
-					        <!--  ... -->
+					        @endforeach
 					    </ul>
 					</div>	<!-- End of /.products-grid -->
 					<!-- Pagination -->
@@ -138,26 +74,12 @@
 						<div class="block">
 							<h4>Catagories</h4>
 							<div class="list-group">
-								<a href="#" class="list-group-item">
+								@foreach($category as $key => $value)
+								<a href="{{ route('category',$value->id) }}" class="list-group-item">
 									<i class="fas fa-dot-circle"></i>
-									Italian Foods
+									{{ $value->name }}
 								</a>
-								<a href="#" class="list-group-item">
-									<i class="fas fa-dot-circle"></i>
-									Traditional Food
-								</a>
-								<a href="#" class="list-group-item">
-									<i class="fas fa-dot-circle"></i>
-									Indian Food
-								</a>
-								<a href="#" class="list-group-item">
-									<i class="fas fa-dot-circle"></i>
-									Spanish Food
-								</a>
-								<a href="#" class="list-group-item">
-									<i class="fas fa-dot-circle"></i>
-									Thai FoodN
-								</a>
+								@endforeach
 							</div>
 						</div>
 						<div class="block">
@@ -166,12 +88,9 @@
 						<div class="block">
 							<h4>Book Tag</h4>
 							<div class="tag-link">
-								<a href="">BALLET</a>
-								<a href="">CHRISTMAS</a>
-								<a href="">ELEGANCE</a>
-								<a href="">ELEGANT</a>
-								<a href="">SHOPPING</a>
-								<a href="">SHOP</a>
+								@foreach($tag as $tag)
+								<a href="">{{ $tag->name }}</a>
+								@endforeach
 							</div>	
 						</div>
 				</div>	<!-- End of /.col-md-3 -->

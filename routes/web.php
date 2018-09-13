@@ -43,7 +43,7 @@ Route::group([ 'namespace' => 'User'], function () {
 	Route::get('/index', 'HomeController@index')->name('index');  
 	Route::get('/book','BookController@show')->name('all_book');
 	Route::get('/detail','DetailController@show')->name('detail');
-	Route::get('/category','CategoryController@show')->name('category');
+	Route::get('/category/{id}','CategoryController@show')->name('category');
 	Route::get('/author','AuthorController@show')->name('all_author');
 	Route::get('/contact','ContactController@show')->name('contact');
 	Route::get('/registered' , 'RegisterController@index')->name('registered');

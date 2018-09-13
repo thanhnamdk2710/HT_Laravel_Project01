@@ -4,10 +4,24 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Book;
+use App\Models\Tag;
+use DB;
 
 class CategoryController extends Controller
 {
-    public function show(){
-    	return View('frontend.pages.category');
+    public function show($id){
+
+    	$books = DB::table('categories')
+                ->join('books','books.category_id','=','categories.id')
+                ->where('categories.id',$id)
+                ->select('books.*')
+                ->get()
+                ->paginate(9);
+        // dd($books);        
+    	$category = Category::all();
+    	$tag = Tag::all();
+    	return View('frontend.pages.category', compact('books','tag','category'));
     }
 }
