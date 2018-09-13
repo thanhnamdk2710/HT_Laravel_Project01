@@ -1,6 +1,12 @@
+.attachment-img{
+	width: 100px;
+}
 .cancel{
 	margin-right: 5px;
 }
 .form-delete{
 	margin-left: 10px;
+}
+.attachment-img{
+	width: 100px;
 }
