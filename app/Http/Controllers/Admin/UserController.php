@@ -25,7 +25,7 @@ class UserController extends Controller
             ->orderBy('count', config('define.categories.order_by_desc'))
             ->groupBy('email')
             ->get();
-
+ 
         return view('backend.users.index', compact('users'));
     }
 
