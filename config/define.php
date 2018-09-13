@@ -13,6 +13,10 @@ return [
 	'user' => [
 		'limit_random_book' => 3,
 		'limit_new_book' => 12,
-	]
+		'limit_rows' => 12,
+	],
 
+	'books' => [
+		'limit_rows' => 10,
+	]
 ];

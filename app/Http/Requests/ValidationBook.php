@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidationSearch extends FormRequest
+class ValidationBook extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,10 @@ class ValidationSearch extends FormRequest
     public function rules()
     {
         return [
-            'book' => 'required|string'
+            'isbn' => 'required|string|max:13',
+            'name' => 'required|string',
+            'fImages' => 'required',
+            'publication_date' => 'required|date',
         ];
     }
 }
