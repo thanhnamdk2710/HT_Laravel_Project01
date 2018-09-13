@@ -22,6 +22,7 @@ class BookController extends Controller
                 ->join('books','books.category_id','=','categories.id')
                 ->select('books.*','categories.name as name_category')
                 ->get();
+                
         return view('backend.books.index', compact('books'));
     }
      /**
@@ -36,6 +37,7 @@ class BookController extends Controller
         foreach ($categories as $category) {
             $selectCategory[$category->id] = $category->name;
         }
+
          return view('backend.books.create', ['categories' => $selectCategory]);
     }
      /**
@@ -56,7 +58,8 @@ class BookController extends Controller
         $book->publication_date = $request_book->publication_date;   
         $book->category_id = $request_book->category;   
         $request_book->file('fImages')->move('images/books/',$file_name);
-        $book->save(); 
+        $book->save();
+
         return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Add Book']);
     }
     /**
