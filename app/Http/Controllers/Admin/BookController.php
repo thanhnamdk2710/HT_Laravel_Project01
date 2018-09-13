@@ -1,13 +1,18 @@
 <?php
- namespace App\Http\Controllers\Admin;
- use Illuminate\Http\Request;
+
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
 use App\Http\Requests\ValidationBook;
+use App\Http\Requests\ValidationCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use DB;
+use File;
+
 class BookController extends Controller
- {
+{
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +40,7 @@ class BookController extends Controller
             $selectCategory[$category->id] = $category->name;
         }
 
-         return view('backend.books.create', ['categories' => $selectCategory]);
+        return view('backend.books.create', ['categories' => $selectCategory]);
     }
      /**
      * Store a newly created resource in storage.
@@ -57,8 +62,9 @@ class BookController extends Controller
         $request_book->file('fImages')->move('images/books/',$file_name);
         $book->save();
 
-        return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Add Book']);
+        return redirect('admin/books')->with('flash_messages', 'Success!! Complete Add Book');
     }
+
      /**
      * Display the specified resource.
      *
@@ -69,6 +75,7 @@ class BookController extends Controller
     {
         //
     }
+
      /**
      * Show the form for editing the specified resource.
      *
@@ -77,17 +84,12 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $cate = DB::table('books')
-                ->join('categories','books.category_id','=','categories.id')
-                ->select('books.*','categories.name as name_category')
-                ->get();
-        $book = DB::table('books')
-                ->join('categories','books.category_id','=','categories.id')
-                ->select('books.*','categories.name as name_category')
-                ->where('books.id',$id)
-                ->get();
-        return view('backend.books.edit',compact('book','cate'));
+        $categories = Category::all();
+        $books = Book::where('id', $id)->get();
+
+        return view('backend.books.edit',compact('books','categories'));
      }
+
      /**
      * Update the specified resource in storage.
      *
@@ -95,12 +97,30 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ValidationBook $request_book, $id)
+    public function update(ValidationBook $request, $id)
     {
-       $book = DB::table('books')
-                ->where('books.id',$id)
-                ->update(['isbn' => $request_book->isbn,'name'=>$request_book->name,'author'=>$request_book->author,'category_id'=>$request_book->category,'publication_date'=>$request_book->publication_date]);
-        return redirect('admin/books')->with(['flash_level'=>'success','flash_messages'=>'Success !! Complete Edit Book']);
+        $books = Book::find($id);
+        $books->isbn = $request->isbn;
+        $books->name = $request->name;
+        $books->alias = str_slug($request->name);
+        $books->author = $request->author;   
+        $books->publication_date = $request->publication_date;
+        $books->category_id = $request->category;
+
+        if($request->file('fImages')) {
+            $file_name = $request->file('fImages')->getClientOriginalName();
+
+            if(File::exists('images/books/' . $books->image)){
+                File::delete('images/books/' . $books->image);
+            }
+
+            $books->image = $file_name;  
+            $request->file('fImages')->move('images/books/', $file_name);
+        }
+
+        $books->save();  
+
+        return redirect()->route('admin.books.index')->with('flash_messages', 'Success!! Complete Edit Book');
     }
      /**
      * Remove the specified resource from storage.
