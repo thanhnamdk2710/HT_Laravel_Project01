@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Rating;
 use DB;
+use Session;
 
 class UserController extends Controller
 {
@@ -17,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select('users.*',DB::raw('COUNT(ratings.star) as count'))
+        $users = User::select('users.*', DB::raw('COUNT(ratings.star) as count'))
             ->leftJoin('ratings','users.id','=','ratings.user_id')
             ->leftJoin('books','books.id','=','ratings.book_id')
             ->where('users.role','0')
@@ -113,6 +114,7 @@ class UserController extends Controller
 
         if($user){
             $user->delete();
+
             return redirect()->route('admin.users.index')->with('success','Delete a successful user');
         }else{
             return redirect()->route('admin.users.index')->with('error','user is not Exist');
@@ -129,5 +131,16 @@ class UserController extends Controller
             return redirect()->back()->with('success', 'Delete the review successfully !');
         }
         return redirect()->route('admin.users.show')->with('error','Review is not Exist !');
+    }
+
+    public function getAjax(Request $request,$aid)
+    {
+        if($request->astatus == 0){
+            $user = User::where('id', $aid)->update(['status' => 1]);
+            echo "images/icon/deactive.gif";
+        }else{
+            $user = User::where('id', $aid)->update(['status' => 0]);
+            echo "images/icon/active.gif";
+        }
     }
 }

@@ -1,6 +1,7 @@
 @extends('backend.layouts.master')
 
 @section('title', 'Detail')
+
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}">
