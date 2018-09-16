@@ -6,7 +6,8 @@ return [
 		'order_by_desc' =>'desc'
 	],
 	'admin' => [
-		'role_admin' => 1
+		'role_admin' => 1,
+		'role_user' => 0
 	],
 	'books' => [
 		'limit_rows' => 10,

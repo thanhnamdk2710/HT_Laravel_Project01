@@ -6,8 +6,32 @@
 				</div>
 				<div class="col-md-3 clearfix">
 					<ul class="login-cart">
+						@if ((Auth::check()) && (Auth::user()->role == config('define.admin.role_user')))
 						<li>
-							<a data-toggle="modal" href="#">
+							<div class="cart dropdown">
+						  		<a data-toggle="dropdown" href="#">
+						  			<img class="pull-left avatar" src="images/users/{{ Auth::user()->avatar }}" alt="">
+						  			<span style="font-size: 18px">{{ Auth::user()->username }}</span>
+						  		</a>
+					  			<div class="dropdown-menu dropup">
+					  				<span class="caret"></span>
+						  			<ul class="media-list">
+								  		<li class="media">
+										    <img class="pull-left" src="images/users/{{ Auth::user()->avatar }}" alt="">
+										    <div class="media-body">
+										      	<h6>
+								    				<span>{{ Auth::user()->username }}</span>
+								    			</h6>
+								    		</div>
+								  		</li>
+									</ul>
+									<a href="{{ route('logout') }}" class="btn btn-primary btn-sm logout">Logout</a>
+							    </div>
+							</div>
+						</li>
+						@else
+						<li>
+							<a href=" {{ route('login.index') }}">
 								<i class="fas fa-sign-in-alt"></i>
 								Login
 							</a>
@@ -17,6 +41,7 @@
 								<a href="#"><i class="far fa-user "></i>Registered</a>
 							</div>
 						</li>
+						@endif
 					</ul>
 				</div>
 				<div class="col-md-2">
