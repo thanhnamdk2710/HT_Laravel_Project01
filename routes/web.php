@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +13,6 @@
 Route::get('login','LoginController@create')->name('login.index');
 Route::post('login','LoginController@store')->name('login.store');
 Route::get('logout','LogoutController@logout')->name('logout');
-
 Route::group(['middleware' => 'admin'], function () {
 	Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
 		Route::get('/', 'HomeController@index')->name('dashboard');

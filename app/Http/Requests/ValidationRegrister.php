@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidationAccount extends FormRequest
+class ValidationRegrister extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,10 @@ class ValidationAccount extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required|min:6',
+            'username' => 'required|string',
+            'gender' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6|max:50'
         ];
     }
 }

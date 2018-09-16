@@ -4,9 +4,10 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ValidationAccount;
+use App\Http\Requests\ValidationRegrister;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -36,36 +37,33 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ValidationAccount $request)
+    public function store(ValidationRegrister $request)
     {
-        $checkEmail = User::select('*')
-            ->where('email','=',$request->email)
-            ->get();
+        $checkEmail = User::where('email','=',$request->email)->first();
 
-        if(count($checkEmail) == 0) {
+        if($checkEmail) {
+            Session()->flash('error','Username này đã tồn tại, bạn vui lòng nhập email khác');
+            
+            return redirect()->back()->withInput();
+        }else{
+            $avatar = "avatar.jpg";
             if( $request -> hasfile('avatar')){
             $file = $request->file('avatar');
-            $name = $file->getClientOriginalName();
-            $pic = asset('/images/users/').'/'.$name;
-            $file = $file->move("images/users",$name);
+            $avatar = $file->getClientOriginalName();
+            $pic = asset('/images/users/').'/'.$avatar;
+            $file = $file->move("images/users",$avatar);
             }
-            else{
-                $file = "images/users/avatar.jpg";
-            }
-            $user = new User([
+            $user = User::create([
                 'username'=>$request->username,
-                'avatar'=>$file,
+                'avatar'=>$avatar,
                 'gender'=>$request->gender,
                 'email'=>$request->email,
                 'role'=>'0',
                 'status'=>'0',
                 'password' =>Hash::make( $request->password )
             ]);
-            $user->save();
 
             return view('frontend.pages.register',compact('category'))->with('success', 'Đăng ký thành viên thành công!');
-        }else{
-            return view('frontend.pages.register',compact('category'))->with('error','Username này đã tồn tại, bạn vui lòng nhập email khác');
         }
     }
 

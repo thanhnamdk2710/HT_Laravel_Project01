@@ -1,6 +1,9 @@
 @extends('frontend.master')
+
 @section('title','Regristered')
+
 @section('content')
+
 <section id="topic-header">
 	<div class="container">
 		<div class="row">
@@ -28,9 +31,9 @@
 					<div class="login-header">
 						<h1></h1>
 					</div>
-					@if ( !empty($error) )
+					@if(session('error'))
 					<div class="alert alert-danger alert-dismissible" role="alert">
-						<strong>{{ $error }}</strong>
+						<strong>{{session('error')}}</strong>
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 							<span class="sr-only">Close</span>
@@ -49,32 +52,32 @@
 					<form class="login-form" action="{{ route('user.registered.store') }}" enctype="multipart/form-data" method="POST">
 						{{ csrf_field() }}
 						<h3>Name:</h3>
-						<input type="text" placeholder="Name" name="username"/>
+						<input type="text" placeholder="Name" name="username"  value="{{ old('username') }}"required />
 						@if ($errors->has('username'))
 						<p class="text-red help is-danger">* {{ $errors->first('username') }}</p>
 						@endif
 						<h3>Avatar:</h3>
-						<input type="file" name="avatar"/>
+						<input type="file" name="avatar"  value="{{ old('avatar') }}"/>
 						<h3>Gender:</h3>
-						<input type="radio" name="gender" value="0"/>Nam
-						<input type="radio" name="gender" value="1"/>Nữ
+						<input type="radio" name="gender" value="0" {{(old('gender') == '0') ? 'checked' : ''}} required />Nam
+						<input type="radio" name="gender" value="1"  {{(old('gender') == '1') ? 'checked' : ''}} required />Nữ
 						@if ($errors->has('gender'))
 						<p class="text-red help is-danger">* {{ $errors->first('gender') }}</p>
 						@endif
 						<h3>Email:</h3>
-						<input type="text" placeholder="Email" name="email"/><br>
+						<input type="email" placeholder="Email" name="email" value="{{ old('email') }}" required /><br>
 						@if ($errors->has('email'))
 						<p class="text-red help is-danger">* {{ $errors->first('email') }}</p>
 						@endif
 						<h3>Password:</h3>
-						<input type="password" placeholder="Password" name="password"/>
+						<input type="password" minlength="6" placeholder="Password" name="password" value="{{ old('password') }}" required />
 						@if ($errors->has('password'))
 						<p class="text-red help is-danger">* {{ $errors->first('password') }}</p>
 						@endif
 						<br>
 						<button type="submit" class="login-button btn-primary">Sign Up</button>
 						<br>
-						<a href="" class="sign-up">Sign in!</a>
+						<a href="{{ route('login.index') }}" class="sign-up">Sign in!</a>
 						<br>
 					</form>
 				</div>

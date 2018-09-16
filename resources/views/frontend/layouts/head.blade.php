@@ -24,3 +24,4 @@
 <script src="{{ asset('frontend/js/jquery.nicescroll.js')}}"></script>
 <script src="{{ asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
 <script src="{{ asset('frontend/js/main.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/js/app.js')}}" type="text/javascript"></script>
