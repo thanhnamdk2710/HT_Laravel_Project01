@@ -13,7 +13,7 @@ class BookController extends Controller
     public function show(){
     	$tag = Tag::all();
         $category = Category::all();
-        $book = Book::orderBy('created_at', config('define.books.order_by_desc'))->paginate(config('define.books.limit_rows'));
+        $book = Book::orderBy('publication_date', config('define.books.order_by_desc'))->paginate(config('define.books.limit_rows'));
         return view('frontend.pages.book',compact('book','category','tag'));
     }
 }

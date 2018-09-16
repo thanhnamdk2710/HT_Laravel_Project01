@@ -60,13 +60,8 @@
 					<!-- Pagination -->
 					<div class="pagination-bottom">
 						<ul class="pagination">
-						  	<li class="disabled"><a href="#">&laquo;</a></li>
-						  	<li class="active"><a href="#">1 <span class="sr-only"></span></a></li>
-						  	<li><a href="#">2</a></li>
-						  	<li><a href="#">3</a></li>
-						  	<li><a href="#">4</a></li>
-						  	<li><a href="#">»</a></li>
-						</ul>	<!-- End of /.pagination -->
+							{{ $books->links() }}
+						</ul>
 					</div>
 				</div>	<!-- End of /.col-md-9 -->
 				<div class="col-md-3">
