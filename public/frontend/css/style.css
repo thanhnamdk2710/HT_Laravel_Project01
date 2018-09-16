@@ -106,6 +106,9 @@ section+section { margin-top: 50px; }
 	outline:none;
 	padding-left:10px;
 }
+.login input[type="radio"]{
+	margin-left: 30px;
+}
 .login-form button{
 	height:30px;
 	width:100px;

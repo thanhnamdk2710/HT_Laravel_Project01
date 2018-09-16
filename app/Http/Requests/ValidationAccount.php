@@ -24,8 +24,10 @@ class ValidationAccount extends FormRequest
     public function rules()
     {
         return [
+            'username' => 'required|string',
+            'gender' => 'required',
             'email' => 'required|email',
-            'password' => 'required|min:6',
+            'password' => 'required|min:8|max:50'
         ];
     }
 }

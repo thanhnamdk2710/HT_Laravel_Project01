@@ -14,7 +14,7 @@
 						</li>
 						<li>
 							<div class="cart dropdown">
-								<a href="#"><i class="far fa-user "></i>Registered</a>
+								<a href="{{ route('user.registered.create') }}"><i class="far fa-user "></i>Registered</a>
 							</div>
 						</li>
 					</ul>
@@ -32,40 +32,36 @@
 			</div> <!-- End Of /.row -->
 		</div>	<!-- End Of /.Container -->
 	</section>  <!-- End of /Section -->
-	<!-- LOGO Start
-		================================================== -->
-		<header>
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<a href="#">
-							<img src="frontend/images/logo.png" alt="logo">
-						</a>
-					</div>	<!-- End of /.col-md-12 -->
-				</div>	<!-- End of /.row -->
-			</div>	<!-- End of /.container -->
-		</header> <!-- End of /Header -->
-	<!-- MENU Start
-		================================================== -->
-		<nav class="navbar navbar-default">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div> <!-- End of /.navbar-header -->
+	<!-- LOGO Start -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<a href="#">
+						<img src="frontend/images/logo.png" alt="logo">
+					</a>
+				</div>	<!-- End of /.col-md-12 -->
+			</div>	<!-- End of /.row -->
+		</div>	<!-- End of /.container -->
+	</header> <!-- End of /Header -->
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div> <!-- End of /.navbar-header -->
 
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav nav-main">
-						<li><a href="{{ route('index')}}">HOME</a></li>
-						<li><a href="{{ route('all_book') }}">BOOK</a></li>
-						<li><a href="{{ route('all_author') }}">AUTHOR</a></li>
-						<li><a href="{{ route('contact') }}">CONTACT</a></li>
-					</ul> <!-- End of /.nav-main -->
-				</div>	<!-- /.navbar-collapse -->
-			</div>	<!-- /.container-fluid -->
-		</nav>	<!-- End of /.nav -->
-		
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav nav-main">
+					<li><a href="#">HOME</a></li>
+					<li><a href="#">BOOK</a></li>
+					<li><a href="#">AUTHOR</a></li>
+					<li><a href="#">CONTACT</a></li>
+				</ul> <!-- End of /.nav-main -->
+			</div>	<!-- /.navbar-collapse -->
+		</div>	<!-- /.container-fluid -->
+	</nav>	<!-- End of /.nav -->

@@ -12,5 +12,6 @@ class User extends Model
     	'gender',
     	'status',
     	'role',
+    	'password'
     ];
 }
