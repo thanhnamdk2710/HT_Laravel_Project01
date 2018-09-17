@@ -50,7 +50,7 @@ class BookController extends Controller
      */
     public function store(ValidationBook $request_book)
     {
-        $file_name = $request_book->file('fImages')->getClientOriginalName();
+        $file_name = time() . '-' . $request_book->file('fImages')->getClientOriginalName();
         $book = new Book();
         $book->isbn = $request_book->isbn;
         $book->name = $request_book->name;
@@ -64,8 +64,9 @@ class BookController extends Controller
 
         return redirect('admin/books')->with('flash_messages', 'Success!! Complete Add Book');
     }
+    /**
 
-     /**
+
      * Display the specified resource.
      *
      * @param  int  $id
@@ -75,8 +76,9 @@ class BookController extends Controller
     {
         //
     }
+    /**
 
-     /**
+
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -97,32 +99,34 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(ValidationBook $request, $id)
     {
-        $books = Book::find($id);
-        $books->isbn = $request->isbn;
-        $books->name = $request->name;
-        $books->alias = str_slug($request->name);
-        $books->author = $request->author;   
-        $books->publication_date = $request->publication_date;
-        $books->category_id = $request->category;
+        $book = Book::find($id);
+        $book->isbn = $request->isbn;
+        $book->name = $request->name;
+        $book->alias = str_slug($request->name);
+        $book->author = $request->author;   
+        $book->publication_date = $request->publication_date;
+        $book->category_id = $request->category;
 
         if($request->file('fImages')) {
-            $file_name = $request->file('fImages')->getClientOriginalName();
+            $file_name = time() . '-' . $request->file('fImages')->getClientOriginalName();
 
             if(File::exists('images/books/' . $books->image)){
                 File::delete('images/books/' . $books->image);
             }
 
-            $books->image = $file_name;  
+            $book->image = $file_name;  
             $request->file('fImages')->move('images/books/', $file_name);
         }
 
-        $books->save();  
+        $book->save();  
 
         return redirect()->route('admin.books.index')->with('flash_messages', 'Success!! Complete Edit Book');
     }
-     /**
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -130,6 +134,14 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::find($id);
+
+        if(File::exists('images/books/' . $book->image)){
+            File::delete('images/books/' . $book->image);
+        }
+        
+        $book->delete();
+        
+        return redirect()->route('admin.books.index')->with('flash_messages' , 'Success!! Complete Delete Book');
     }
 }

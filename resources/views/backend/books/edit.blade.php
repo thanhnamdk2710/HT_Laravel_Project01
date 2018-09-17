@@ -25,7 +25,7 @@
 <section class="content">
 	<!-- Small boxes (Stat box) -->
 	@include('backend.blocks.error')
-	
+
 	<div class="row">
 		<div class="col-md-6">
 			<div class="box box-info">
@@ -41,6 +41,7 @@
 					<div class="form-group">
 						{!! Form::label('name', 'Name', ['class' => 'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
+
 							{!! Form::text('name', "$book->name", ['class' => 'form-control']) !!}
 						</div>
 					</div>

@@ -1,5 +1,10 @@
 @extends('backend.layouts.master')
+
 @section('title', 'List Books')
+
+@push('css')
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endpush
 
 @section('content')
 <section class="content-header">
@@ -20,6 +25,8 @@
 		<div class="box">
 			<!-- /.box-header -->
 			<div class="box-body">
+				@include('backend.layouts.partials.modal')
+				
 				<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 					<div class="row">
 						<div class="col-sm-12">
@@ -58,15 +65,22 @@
 											<td class="sorting_1" style="text-align: center;" >{{ $key + 1 }}</td>
 											<td>{{ $book->ISBN }}</td>
 											<td>{{ $book->name }}</td>
-											<td><img src="images/books/{{ $book->image }}" height="90px"></td>
+											<td><img src="images/books/{{  $book->image }}" height="90px"></td>
 											<td>{{ $book->author }}</td>
 											<td>{{ $book->name_category }}</td>
 											<td>{{ $book->publication_date }}</td>
 											<td>{{ $book->total_rating }}</td>
 											<td>{{ $book->average }}</td>
 											<td>
-												<a href="{{url("admin/books/{$book->id}/edit")}}" class="btn btn-warning">Edit</a>
-												<a href="#" class="btn btn-danger">Delete</i></a>
+												<a href="{{ url("admin/books/{$book->id}/edit") }}" class="btn btn-warning">Edit</a>
+												<form method="POST" action="{{ route('admin.books.destroy', $book->id) }}" class="inline">
+													@csrf
+		                                            @method('DELETE')
+													<button type="button" class="btn btn-danger form-delete btn-delete-item"
+														data-title="Delete Books"
+														data-confirm="Are you sure you want to delete <strong>{{ $book->name }}</strong>">Delete
+													</button>
+												</form>
 											</td>
 										</tr>
 										@endforeach
@@ -82,35 +96,7 @@
 </section>
 <!-- /.content -->
 @endsection
+
 @push('js')
-<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-<!-- DataTables -->
-<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-<!-- SlimScroll -->
-<script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-<!-- FastClick -->
-<script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('bower_components/admin-lte/dist/js/adminlte.min.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('bower_components/admin-lte/dist/js/demo.js') }}"></script>
-<link rel="stylesheet" type="text/css" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}" />
-<script src="{{ url('js/myscrip.js') }}"></script>
-<!-- page script -->
-<script>
-$(function () {
-	$('#example1').DataTable()
-	$('#example2').DataTable({
-		'paging'      : false,
-		'lengthChange': false,
-		'searching'   : false,
-		'ordering'    : false,
-		'info'        : false,
-		'autoWidth'   : false
-		})
-})
-</script>
+	<script src="{{ asset('js/main.js') }}"></script>
 @endpush
