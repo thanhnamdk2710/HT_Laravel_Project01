@@ -38,20 +38,13 @@
 					        <li>
 					            <div class="products">
 									<a href="{{ route('detail',$book->id) }}">
-										<img src="images/books/{{ $book->image }}" alt="" height="300px" width="50px">
+										<img src="images/{{ $book->image }}" alt="image book">
 									</a>
 									<a href="{{ route('detail',$book->id) }}">
 										<h4>{{ $book->name }}</h4>
 									</a>
 										<h6>by {{ $book->author }}</h6>
-									<p>avg rating {{ $book->average }}</p>
-									<div class="single_product_ratings mb-15">
-		                                <span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star"></span>
-										<span class="fa fa-star"></span>
-		                            </div>
+									<div class="rateit" data-rateit-value="{{ $book->average }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
 								</div>	<!-- End of /.products -->
 					        </li>
 					        @endforeach
