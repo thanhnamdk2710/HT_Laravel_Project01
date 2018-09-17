@@ -1,9 +1,12 @@
 @extends('backend.layouts.master')
- @section('title', 'Edit Categories')
- @push('css')
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+@section('title', 'Edit Categories')
+
+@push('css')
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @endpush
- @section('content')
+
+@section('content')
 <section class="content-header">
 	<h1>Book table</h1>
 	<ol class="breadcrumb">
@@ -22,75 +25,59 @@
 <section class="content">
 	<!-- Small boxes (Stat box) -->
 	@include('backend.blocks.error')
+
 	<div class="row">
 		<div class="col-md-6">
 			<div class="box box-info">
-				@foreach($book as $value)
-				{!! Form::open(['url' => "admin/books/update/$value->id", 'method' => 'put', 'class' => 'form-horizontal']) !!}
+				@foreach($books as $book)
+				{!! Form::open(['url' => "admin/books/update/$book->id", 'method' => 'put', 'class' => 'form-horizontal', 'enctype' => 'multipart/form-data']) !!}
 				<div class="box-body">
 					<div class="form-group">
 						{!! Form::label('isbn', 'ISBN', ['class' => 'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-							{!! Form::text('isbn', "$value->ISBN", ['class' => 'form-control']) !!}
+							{!! Form::text('isbn', "$book->ISBN", ['class' => 'form-control']) !!}
 						</div>
 					</div>
 					<div class="form-group">
 						{!! Form::label('name', 'Name', ['class' => 'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-							{!! Form::text('name', "$value->name", ['class' => 'form-control']) !!}
+
+							{!! Form::text('name', "$book->name", ['class' => 'form-control']) !!}
 						</div>
 					</div>
 					<div class="form-group">
-						<img class="col-sm-8 control-label" width="200px" src="{{ 'images/books/'.$value->image }}">
+						<img class="col-sm-4 control-label" width="100px" src="{{ 'images/books/'.$book->image }}">
 					</div>
 					<div class="form-group">
 						{!! Form::label('img', 'Image', ['class' => 'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-            				<input type="file" value="{{ old('img')}}">
+							{!! Form::file('fImages') !!}
 						</div>
 					</div>
 					<div class="form-group">
 						{!! Form::label('author', 'Author', ['class' => 'col-sm-2 control-label']) !!}
 						<div class="col-sm-10">
-							{!! Form::text('author', "$value->author", ['class' => 'form-control']) !!}
-						</div>
-					</div>
-					<div class="form-group">
-						{!! Form::label('editor', 'Editor', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('editor', "$value->editor", ['class' => 'form-control']) !!}
-						</div>
-					</div>
-					<div class="form-group">
-						{!! Form::label('publisher', 'Publisher', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('publisher', "$value->publisher", ['class' => 'form-control']) !!}
+							{!! Form::text('author', "$book->author", ['class' => 'form-control']) !!}
 						</div>
 					</div>
 					<div class="form-group">
 		            <label class="col-sm-2 control-label">Category</label>
 						<div class="col-sm-10 control-label">
 		                    <select class="col-sm-12 control-label" name="category" id="category">
-								@foreach($cate as $value)
-		                            <option value="{{ $value->category_id }}">
-		                            	{{ $value->name_category}}
+								@foreach($categories as $category)
+		                            <option value="{{ $category->id }}" {{ $category->id === $book->category_id ? "selected" : '' }}>
+		                            	{{ $category->name}}
 		                            </option>
 		                        @endforeach
 		                    </select>
 						</div>
 		                <br>
 		            </div>
-					<div class="form-group">
-						{!! Form::label('count', 'Total rating', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('count', "$value->count", ['class' => 'form-control']) !!}
-						</div>
-					</div>
-					<div class="form-group">
-						{!! Form::label('average', 'Average', ['class' => 'col-sm-2 control-label']) !!}
-						<div class="col-sm-10">
-							{!! Form::text('average', "$value->average", ['class' => 'form-control', 'id' => 'name']) !!}
-						</div>
+		            <div class="form-group">
+					  <label for="example-date-input" class="col-sm-2 control-label">Publication Date</label>
+					  <div class="col-sm-10" id="publication_date">
+							{!! Form::date('publication_date', "$book->publication_date", ['class' => 'form-control']) !!}
+					  </div>
 					</div>
 					@endforeach
 				</div>

@@ -1,5 +1,10 @@
 @extends('backend.layouts.master')
+
 @section('title', 'List Books')
+
+@push('css')
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@endpush
 
 @section('content')
 <section class="content-header">
@@ -20,6 +25,8 @@
 		<div class="box">
 			<!-- /.box-header -->
 			<div class="box-body">
+				@include('backend.layouts.partials.modal')
+				
 				<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 					<div class="row">
 						<div class="col-sm-12">
@@ -47,8 +54,8 @@
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Author</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;text-align: center;">Category</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;text-align: center;">Publication Date</th>
-										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 50px;text-align: center;">Total rating</th>
-										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 50px;text-align: center;">Average</th>
+										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Total rating</th>
+										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Average</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 200px;text-align: center;">Action</th>
 									</tr>
 									</thead>
@@ -66,13 +73,14 @@
 											<td>{{ $book->average }}</td>
 											<td>
 												<a href="{{ url("admin/books/{$book->id}/edit") }}" class="btn btn-warning">Edit</a>
-												<form action="{{ route('admin.books.destroy',$book->id) }}"method="POST">
-		                                            @csrf
+												<form method="POST" action="{{ route('admin.books.destroy', $book->id) }}" class="inline">
+													@csrf
 		                                            @method('DELETE')
-		                                            <button class="btn btn-danger" type="submit">
-		                                                Delete
-		                                            </button>
-		                                        </form>
+													<button type="button" class="btn btn-danger form-delete btn-delete-item"
+														data-title="Delete Books"
+														data-confirm="Are you sure you want to delete <strong>{{ $book->name }}</strong>">Delete
+													</button>
+												</form>
 											</td>
 										</tr>
 										@endforeach
@@ -88,35 +96,7 @@
 </section>
 <!-- /.content -->
 @endsection
+
 @push('js')
-<script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-<!-- DataTables -->
-<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-<!-- SlimScroll -->
-<script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-<!-- FastClick -->
-<script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('bower_components/admin-lte/dist/js/adminlte.min.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{ asset('bower_components/admin-lte/dist/js/demo.js') }}"></script>
-<link rel="stylesheet" type="text/css" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}" />
-<script src="{{ url('js/myscrip.js') }}"></script>
-<!-- page script -->
-<script>
-$(function () {
-	$('#example1').DataTable()
-	$('#example2').DataTable({
-		'paging'      : false,
-		'lengthChange': false,
-		'searching'   : false,
-		'ordering'    : false,
-		'info'        : false,
-		'autoWidth'   : false
-		})
-})
-</script>
+	<script src="{{ asset('js/main.js') }}"></script>
 @endpush

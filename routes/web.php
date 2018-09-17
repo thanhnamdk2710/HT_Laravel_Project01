@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,7 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
 	return view('welcome');
 });
@@ -18,7 +16,6 @@ Route::get('/', function () {
 Route::get('login','LoginController@create')->name('login.index');
 Route::post('login','LoginController@store')->name('login.store');
 Route::get('logout','LogoutController@logout')->name('logout');
-
 Route::group(['middleware' => 'admin'], function () {
 	Route::group([ 'prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
 		Route::get('/', 'HomeController@index')->name('dashboard');
@@ -32,7 +29,7 @@ Route::group(['middleware' => 'admin'], function () {
 	    Route::delete('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
 		
 	//CRUD Book
-	    Route::get('books', 'BookController@index')->name('books.index');
+		Route::get('books', 'BookController@index')->name('books.index');
 		Route::get('books/create', 'BookController@create')->name('books.create'); 
 		Route::post('books', 'BookController@store')->name('books.store');
 		Route::get('books/{id}/edit', 'BookController@edit')->name('books.edit');
