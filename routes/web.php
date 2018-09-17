@@ -12,6 +12,7 @@
 Route::get('/', function () {
 	return view('welcome');
 });
+
 Route::get('login','LoginController@create')->name('login.index');
 Route::post('login','LoginController@store')->name('login.store');
 Route::get('logout','LogoutController@logout')->name('logout');
@@ -27,10 +28,12 @@ Route::group(['middleware' => 'admin'], function () {
 		Route::put('/categories/update/{id}', 'CategoryController@update')->name('categories.update');
 		Route::delete('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
 		
-    //CRUD Book
+	//CRUD Book
 		Route::get('books', 'BookController@index')->name('books.index');
-		Route::get('books/create', 'BookController@create')->name('books.create');
-		Route::post('books/store', 'BookController@store')->name('books.store');
+		Route::get('books/create', 'BookController@create')->name('books.create'); 
+		Route::post('books', 'BookController@store')->name('books.store');
+		Route::get('books/{id}/edit', 'BookController@edit')->name('books.edit');
+		Route::put('books/update/{id}', 'BookController@update')->name('books.update');
 
     // CRUD User
 		Route::get('users', 'UserController@index')->name('users.index');
@@ -40,6 +43,7 @@ Route::group(['middleware' => 'admin'], function () {
 		Route::delete('users/{id}/review/{id_book}', 'UserController@deleteReview')->name('users.delete_review');
 	});
 });
+
 Route::group([ 'namespace' => 'User'], function () {
 	Route::get('/', 'HomeController@index')->name('index');
 	Route::get('/index', 'HomeController@index')->name('index');  

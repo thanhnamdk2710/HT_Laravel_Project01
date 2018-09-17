@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Rating;
 use DB;
 use Session;
+use File;
 
 class UserController extends Controller
 {
@@ -111,8 +112,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-
+        $image_path = public_path('images/users/'.$user->avatar);
+        
         if($user){
+
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
             $user->delete();
 
             return redirect()->route('admin.users.index')->with('success','Delete a successful user');
