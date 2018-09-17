@@ -282,7 +282,6 @@ header {
 }
 
 
-
 /*	Login Modal Start
     ==================================================*/
 
@@ -1336,6 +1335,13 @@ footer .block span {
 }
 .single-product-img {
 	border:1px solid #dedede;
+}
+
+.single-product-img img{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 .product-des {
 	border:1px solid #dedede;

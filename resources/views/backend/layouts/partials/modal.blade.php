@@ -9,7 +9,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-sm btn-flat btn-danger" id="delete-btn">Delete</button>
-                <button type="button" class="btn btn-sm btn-flat btn-default" data-dismiss="modal">Cancle</button>
+                <button type="button" class="btn btn-sm btn-flat btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
