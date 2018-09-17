@@ -1,13 +1,11 @@
 @extends('backend.layouts.master')
-
-@section('title', 'List Users')
-
-@push('css')
+ @section('title', 'List Users')
+ @push('css')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}">
 @endpush
-
-@section('content')
+ @section('content')
 <section class="content-header">
 	<h1>User table</h1>
 	<ol class="breadcrumb">
@@ -31,16 +29,17 @@
 							<thead>
 								<tr role="row">
 									<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 80px; text-align: center;">STT</th>
-									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;text-align: center;">Username</th>
-									<th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;text-align: center;">Avatar</th>
-									<th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;text-align: center;">Email</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 100px;text-align: center;">Username</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Avatar</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Email</th>
 									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Gender</th>
-									<th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 100px;text-align: center;">Status</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Status</th>
 									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;text-align: center;">Count(review)</th>
-									<th tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 199px;text-align: center;">Action</th>
+									<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 199px;text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
+								{!! csrf_field() !!}
 								@foreach ($users as $key => $user)
 								<tr role="row" class="odd">
 									<td class="sorting_1" style="text-align: center;">{{ $key + 1 }}</td>
@@ -51,17 +50,19 @@
 										{{ $user->gender == 0 ? 'Nam' : 'Nữ' }}
 									</td>
 									<td style="text-align: center;">
-										@if($user->status == 0)
-											<button type="button" class="btn btn-danger"><i class="fas fa-times"></i></button>
-										@else
-											<button type="button" class="btn btn-success"><i class="fas fa-check"></i></button>
-										@endif
+										<a  href="javascript:void(0) " type="button" class="btn active1" status= "{{$user->status}}" id_users="{{ $user->id }}">
+											@if( $user->status ==1 )
+											<img src="images/icon/deactive.gif"/>
+											@else
+											<img src="images/icon/active.gif"/>
+											@endif
+										</a>
 									</td>
 									<td style="text-align: center;">
 										@if( $user->count == 0 )
-											<strong>{{ $user->count}}</strong>
+										<strong>{{ $user->count}}</strong>
 										@else
-											<a href="{{ route('admin.users.show', ['id' => $user->id]) }}" class="text-yellow"><strong>{{ $user->count}}</strong></a>
+										<a href="{{ route('admin.users.show', ['id'=>$user->id]) }}" class="text-yellow"><strong>{{ $user->count}}</strong></a>
 										@endif
 									</td>
 									<td style="text-align: center;">
@@ -92,8 +93,7 @@
 </section>
 <!-- /.content -->
 @endsection
-
-@push('js')
+ @push('js')
 <!-- jQuery 3 -->
 <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -113,6 +113,45 @@
 <script>
 	$(function () {
 		$('#example1').DataTable()
+		$('#example2').DataTable({
+			'paging'      : true,
+			'lengthChange': false,
+			'searching'   : false,
+			'ordering'    : true,
+			'info'        : true,
+			'autoWidth'   : false
+		})
 	})
+</script>
+ <script type="text/javascript">
+	$(document).ready(function() {
+		$(".active1").click(function() {
+			var position = $(this);
+			var status = $(this).attr('status');
+			var id = $(this).attr('id_users');
+			$token     = $('meta[name=csrf-token]').attr("content");
+			if(status == 0){
+				$(this).attr("status", 1);
+			}else{
+				$(this).attr("status", 0);
+			}
+			console.log(id);
+			$.ajax({
+				url: '/admin/users/update/'+id,
+				type : 'POST',
+				data: {
+					aid: id,
+					astatus: status,
+					_token: '{{csrf_token()}}',
+				},
+				success: function(data){
+					$(position).children("img").attr("src", data);
+				},
+				error: function(){
+					alert("Erros!");
+				}
+			});
+		});
+	});
 </script>
 @endpush

@@ -74,4 +74,4 @@
 				</ul> <!-- End of /.nav-main -->
 			</div>	<!-- /.navbar-collapse -->
 		</div>	<!-- /.container-fluid -->
-	</nav>	<!-- End of /.nav -->
+	</nav>	<!-- End of /.nav -->	

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use DB;
 
+use Session;
+
 class UserController extends Controller
 {
     /**
@@ -94,7 +96,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       //
     }
 
     /**
@@ -106,5 +108,17 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getAjax(Request $request,$aid)
+    {
+        if($request->astatus == 0){
+            $user = User::where('id', $aid)->update(['status' => 1]);
+            echo "images/icon/deactive.gif";
+        }
+        else{
+            $user = User::where('id', $aid)->update(['status' => 0]);
+            echo "images/icon/active.gif";
+        }
     }
 }
