@@ -37,7 +37,6 @@
 					        </div>
 							<div class="box-header with-border">
 							</div>
-
 							<table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
 								<thead>
 									<tr role="row">
@@ -48,8 +47,8 @@
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Author</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;text-align: center;">Category</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;text-align: center;">Publication Date</th>
-										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 50px;text-align: center;">Total rating</th>
-										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 50px;text-align: center;">Average</th>
+										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Total rating</th>
+										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;text-align: center;">Average</th>
 										<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 200px;text-align: center;">Action</th>
 									</tr>
 									</thead>
@@ -66,7 +65,7 @@
 											<td>{{ $book->total_rating }}</td>
 											<td>{{ $book->average }}</td>
 											<td>
-												<a href="#" class="btn btn-warning">Edit</a>
+												<a href="{{url("admin/books/{$book->id}/edit")}}" class="btn btn-warning">Edit</a>
 												<a href="#" class="btn btn-danger">Delete</i></a>
 											</td>
 										</tr>
@@ -115,4 +114,3 @@ $(function () {
 })
 </script>
 @endpush
-
