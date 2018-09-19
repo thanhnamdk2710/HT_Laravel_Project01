@@ -1283,6 +1283,10 @@ footer .block span {
     display: inline-block;
     vertical-align: top;
 }
+
+.product-grid .products img{
+	max-height: 350px;
+}
  
 @media screen and (max-width: 57em) {
     .product-grid ul li {

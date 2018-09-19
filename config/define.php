@@ -9,6 +9,6 @@ return [
 		'role_admin' => 1
 	],
 	'books' => [
-		'limit_rows' => 10,
+		'limit_rows' => 9,
 	],
 ];
