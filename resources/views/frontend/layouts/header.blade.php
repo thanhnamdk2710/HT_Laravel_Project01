@@ -37,7 +37,7 @@
 		</div> <!-- End Of /.row -->
 	</div>	<!-- End Of /.Container -->
 </section>  <!-- End of /Section -->
-<!-- LOGO Start -->
+<!-- LOGO Start-->
 <header>
 	<div class="container">
 		<div class="row">
@@ -62,19 +62,13 @@
 		</div> <!-- End of /.navbar-header -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav nav-main">
-				<li>
-					<a href="">HOME</a>
+				<li class="{{Request::is('/') ? 'active' : ''}}">
+					<a href="{{ route('user.index')}}">HOME</a>
 				</li>
-				<li>
-					<a href="">BOOK</a>
-				</li>
-				<li>
-					<a href="">AUTHOR</a>
-				</li>
-				<li>
-					<a href="">CONTACT</a>
-				</li>
+				<li><a href="{{ route('all_book') }}">BOOK</a></li>
+				<li><a href="{{ route('all_author') }}">AUTHOR</a></li>
+				<li><a href="{{ route('contact') }}">CONTACT</a></li>
 			</ul> <!-- End of /.nav-main -->
 		</div>	<!-- /.navbar-collapse -->
 	</div>	<!-- /.container-fluid -->
-</nav>	<!-- End of /.nav -->
+</nav>	<!-- End of /.nav -->	
