@@ -43,7 +43,7 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::group([ 'namespace' => 'User','as' => 'user.'], function () { 
 	Route::get('/', 'HomeController@getbook')->name('index');  
-	Route::get('/book','BookController@show')->name('all_book');
+	Route::get('/book','BookController@show')->name('show');
 	Route::get('/detail','DetailController@show')->name('detail');
 	Route::get('/category','CategoryController@show')->name('category');
 	Route::get('search', 'HomeController@search')->name('search'); 

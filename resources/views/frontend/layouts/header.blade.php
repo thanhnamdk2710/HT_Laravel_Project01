@@ -37,7 +37,7 @@
 		</div> <!-- End Of /.row -->
 	</div>	<!-- End Of /.Container -->
 </section>  <!-- End of /Section -->
-<!-- LOGO Start-->
+<!-- LOGO Start -->
 <header>
 	<div class="container">
 		<div class="row">
@@ -49,7 +49,7 @@
 		</div>	<!-- End of /.row -->
 	</div>	<!-- End of /.container -->
 </header> <!-- End of /Header -->
-<!-- MENU Start -->
+<!-- MENU Start-->
 <nav class="navbar navbar-default">
 	<div class="container">
 		<div class="navbar-header">
@@ -65,9 +65,15 @@
 				<li class="{{Request::is('/') ? 'active' : ''}}">
 					<a href="{{ route('user.index')}}">HOME</a>
 				</li>
-				<li><a href="{{ route('all_book') }}">BOOK</a></li>
-				<li><a href="{{ route('all_author') }}">AUTHOR</a></li>
-				<li><a href="{{ route('contact') }}">CONTACT</a></li>
+				<li class="{{Request::is('/book') ? 'active' : ''}}">
+					<a href="{{ route('user.show')}}">BOOK</a>
+				</li>
+				<li>
+					<a href="">AUTHOR</a>
+				</li>
+				<li>
+					<a href="">CONTACT</a>
+				</li>
 			</ul> <!-- End of /.nav-main -->
 		</div>	<!-- /.navbar-collapse -->
 	</div>	<!-- /.container-fluid -->
