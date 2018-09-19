@@ -33,7 +33,7 @@
 					</div>	<!-- End of /.Products-heading -->
 					<div class="product-grid">
 					    <ul>
-					    	@foreach($book as $key => $value)
+					    	@foreach($books as $key => $value)
 					        <li>
 					            <div class="products">
 									<a href="{{ route('detail') }}">
@@ -60,7 +60,7 @@
 					<!-- Pagination -->
 					<div class="pagination-bottom">
 						<ul class="pagination">
-							{{ $book->links() }}
+							{{ $books->links() }}
 						</ul>
 					</div>
 				</div>	<!-- End of /.col-md-9 -->
@@ -69,7 +69,7 @@
 						<div class="block">
 							<h4>Catagories</h4>
 							<div class="list-group">
-								@foreach($category as $key => $value)
+								@foreach($categories as $key => $value)
 								<a href="#" class="list-group-item">
 									<i class="fas fa-dot-circle"></i>
 									{{ $value->name }}$value
@@ -80,7 +80,7 @@
 						<div class="block">
 							<h4>Book Tag</h4>
 							<div class="tag-link">
-								@foreach($tag as $tag)
+								@foreach($tags as $tag)
 								<a href="">{{ $tag->name }}</a>
 								@endforeach
 							</div>	
