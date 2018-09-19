@@ -40,6 +40,8 @@ Route::group(['middleware' => 'admin'], function () {
 		Route::get('users', 'UserController@index')->name('users.index');
 		Route::get('users/{id}', 'UserController@show')->name('users.show');
 		Route::post('users/update/{aid}', 'UserController@getAjax');
+		Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy');
+		Route::delete('users/{id}/review/{id_book}', 'UserController@deleteReview')->name('users.delete_review');
 	});
 });
 
