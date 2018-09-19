@@ -1,11 +1,14 @@
 @extends('backend.layouts.master')
- @section('title', 'List Users')
- @push('css')
+
+@section('title', 'List Users')
+
+@push('css')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.css') }}">
 @endpush
- @section('content')
+
+@section('content')
 <section class="content-header">
 	<h1>User table</h1>
 	<ol class="breadcrumb">
@@ -20,6 +23,30 @@
 <!-- Main content -->
 <section class="content">
 	<div class="box">
+		<div class="box-header">
+			@if (Session::has('success'))
+			<div class="box-header with-border">
+				<div class="col-md-6">
+					<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Success!</h4>
+						<p>* {{ Session::get('success') }}</p>
+					</div>
+				</div>
+			</div>
+			@endif
+			@if (Session::has('error'))
+			<div class="box-header with-border">
+				<div class="col-md-6">
+					<div class="alert alert-danger alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Error!</h4>
+						<p>* {{ Session::get('error') }}</p>
+					</div>
+				</div>
+			</div>
+			@endif
+		</div>
 		<!-- /.box-header -->
 		<div class="box-body">
 			<div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -39,6 +66,7 @@
 								</tr>
 							</thead>
 							<tbody>
+								@include('backend.layouts.partials.modal')
 								{!! csrf_field() !!}
 								@foreach ($users as $key => $user)
 								<tr role="row" class="odd">
@@ -66,7 +94,13 @@
 										@endif
 									</td>
 									<td style="text-align: center;">
-										<a href="#" class="btn btn-danger">Delete</i></a>
+										<form method="POST" action="{{ route('admin.users.destroy', $user->id) }}" class="inline">
+											{{ csrf_field() }}
+											{{ method_field('DELETE') }}
+											<button type="button" class="btn btn-danger form-delete btn-delete-item"
+											data-title="Delete User"
+											data-confirm="Are you sure you want to delete user  <strong>{{ $user->username }}</strong>">Delete</button>
+										</form> 
 									</td>
 								</tr>
 								@endforeach
@@ -93,7 +127,8 @@
 </section>
 <!-- /.content -->
 @endsection
- @push('js')
+
+@push('js')
 <!-- jQuery 3 -->
 <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -123,7 +158,8 @@
 		})
 	})
 </script>
- <script type="text/javascript">
+<script src="{{ asset('js/main.js') }}"></script>
+<script type="text/javascript">
 	$(document).ready(function() {
 		$(".active1").click(function() {
 			var position = $(this);
