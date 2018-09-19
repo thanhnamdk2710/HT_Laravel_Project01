@@ -62,8 +62,8 @@
 					<li class="{{Request::is('/') ? 'active' : ''}}">
 						<a href="{{ route('user.index')}}">HOME</a>
 					</li>
-					<li>
-						<a href="">BOOK</a>
+					<li class="{{Request::is('/') ? 'active' : ''}}">
+						<a href="{{ route('user.show')}}">BOOK</a>
 					</li>
 					<li>
 						<a href="">AUTHOR</a>
