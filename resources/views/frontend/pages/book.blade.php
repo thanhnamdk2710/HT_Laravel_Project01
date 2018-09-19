@@ -10,7 +10,7 @@
 				</div>	<!-- End of /.col-md-4 -->
 				<div class="col-md-8 hidden-xs">
 					<ol class="breadcrumb pull-right">
-					  	<li><a href="{{ route('index')}}">Home</a></li>
+					  	<li><a href="{{ route('user.index')}}">Home</a></li>
 					  	<li class="active">Book</li>
 					</ol>
 				</div>	<!-- End of /.col-md-8 -->
@@ -36,10 +36,10 @@
 					    	@foreach($books as $key => $value)
 					        <li>
 					            <div class="products">
-									<a href="{{ route('detail') }}">
+									<a href="{{ route('user.detail') }}">
 										<img src="images/{{ $value->image }}" alt="">
 									</a>
-									<a href="{{ route('detail') }}">
+									<a href="{{ route('user.detail') }}">
 										<h4>{{ $value->name }}</h4>
 									</a>
 										<h6>by {{ $value->author }}</h6>

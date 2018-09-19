@@ -9,10 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-	return view('welcome');
-});
-
 Route::get('login','LoginController@create')->name('login.index');
 Route::post('login','LoginController@store')->name('login.store');
 Route::get('logout','LogoutController@logout')->name('logout');
@@ -45,10 +41,9 @@ Route::group(['middleware' => 'admin'], function () {
 	});
 });
 
-Route::group([ 'namespace' => 'User'], function () {
-	Route::get('/', 'HomeController@index')->name('index');
-	Route::get('/index', 'HomeController@index')->name('index');  
-	Route::get('/book','BookController@show')->name('all_book');
+Route::group([ 'namespace' => 'User','as' => 'user.'], function () { 
+	Route::get('/', 'HomeController@getbook')->name('index');  
+	Route::get('/book','BookController@show')->name('show');
 	Route::get('/detail','DetailController@show')->name('detail');
 	Route::get('/category','CategoryController@show')->name('category');
 	Route::get('/author','AuthorController@show')->name('all_author');
