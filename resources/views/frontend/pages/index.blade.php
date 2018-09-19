@@ -72,54 +72,25 @@
 							<h2>OUR BOOK CATEGORIES</h2>
 						</div>	
 						<div class="row">
+							@foreach ($randomBooks as $key => $randomBook)
 						  	<div class="col-sm-6 col-md-4">
 							    <div class="thumbnail">
-							    	<a class="catagotie-head" href="blog-single.html">
-										<img src="frontend/images/category-image-1.jpg" alt="...">
-										<h3>Beef Steak</h3>
+							    	<a class="catagotie-head" href="#">
+										<img src="images/books/{{ $randomBook->image }}" alt="image book">
+										<h3>{{ $randomBook->name }}</h3>
 									</a>
 							      	<div class="caption">
-							        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, aut, esse, laborum placeat id illo a expedita aperiam...</p>
+							        	<p>Tác giả : {{ $randomBook->author }}</p>
+							        	<p>Danh mục : {{ $randomBook->name_category }}</p>
 							        	<p>
-							        		<a href="blog-single.html" class="btn btn-default btn-transparent" role="button">
-							        			<span>Detail of book</span>
+							        		<a href="#" class="btn btn-default btn-transparent bg-success" role="button">
+							        			<span class="text-white">Detail of book</span>
 							        		</a>
 							        	</p>
 							      	</div>	<!-- End of /.caption -->
 							    </div>	<!-- End of /.thumbnail -->
 						  	</div>	<!-- End of /.col-sm-6 col-md-4 -->
-						  	<div class="col-sm-6 col-md-4">
-							    <div class="thumbnail">
-							    	<a class="catagotie-head" href="blog-single.html">
-										<img src="frontend/images/category-image-2.jpg" alt="...">
-										<h3>Miscellaneous</h3>
-									</a>
-							      	<div class="caption">
-							        	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, aut, esse, laborum placeat id illo a expedita aperiam...</p>
-							        	<p>
-							        		<a href="blog-single.html" class="btn btn-default btn-transparent" role="button">
-							        			<span>Detail of book</span>
-							        		</a>
-							        	</p>
-							      	</div>	<!-- End of /.caption -->
-							    </div>	<!-- End of /.thumbnail -->
-						  	</div>	<!-- End of /.col-sm-6 col-md-4 -->
-						  	<div class="col-sm-6 col-md-4">
-							    <div class="thumbnail">
-							    	<a class="catagotie-head" href="blog-single.html">
-										<img src="frontend/images/category-image-3.jpg" alt="...">
-										<h3>Elegant Apparel</h3>
-									</a>
-							      	<div class="caption">
-								        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, aut, esse, laborum placeat id illo a expedita aperiam...</p>
-								        <p>
-								        	<a href="blog-single.html" class="btn btn-default btn-transparent" role="button">
-								        		<span>Detail of book</span>
-								        	</a>
-								        </p>
-								    </div>	<!-- End of /.caption -->
-							    </div>	<!-- End of /.thumbnail -->
-						  	</div>	<!-- End of /.col-sm-6 col-md-4 -->
+						  	@endforeach
 						</div>	<!-- End of /.row -->
 					</div>	<!-- End of /.block --> 
 				</div>	<!-- End of /.col-md-12 -->
@@ -138,112 +109,21 @@
 				</div>
 			</div>
 			<div class="row">
+				@foreach ($newBooks as $key => $newBook)
 				<div class="col-md-3">
 					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image.jpg" alt="">
+						<a href="">
+							<img src="images/books/{{ $newBook->image }}" alt="image book">
 						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
+						<a href="">
+							<h4>{{ $newBook->name }}</h4>
 						</a>
-						<p class="price">From: £69.99</p>
+						<p class="category">Danh mục : {{ $newBook->name_category }}</p>
 						<a class="view-link shutter" href="#">
 							<i class="fas fa-info"></i>Detail of book</a>
 					</div>	<!-- End of /.products -->
 				</div>	<!-- End of /.col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-2.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-3.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-4.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-5.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-6.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-7.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
-				<div class="col-md-3">
-					<div class="products">
-						<a href="single-product.html">
-							<img src="frontend/images/product-image-8.jpg" alt="">
-						</a>
-						<a href="single-product.html">
-							<h4>Amazing Italian Sauces</h4>
-						</a>
-						<p class="price">From: £69.99</p>
-						<div >
-							<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
-						</div>
-					</div>	<!-- End of /.products -->
-				</div> <!-- End Of /.Col-md-3 -->
+				@endforeach
 			</div>	<!-- End of /.row -->
 		</div>	<!-- End of /.container -->
 	</section>	<!-- End of Section -->
