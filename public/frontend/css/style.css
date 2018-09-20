@@ -663,8 +663,7 @@ header {
 	-o-transition: .2s ease-in-out;
 	transition: .2s ease-in-out;
 }
-.price {
-	font-size: 22px;
+.category {
 	color: #90c322;
 	font-weight: bold;
 	margin-bottom: 8px;
@@ -1282,6 +1281,10 @@ footer .block span {
     padding: 10px 20px 0 0px;
     display: inline-block;
     vertical-align: top;
+}
+
+.product-grid .products img{
+	max-height: 350px;
 }
  
 @media screen and (max-width: 57em) {

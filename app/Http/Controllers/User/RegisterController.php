@@ -16,6 +16,7 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         //
@@ -26,9 +27,10 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-        return view('frontend.pages.register');
+    	return view('frontend.pages.register');
     }
 
     /**
@@ -37,6 +39,7 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(ValidationRegrister $request)
     {
         $checkEmail = User::where('email','=',$request->email)->first();
@@ -48,10 +51,10 @@ class RegisterController extends Controller
         }else{
             $avatar = "avatar.jpg";
             if( $request -> hasfile('avatar')){
-            $file = $request->file('avatar');
-            $avatar = $file->getClientOriginalName();
-            $pic = asset('/images/users/').'/'.$avatar;
-            $file = $file->move("images/users",$avatar);
+                $file = $request->file('avatar');
+                $avatar = $file->getClientOriginalName();
+                $pic = asset('/images/users/').'/'.$avatar;
+                $file = $file->move("images/users",$avatar);
             }
             $user = User::create([
                 'username'=>$request->username,
@@ -63,7 +66,7 @@ class RegisterController extends Controller
                 'password' =>Hash::make( $request->password )
             ]);
 
-            return view('frontend.pages.register',compact('category'))->with('success', 'Đăng ký thành viên thành công!');
+            return view('frontend.pages.register', compact('category'))->with('success', 'Đăng ký thành viên thành công!');
         }
     }
 

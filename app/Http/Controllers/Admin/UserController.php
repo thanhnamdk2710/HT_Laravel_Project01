@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Rating;
 use DB;
-
 use Session;
+use File;
 
 class UserController extends Controller
 {
@@ -25,7 +26,7 @@ class UserController extends Controller
             ->orderBy('count', config('define.categories.order_by_desc'))
             ->groupBy('email')
             ->get();
-
+ 
         return view('backend.users.index', compact('users'));
     }
 
@@ -59,6 +60,9 @@ class UserController extends Controller
     public function show($id)
     {
         $fields = [
+            'users.username',
+            'user_id',
+            'book_id',
             'books.name',
             'books.author as name_author',
             'books.image',
@@ -96,7 +100,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-       //
+        //
     }
 
     /**
@@ -107,7 +111,32 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $image_path = public_path('images/users/'.$user->avatar);
+        
+        if($user){
+
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            $user->delete();
+
+            return redirect()->route('admin.users.index')->with('success','Delete a successful user');
+        }else{
+            return redirect()->route('admin.users.index')->with('error','user is not Exist');
+        }
+    }
+
+    public function deleteReview($id,$id_book)
+    {
+        $review = Rating::where(['user_id' => $id, 'book_id' => $id_book])->first();
+        
+        if($review){
+            $review->delete();
+
+            return redirect()->back()->with('success', 'Delete the review successfully !');
+        }
+        return redirect()->route('admin.users.show')->with('error','Review is not Exist !');
     }
 
     public function getAjax(Request $request,$aid)
@@ -115,8 +144,7 @@ class UserController extends Controller
         if($request->astatus == 0){
             $user = User::where('id', $aid)->update(['status' => 1]);
             echo "images/icon/deactive.gif";
-        }
-        else{
+        }else{
             $user = User::where('id', $aid)->update(['status' => 0]);
             echo "images/icon/active.gif";
         }

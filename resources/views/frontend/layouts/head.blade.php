@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- jS -->
 <script src="{{ asset('frontend/js/jquery.min.js')}}" type="text/javascript"></script>
@@ -24,4 +25,3 @@
 <script src="{{ asset('frontend/js/jquery.nicescroll.js')}}"></script>
 <script src="{{ asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
 <script src="{{ asset('frontend/js/main.js')}}" type="text/javascript"></script>
-<script src="{{ asset('/js/app.js')}}" type="text/javascript"></script>
