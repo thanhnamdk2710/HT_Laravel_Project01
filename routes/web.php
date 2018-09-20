@@ -41,13 +41,16 @@ Route::group(['middleware' => 'admin'], function () {
 	});
 });
 
+
 Route::group([ 'namespace' => 'User','as' => 'user.'], function () { 
 	Route::get('/', 'HomeController@getbook')->name('index');  
 	Route::get('/book','BookController@show')->name('show');
-	Route::get('/detail','DetailController@show')->name('detail');
+	Route::get('/detail/{id}','DetailController@show')->name('detail');
 	Route::get('/category/{id}','CategoryController@show')->name('category');
 	Route::get('search', 'HomeController@search')->name('search'); 
 	Route::get('/contact','ContactController@show')->name('contact');
+	Route::get('/comment/{id}' , 'RatingController@postComment')->name('postComment');
 	Route::get('/registered/create' , 'RegisterController@create')->name('registered.create');
 	Route::post('/registered' , 'RegisterController@store')->name('registered.store');
 });
+

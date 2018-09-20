@@ -3,8 +3,8 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Book;
-use App\Models\Category;
 use App\Models\Tag;
+use App\Models\Category;
 
 class BookController extends Controller
 {

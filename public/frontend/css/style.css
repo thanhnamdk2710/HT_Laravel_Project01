@@ -283,6 +283,7 @@ header {
 .cart .dropdown-menu button {
 	margin: 15px 0;
 }
+
 /*	Login Modal Start
     ==================================================*/
 #create-account_form, #login_form {
@@ -1225,6 +1226,13 @@ footer .block span {
 }
 .single-product-img {
 	border:1px solid #dedede;
+}
+
+.single-product-img img{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
 .product-des {
 	border:1px solid #dedede;

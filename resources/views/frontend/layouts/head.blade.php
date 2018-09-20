@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ asset('frontend/css/rate.css') }}">
 
 <!-- jS -->
 <script src="{{ asset('frontend/js/jquery.min.js')}}" type="text/javascript"></script>
@@ -25,3 +25,14 @@
 <script src="{{ asset('frontend/js/jquery.nicescroll.js')}}"></script>
 <script src="{{ asset('frontend/js/jquery.scrollUp.min.js')}}"></script>
 <script src="{{ asset('frontend/js/main.js')}}" type="text/javascript"></script>
+
+{{-- jS star --}}
+<script src="{{ asset('bower_components/jquery.rateit/scripts/delete.gif') }}"></script>
+<script src="{{ asset('bower_components/jquery.rateit/scripts/jquery.rateit.js') }}"></script>
+<script src="{{ asset('bower_components/jquery.rateit/scripts/jquery.rateit.min.js') }}"></script>
+<script src="{{ asset('bower_components/jquery.rateit/scripts/jquery.rateit.main.js.map') }}"></script>
+<script src="{{ asset('bower_components/jquery.rateit/scripts/star.gif') }}"></script>
+<script src="{{ asset('bower_components/jquery.rateit/gulpfile.js') }}"></script>
+<script src="{{ asset('bower_components/jquery.rateit/package.json') }}"></script>
+<script src="{{ asset('bower_components/jquery.rateit/bower.json') }}"></script>
+<script src="{{ asset('bower_components/jquery.rateit/rateit.nuspec') }}"></script>

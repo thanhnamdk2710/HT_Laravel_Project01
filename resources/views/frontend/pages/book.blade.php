@@ -6,7 +6,6 @@
 			<div class="row">
 				<div class="col-md-4">
 					<h1>Book</h1>
-					<p>A Bunch Of Products</p>
 				</div>	<!-- End of /.col-md-4 -->
 				<div class="col-md-8 hidden-xs">
 					<ol class="breadcrumb pull-right">
@@ -31,21 +30,15 @@
 					    	@foreach($books as $book)
 					        <li>
 					            <div class="products">
-									<a href="{{ route('user.detail') }}">
+									<a href="{{ route('user.detail',$book->id) }}">
 										<img src="images/{{ $book->image }}" alt="">
 									</a>
-									<a href="{{ route('user.detail') }}">
+									<a href="{{ route('user.detail',$book->id) }}">
 										<h4>{{ $book->name }}</h4>
 									</a>
 										<h6>by {{ $book->author }}</h6>
 									<p>avg rating {{ $book->average }}</p>
-									<div class="single_product_ratings mb-15">
-		                                <span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star"></span>
-										<span class="fa fa-star"></span>
-		                            </div>
+									<div class="rateit" data-rateit-value="{{ $book->average }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
 								</div>	<!-- End of /.products -->
 					        </li>
 					        @endforeach
@@ -76,7 +69,7 @@
 							<h4>Book Tag</h4>
 							<div class="tag-link">
 								@foreach($tags as $tag)
-								<a href="#">{{ $tag->name }}</a>
+								<a href="">{{ $tag->name }}</a>
 								@endforeach
 							</div>	
 						</div>
