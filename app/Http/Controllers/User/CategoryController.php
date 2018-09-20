@@ -12,13 +12,13 @@ use DB;
 class CategoryController extends Controller
 {
     public function show($id){
-        $category = Category::all();
-        $tag = Tag::all();
+        $categories = Category::all();
+        $tags = Tag::all();
     	$books = DB::table('categories')
                 ->join('books','books.category_id','=','categories.id')
                 ->where('categories.id',$id)
                 ->select('books.*')
                 ->paginate(2);
-    	return View('frontend.pages.category', compact('books','tag','category'));
+    	return View('frontend.pages.category', compact('books','tags','categories'));
     }
 }

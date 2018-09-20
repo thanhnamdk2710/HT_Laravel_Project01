@@ -5,13 +5,13 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-					<h1>Shop</h1>
-					<p>A Bunch Of Products</p>
+					<h1>Book</h1>
+					<p>A Bunch Of Books</p>
 				</div>	<!-- End of /.col-md-4 -->
 				<div class="col-md-8 hidden-xs">
 					<ol class="breadcrumb pull-right">
-					  	<li><a href="{{ route('index')}}">Home</a></li>
-					  	<li class="active">Shop</li>
+					  	<li><a href="{{ route('user.index')}}">Home</a></li>
+					  	<li class="active">Book</li>
 					</ol>
 				</div>	<!-- End of /.col-md-8 -->
 			</div>	<!-- End of /.row -->
@@ -19,12 +19,6 @@
 	</section>	<!-- End of /#Topic-header -->
 	<!-- PRODUCTS Start
     ================================================== -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-		.checked {
-		    color: orange;
-		}
-	</style>
 	<section id="shop">
 		<div class="container">
 			<div class="row">
@@ -34,17 +28,17 @@
 					</div>	<!-- End of /.Products-heading -->
 					<div class="product-grid">
 					    <ul>
-					    	@foreach($books as $key => $value)
+					    	@foreach($books as $book)
 					        <li>
 					            <div class="products">
-									<a href="{{ route('detail') }}">
-										<img src="images/{{ $value->image }}" alt="" height="300px" width="50px">
+									<a href="{{ route('user.detail') }}">
+										<img src="images/{{ $book->image }}" alt="image book">
 									</a>
-									<a href="{{ route('detail') }}">
-										<h4>{{ $value->name }}</h4>
+									<a href="{{ route('user.detail') }}">
+										<h4>{{ $book->name }}</h4>
 									</a>
-										<h6>by {{ $value->author }}</h6>
-									<p>avg rating {{ $value->average }}</p>
+										<h6>by {{ $book->author }}</h6>
+									<p>avg rating {{ $book->average }}</p>
 									<div class="single_product_ratings mb-15">
 		                                <span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
@@ -69,10 +63,10 @@
 						<div class="block">
 							<h4>Catagories</h4>
 							<div class="list-group">
-								@foreach($category as $key => $value)
-								<a href="{{ route('category',$value->id) }}" class="list-group-item">
+								@foreach($categories as $category)
+								<a href="{{ route('user.category',$category->id) }}" class="list-group-item">
 									<i class="fas fa-dot-circle"></i>
-									{{ $value->name }}
+									{{ $category->name }}
 								</a>
 								@endforeach
 							</div>
@@ -83,7 +77,7 @@
 						<div class="block">
 							<h4>Book Tag</h4>
 							<div class="tag-link">
-								@foreach($tag as $tag)
+								@foreach($tags as $tag)
 								<a href="">{{ $tag->name }}</a>
 								@endforeach
 							</div>	
