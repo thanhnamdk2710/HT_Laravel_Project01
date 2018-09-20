@@ -7,14 +7,14 @@
 			<div class="col-md-3 clearfix">
 				<ul class="login-cart">
 					<li>
-						<a data-toggle="modal" href="">
+						<a data-toggle="modal" href="#">
 							<i class="fas fa-sign-in-alt"></i>
 							Login
 						</a>
 					</li>
 					<li>
 						<div class="cart dropdown">
-							<a href=""><i class="far fa-user "></i>Registered</a>
+							<a href="{{ route('user.registered.create') }}"><i class="far fa-user "></i>Registered</a>
 						</div>
 					</li>
 				</ul>

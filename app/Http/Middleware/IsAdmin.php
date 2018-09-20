@@ -18,7 +18,6 @@ class IsAdmin
     public function handle($request, Closure $next)
     {
         if (Auth::check()){
-
             if(Auth::user()->role == config('define.admin.role_admin')){
                 return $next($request);
             } else {

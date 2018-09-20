@@ -1,76 +1,88 @@
 @extends('frontend.master')
-@section('title','Regristered')
-@section('content')
-	<section id="topic-header">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4">
-					<h1>Shop</h1>
-					<p></p>
-				</div>	<!-- End of /.col-md-4 -->
-				<div class="col-md-8 hidden-xs">
-					<ol class="breadcrumb pull-right">
-					  	<li><a href="{{ route('index')}}">Home</a></li>
-					  	<li class="active">Login</li>
-					</ol>
-				</div>	<!-- End of /.col-md-8 -->
-			</div>	<!-- End of /.row -->
-		</div>	<!-- End of /.container -->
-	</section>	<!-- End of /#Topic-header -->
-	<section id="shop">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-9">
-					<div class="products-heading">
-						<h2>Registered</h2>
-					</div>	<!-- End of /.Products-heading -->
-					<div class="login">
-						<div class="login-header">
-							<h1></h1>
-						</div>
-							<div class="alert alert-danger alert-dismissible" role="alert">
-								<strong></strong>
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-									<span class="sr-only">Close</span>
-								</button>
-							</div>
-						
-							<div class="alert alert-danger alert-dismissible" role="alert">
-								<strong></strong>
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-									<span class="sr-only">Close</span>
-								</button>
-							</div>
 
-						    <div class="alert alert-danger">
-						        <ul>
-					                <li></li>
-						        </ul>
-						    </div>
-						<form class="login-form" action="" method="">
-							<h3>Name:</h3>
-							<input type="text" placeholder="Name" name="name"/>
-							<h3>Avatar:</h3>
-							<input type="file"/>
-							<h3>Bithday:</h3>
-							<input type="date" placeholder="Bithday" name="birthday" />
-							<h3>Phone:</h3>
-							<input type="tel" placeholder="Phone" name="phone"/>
-							<h3>Username:</h3>
-							<input type="text" placeholder="Username" name="username"/><br>
-							<h3>Password:</h3>
-							<input type="password" placeholder="Password" name="password"/>
-							<br>
-							<button type="submit" class="login-button btn-primary">Sign Up</button>
-							<br>
-							<a href="" class="sign-up">Sign in!</a>
-							<br>
-						</form>
+@section('title','Regristered')
+
+@section('content')
+
+<section id="topic-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<h1>Shop</h1>
+				<p></p>
+			</div>	<!-- End of /.col-md-4 -->
+			<div class="col-md-8 hidden-xs">
+				<ol class="breadcrumb pull-right">
+					<li><a href="{{ route('user.index')}}">Home</a></li>
+					<li class="active">Login</li>
+				</ol>
+			</div>	<!-- End of /.col-md-8 -->
+		</div>	<!-- End of /.row -->
+	</div>	<!-- End of /.container -->
+</section>	<!-- End of /#Topic-header -->
+<section id="shop">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="products-heading">
+					<h2>Registered</h2>
+				</div>	<!-- End of /.Products-heading -->
+				<div class="login">
+					<div class="login-header">
+						<h1></h1>
 					</div>
+					@if(session('error'))
+					<div class="alert alert-danger alert-dismissible" role="alert">
+						<strong>{{session('error')}}</strong>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
+						</button>
+					</div>
+					@endif
+					@if ( !empty($success) )
+					<div class="alert alert-success alert-dismissible" role="alert">
+						<strong>{{ $success }}</strong>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							<span class="sr-only">Close</span>
+						</button>
+					</div>
+					@endif
+					<form class="login-form" action="{{ route('user.registered.store') }}" enctype="multipart/form-data" method="POST">
+						{{ csrf_field() }}
+						<h3>Name:</h3>
+						<input type="text" placeholder="Name" name="username"  value="{{ old('username') }}"required />
+						@if ($errors->has('username'))
+						<p class="text-red help is-danger">* {{ $errors->first('username') }}</p>
+						@endif
+						<h3>Avatar:</h3>
+						<input type="file" name="avatar"  value="{{ old('avatar') }}"/>
+						<h3>Gender:</h3>
+						<input type="radio" name="gender" value="0" {{(old('gender') == '0') ? 'checked' : ''}} required />Nam
+						<input type="radio" name="gender" value="1"  {{(old('gender') == '1') ? 'checked' : ''}} required />Nữ
+						@if ($errors->has('gender'))
+						<p class="text-red help is-danger">* {{ $errors->first('gender') }}</p>
+						@endif
+						<h3>Email:</h3>
+						<input type="email" placeholder="Email" name="email" value="{{ old('email') }}" required /><br>
+						@if ($errors->has('email'))
+						<p class="text-red help is-danger">* {{ $errors->first('email') }}</p>
+						@endif
+						<h3>Password:</h3>
+						<input type="password" minlength="6" placeholder="Password" name="password" value="{{ old('password') }}" required />
+						@if ($errors->has('password'))
+						<p class="text-red help is-danger">* {{ $errors->first('password') }}</p>
+						@endif
+						<br>
+						<button type="submit" class="login-button btn-primary">Sign Up</button>
+						<br>
+						<a href="{{ route('login.index') }}" class="sign-up">Sign in!</a>
+						<br>
+					</form>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 @endsection

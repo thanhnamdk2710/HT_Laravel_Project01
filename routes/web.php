@@ -17,12 +17,12 @@ Route::group(['middleware' => 'admin'], function () {
 		Route::get('/', 'HomeController@index')->name('dashboard');
 
 	//CRUD Category
-	   	Route::get('categories', 'CategoryController@index')->name('categories.index');
-	    Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
-	    Route::post('categories', 'CategoryController@store')->name('categories.store');
-	    Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('categories.edit');
-	    Route::put('/categories/update/{id}', 'CategoryController@update')->name('categories.update');
-	    Route::delete('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
+		Route::get('categories', 'CategoryController@index')->name('categories.index');
+		Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
+		Route::post('categories', 'CategoryController@store')->name('categories.store');
+		Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('categories.edit');
+		Route::put('/categories/update/{id}', 'CategoryController@update')->name('categories.update');
+		Route::delete('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
 		
 	//CRUD Book
 		Route::get('books', 'BookController@index')->name('books.index');
@@ -48,5 +48,6 @@ Route::group([ 'namespace' => 'User','as' => 'user.'], function () {
 	Route::get('/category','CategoryController@show')->name('category');
 	Route::get('search', 'HomeController@search')->name('search'); 
 	Route::get('/contact','ContactController@show')->name('contact');
-	Route::get('/registered' , 'RegisterController@index')->name('registered');
+	Route::get('/registered/create' , 'RegisterController@create')->name('registered.create');
+	Route::post('/registered' , 'RegisterController@store')->name('registered.store');
 });

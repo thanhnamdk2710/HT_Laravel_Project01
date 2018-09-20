@@ -47,8 +47,6 @@ section+section { margin-top: 50px; }
 	text-align: center;
 	background: url("../images/top.png") no-repeat;
 }
-
-
 /*------------- Top bar----------------*/
 .login {
 	margin:0 auto;
@@ -83,8 +81,7 @@ section+section { margin-top: 50px; }
 }
 .login input[type="text"],
 .login input[type="password"],
-.login input[type="date"],
-.login input[type="tel"]{
+.login input[type="email"]{
 	max-width:400px;
 	width: 80%;
 	line-height:3em;
@@ -105,6 +102,9 @@ section+section { margin-top: 50px; }
 	border:2px solid #90C322;
 	outline:none;
 	padding-left:10px;
+}
+.login input[type="radio"]{
+	margin-left: 30px;
 }
 .login-form button{
 	height:30px;
