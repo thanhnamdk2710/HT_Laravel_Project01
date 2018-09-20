@@ -20,19 +20,24 @@
 				</ul>
 			</div>
 			<div class="col-md-2">
-				<div class="search-box">
-					<div class="input-group">
-						<input placeholder="Search Here" type="text" class="form-control">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="button"></button>
-						</span>
-					</div><!-- /.input-group -->
-				</div><!-- /.search-box -->
+				<form action="{{ route('user.search') }}" method="get">
+					<div class="search-box">
+						<div class="input-group">
+							<input value="{{ old('keyword') }}" placeholder="Search Here" type="text" class="form-control" name="keyword" pattern="[^'\x22]+" required>
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default" type="button"></button>
+							</span>
+						</div><!-- /.input-group -->
+						@if ($errors->has('book'))
+						<p class="text-danger help is-danger">* {{ $errors->first('book') }}</p>
+						@endif
+					</div><!-- /.search-box -->
+				</form>
 			</div>
 		</div> <!-- End Of /.row -->
 	</div>	<!-- End Of /.Container -->
 </section>  <!-- End of /Section -->
-<!-- LOGO Start-->
+<!-- LOGO Start -->
 <header>
 	<div class="container">
 		<div class="row">
@@ -55,7 +60,6 @@
 				<span class="icon-bar"></span>
 			</button>
 		</div> <!-- End of /.navbar-header -->
-
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav nav-main">
 				<li class="{{Request::is('/') ? 'active' : ''}}">
