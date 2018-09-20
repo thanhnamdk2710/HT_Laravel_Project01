@@ -19,11 +19,6 @@
 	</section>	<!-- End of /#Topic-header -->
 	<!-- PRODUCTS Start
     ================================================== -->
-    <style>
-		.checked {
-		    color: orange;
-		}
-	</style>
 	<section id="shop">
 		<div class="container">
 			<div class="row">
@@ -33,17 +28,17 @@
 					</div>	<!-- End of /.Products-heading -->
 					<div class="product-grid">
 					    <ul>
-					    	@foreach($books as $key => $value)
+					    	@foreach($books as $book)
 					        <li>
 					            <div class="products">
 									<a href="{{ route('user.detail') }}">
-										<img src="images/{{ $value->image }}" alt="">
+										<img src="images/{{ $book->image }}" alt="">
 									</a>
 									<a href="{{ route('user.detail') }}">
-										<h4>{{ $value->name }}</h4>
+										<h4>{{ $book->name }}</h4>
 									</a>
-										<h6>by {{ $value->author }}</h6>
-									<p>avg rating {{ $value->average }}</p>
+										<h6>by {{ $book->author }}</h6>
+									<p>avg rating {{ $book->average }}</p>
 									<div class="single_product_ratings mb-15">
 		                                <span class="fa fa-star checked"></span>
 										<span class="fa fa-star checked"></span>
@@ -69,10 +64,10 @@
 						<div class="block">
 							<h4>Catagories</h4>
 							<div class="list-group">
-								@foreach($categories as $key => $value)
-								<a href="#" class="list-group-item">
+								@foreach($categories as $category)
+								<a href="{{ route('user.category',$category->id) }}" class="list-group-item">
 									<i class="fas fa-dot-circle"></i>
-									{{ $value->name }}$value
+									{{ $category->name }}
 								</a>
 								@endforeach
 							</div>
@@ -81,7 +76,7 @@
 							<h4>Book Tag</h4>
 							<div class="tag-link">
 								@foreach($tags as $tag)
-								<a href="">{{ $tag->name }}</a>
+								<a href="#">{{ $tag->name }}</a>
 								@endforeach
 							</div>	
 						</div>

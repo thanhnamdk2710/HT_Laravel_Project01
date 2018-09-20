@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Book;
 use App\Models\Category;
 use App\Models\Tag;
+
 class BookController extends Controller
 {
     public function show(){
