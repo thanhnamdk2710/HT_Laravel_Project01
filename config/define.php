@@ -2,7 +2,6 @@
 return [
 	'categories' => [
 		'limit_rows' => 10,
-		'limit_rows' => 10,
 		'order_by_desc' =>'desc'
 	],
 
@@ -12,9 +11,9 @@ return [
 
 	'user' => [
 		'limit_random_book' => 3,
-		'limit_new_book' => 12,
+		'limit_new_book' => 8,
 	],
-	
+
 	'books' => [
 		'limit_rows' => 9,
 	],
