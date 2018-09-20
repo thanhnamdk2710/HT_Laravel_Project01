@@ -12,6 +12,7 @@ class HomeController extends Controller
 	public function getbook()
 	{
 		$fields =[
+			'books.id',
 			'books.name',
 			'image',
 			'author',

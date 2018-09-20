@@ -17,9 +17,7 @@ return [
 
 	'books' => [
 		'limit_rows' => 9,
-<<<<<<< HEAD
+
 		'order_by_desc'=>'desc'
-=======
->>>>>>> b4b8e39a734f1369f6fc7eefbdff2d0dcb129f6a
 	],
 ];

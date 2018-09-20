@@ -41,26 +41,16 @@ Route::group(['middleware' => 'admin'], function () {
 	});
 });
 
-<<<<<<< HEAD
-Route::group([ 'namespace' => 'User'], function () {
-	Route::get('/', 'HomeController@index')->name('index');
-	Route::get('/index', 'HomeController@index')->name('index');  
-	Route::get('/book','BookController@show')->name('all_book');
-	Route::get('/detail/{id}','DetailController@show')->name('detail');
-=======
+
 Route::group([ 'namespace' => 'User','as' => 'user.'], function () { 
 	Route::get('/', 'HomeController@getbook')->name('index');  
 	Route::get('/book','BookController@show')->name('show');
-	Route::get('/detail','DetailController@show')->name('detail');
->>>>>>> b4b8e39a734f1369f6fc7eefbdff2d0dcb129f6a
-	Route::get('/category','CategoryController@show')->name('category');
+	Route::get('/detail/{id}','DetailController@show')->name('detail');
+	Route::get('/category/{id}','CategoryController@show')->name('category');
 	Route::get('search', 'HomeController@search')->name('search'); 
 	Route::get('/contact','ContactController@show')->name('contact');
-<<<<<<< HEAD
-	Route::get('/registered' , 'RegisterController@index')->name('registered');
 	Route::get('/comment/{id}' , 'RatingController@postComment')->name('postComment');
-=======
 	Route::get('/registered/create' , 'RegisterController@create')->name('registered.create');
 	Route::post('/registered' , 'RegisterController@store')->name('registered.store');
->>>>>>> b4b8e39a734f1369f6fc7eefbdff2d0dcb129f6a
 });
+

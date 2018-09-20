@@ -75,18 +75,13 @@
 							@foreach ($randomBooks as $key => $randomBook)
 						  	<div class="col-sm-6 col-md-4">
 							    <div class="thumbnail">
-							    	<a class="catagotie-head" href="#">
+							    	<a class="catagotie-head" href="{{ route('user.detail', $randomBook->id) }}">
 										<img src="images/books/{{ $randomBook->image }}" alt="image book">
 										<h3>{{ $randomBook->name }}</h3>
 									</a>
 							      	<div class="caption">
 							        	<p>Tác giả : {{ $randomBook->author }}</p>
 							        	<p>Danh mục : {{ $randomBook->name_category }}</p>
-							        	<p>
-							        		<a href="#" class="btn btn-default btn-transparent bg-success" role="button">
-							        			<span class="text-white">Detail of book</span>
-							        		</a>
-							        	</p>
 							      	</div>	<!-- End of /.caption -->
 							    </div>	<!-- End of /.thumbnail -->
 						  	</div>	<!-- End of /.col-sm-6 col-md-4 -->
@@ -112,15 +107,11 @@
 				@foreach ($newBooks as $key => $newBook)
 				<div class="col-md-3">
 					<div class="products">
-						<a href="">
+						<a href="{{ route('user.detail',$newBook->id) }}">
 							<img src="images/books/{{ $newBook->image }}" alt="image book">
-						</a>
-						<a href="">
 							<h4>{{ $newBook->name }}</h4>
 						</a>
 						<p class="category">Danh mục : {{ $newBook->name_category }}</p>
-						<a class="view-link shutter" href="#">
-							<i class="fas fa-info"></i>Detail of book</a>
 					</div>	<!-- End of /.products -->
 				</div>	<!-- End of /.col-md-3 -->
 				@endforeach
