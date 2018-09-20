@@ -14,7 +14,7 @@ class LoginController extends Controller
 	public function create() 
     {
         if(Auth::check()){
-            return redirect(Auth::user()->role == config('define.admin.role_admin') ? '/admin' : '/frontend');
+            return redirect(Auth::user()->role == config('define.admin.role_admin') ? '/admin' : '/');
         }
 
         return view('auth.login'); 
@@ -29,7 +29,7 @@ class LoginController extends Controller
         $checkLogin = Auth::attempt($login);
 
         if($checkLogin) {
-            return redirect(Auth::user()->role == config('define.admin.role_admin') ? '/admin' : '/frontend');
+            return redirect(Auth::user()->role == config('define.admin.role_admin') ? '/admin' : '/');
         } else {
             return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
         }

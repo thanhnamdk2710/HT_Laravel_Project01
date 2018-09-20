@@ -65,7 +65,7 @@
 							<h4>Catagories</h4>
 							<div class="list-group">
 								@foreach($categories as $category)
-								<a href="{{ route('user.category',$book->id) }}" class="list-group-item">
+								<a href="{{ route('user.category',$category->id) }}" class="list-group-item">
 									<i class="fas fa-dot-circle"></i>
 									{{ $category->name }}
 								</a>
@@ -76,7 +76,7 @@
 							<h4>Book Tag</h4>
 							<div class="tag-link">
 								@foreach($tags as $tag)
-								<a href="">{{ $tag->name }}</a>
+								<a href="#">{{ $tag->name }}</a>
 								@endforeach
 							</div>	
 						</div>

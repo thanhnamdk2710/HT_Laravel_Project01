@@ -9,6 +9,11 @@ class LogoutController extends Controller
 {
 	public function logout()
     {
+    	if( Auth::user()->role == config('define.admin.role_user')){
+    		Auth::logout();
+        
+        	return redirect()->route('index');
+    	}
         Auth::logout();
         
         return redirect()->route('login.index');

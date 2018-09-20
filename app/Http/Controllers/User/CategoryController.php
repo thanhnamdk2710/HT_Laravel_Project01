@@ -18,7 +18,9 @@ class CategoryController extends Controller
                 ->join('books','books.category_id','=','categories.id')
                 ->where('categories.id',$id)
                 ->select('books.*')
-                ->paginate(2);
+                ->get();
+
     	return View('frontend.pages.category', compact('books','tags','categories'));
     }
+
 }

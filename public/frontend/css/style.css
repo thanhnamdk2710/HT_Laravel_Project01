@@ -47,8 +47,6 @@ section+section { margin-top: 50px; }
 	text-align: center;
 	background: url("../images/top.png") no-repeat;
 }
-
-
 /*------------- Top bar----------------*/
 .login {
 	margin:0 auto;
@@ -83,8 +81,7 @@ section+section { margin-top: 50px; }
 }
 .login input[type="text"],
 .login input[type="password"],
-.login input[type="date"],
-.login input[type="tel"]{
+.login input[type="email"]{
 	max-width:400px;
 	width: 80%;
 	line-height:3em;
@@ -105,6 +102,9 @@ section+section { margin-top: 50px; }
 	border:2px solid #90C322;
 	outline:none;
 	padding-left:10px;
+}
+.login input[type="radio"]{
+	margin-left: 30px;
 }
 .login-form button{
 	height:30px;
@@ -212,6 +212,9 @@ section+section { margin-top: 50px; }
 	-o-transition: .4s ease-in-out;
 	transition: .4s ease-in-out;
 }
+.logout{
+	margin-left: 40px; 
+}
 #top .login-cart li a:hover {
 	color: #555;
 }
@@ -280,13 +283,8 @@ header {
 .cart .dropdown-menu button {
 	margin: 15px 0;
 }
-
-
-
 /*	Login Modal Start
     ==================================================*/
-
-
 #create-account_form, #login_form {
 	float: left;
 	text-align: center;
@@ -326,8 +324,6 @@ header {
 	width: 220px;
 	border: 1px solid #dedede;
 }
-
-
 #create-account_form .text label {
 	display: none;
 }
@@ -347,9 +343,6 @@ header {
 #create-account_form > fieldset {
 	background: #f5f5f5;
 }
-
-
-
 /*	Nav Start
     ==================================================*/
 
@@ -450,12 +443,8 @@ header {
 .navbar-nav>li>.dropdown-menu {
 	margin-top: 2px;
 }
-
-
-
 /*	 Slider Start
     ==================================================*/
-
 #slider-area {
 	margin-top: 30px;
 }
@@ -508,13 +497,8 @@ header {
 	-moz-box-shadow:0 0 4px rgba(0,0,0,.3) ;
 	box-shadow:0 0 4px rgba(0,0,0,.3) ;
 }
-
-
-
 /*	 Feature Start
     ==================================================*/
-
-
 #features .block {
 	background:#90c322;
 	color: #fff;
@@ -533,12 +517,8 @@ header {
 	margin: 15px 20px;
 }
 
-
-
 /*	 Catagorie Start
     ==================================================*/
-
-
 #catagorie .block {
 	margin-top: 30px;
 }
@@ -590,8 +570,6 @@ header {
 
 /*	 New Products Start
     ==================================================*/
-
-
 .products-heading {
 	margin-top: 20px;
 	background: url("../images/titleBorder.png");
@@ -668,16 +646,8 @@ header {
 	font-weight: bold;
 	margin-bottom: 8px;
 }
-
-
-
-
 /*	 Call To Action Start
     ==================================================*/
-
-
-
-
 /*	 Footer Start
     ==================================================*/
 
@@ -737,11 +707,8 @@ footer .block span {
 	text-decoration: underline;
 }
 
-
 /*	Social Icon Start
     ==================================================*/
-
-
 .social-icon li {
 	float: left;
 	margin-right: 8px;
@@ -799,14 +766,8 @@ footer .block span {
 .cash-out li a img:hover {
 	opacity: 0.7;
 }
-
-
-
-
 /*	Shutter Button Start
     ==================================================*/
-
-
 .shutter {
 	position: relative;
 	-webkit-transition: .2s ease-in-out;
@@ -880,11 +841,7 @@ footer .block span {
 	-o-transition: .2s ease-in-out;
 	transition: .2s ease-in-out;
 
-
 }
-
-
-
 /*	Owl Slider Start
     ==================================================*/
 #owl-example {
@@ -900,30 +857,10 @@ footer .block span {
 .connect-heading {
 	margin-top: 40px;
 }
-
-
-
 /*	End Of Home Page.......
     ==================================================*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*	Blog Page Start.......
     ==================================================*/
-
-
-
 #topic-header {
 	background: #FCFCFC;
 	width: 100%;
@@ -940,8 +877,6 @@ footer .block span {
 #topic-header .breadcrumb li a {
 	color: #90c322;
 }
-
-
 #blog {
 	margin-bottom: 50px;
 }
@@ -950,27 +885,12 @@ footer .block span {
 	box-shadow: 0 0 3px #C4C4C4;
 	padding: 5px;
 }
-
-
 .blog-body .block img {
 	width: 100%;
 }
 .blog-text {
 	padding: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
- 
 #blog .blog-zone {
     margin: 30px 0 0 0;
     position: relative;
@@ -1014,9 +934,6 @@ footer .block span {
     font-size: 2.9em;
     color: #90c322;
 }
- 
-
- 
 /* Right content */
 #blog .blog-zone > li .blog-box {
     margin: 0 0 30px 8%;
@@ -1034,11 +951,7 @@ footer .block span {
 #blog .blog-zone > li:nth-child(odd) .blog-box {
     background: #fff;
     border: 1px solid #dedede;
-}
- 
- 
-
- 
+} 
 #blog .blog-zone > li:nth-child(odd) .blog-box:after {
     border-right-color: #90c322;
 }
@@ -1059,11 +972,6 @@ footer .block span {
     top: 0;
     margin: 0 0 0 -25px;
 }
-
- 
-
-
-
 .blog-box img {
 		width: 100%;
 }
@@ -1113,12 +1021,8 @@ footer .block span {
 #blog .blog-zone > li:last-child .blog-box {
 	margin-bottom: 0;
 }
-
-
-
 /*	Blog Single Page Start.......
     ==================================================*/
-
 .blog-post-body blockquote {
 	font-size: 13px;
 	border-left: 5px solid #90c322;
@@ -1238,11 +1142,7 @@ footer .block span {
 	color: #fff;
 	padding-left: 20px;
 }
-
-
-
 /*-------- Tag-----------*/
-
 .tag-link h2 {
 	margin-top: 0px;
 	margin-bottom: 20px;
@@ -1258,23 +1158,9 @@ footer .block span {
 .tag-link a:hover {
 	text-decoration: underline;
 }
-
-
-
-
-
-
-/*	Shop Page Start.......
-    ==================================================*/
-
-
- 
- 
-
 .product-grid ul {
     text-align: center;
 }
- 
 .product-grid ul li {
     width: 33%;
     text-align: center;
@@ -1353,4 +1239,11 @@ footer .block span {
 }
 .top-catagori-heading {
 	margin-top: 0;
+}
+.avatar{
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	padding: 2px;
+	background-color: #fff;
 }

@@ -51,12 +51,7 @@
 					        @endforeach
 					    </ul>
 					</div>	<!-- End of /.products-grid -->
-					<!-- Pagination -->
-					<div class="pagination-bottom">
-						<ul class="pagination">
-							{{ $books->links() }}
-						</ul>
-					</div>
+				
 				</div>	<!-- End of /.col-md-9 -->
 				<div class="col-md-3">
 					<div class="blog-sidebar">

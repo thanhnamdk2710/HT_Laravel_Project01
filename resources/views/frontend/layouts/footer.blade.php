@@ -77,10 +77,7 @@
 			</div> <!-- End Of Col-md-3 -->
 		</div> <!-- End Of /.row -->
 	</div> <!-- End Of /.Container -->
-	
-	<!-- FOOTER-BOTTOM Start
-		================================================== -->
-
+	<!-- FOOTER-BOTTOM Start -->
 	<div class="footer-bottom">
 		<div class="container">
 			<div class="row">
@@ -119,4 +116,3 @@
 	</div>	<!-- End Of /.footer-bottom -->
 </footer> <!-- End Of Footer -->
 <a id="back-top" href="#"></a>
-	
