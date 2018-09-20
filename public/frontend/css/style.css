@@ -47,8 +47,6 @@ section+section { margin-top: 50px; }
 	text-align: center;
 	background: url("../images/top.png") no-repeat;
 }
-
-
 /*------------- Top bar----------------*/
 .login {
 	margin:0 auto;
@@ -83,8 +81,7 @@ section+section { margin-top: 50px; }
 }
 .login input[type="text"],
 .login input[type="password"],
-.login input[type="date"],
-.login input[type="tel"]{
+.login input[type="email"]{
 	max-width:400px;
 	width: 80%;
 	line-height:3em;
@@ -105,6 +102,9 @@ section+section { margin-top: 50px; }
 	border:2px solid #90C322;
 	outline:none;
 	padding-left:10px;
+}
+.login input[type="radio"]{
+	margin-left: 30px;
 }
 .login-form button{
 	height:30px;
@@ -641,8 +641,7 @@ header {
 	-o-transition: .2s ease-in-out;
 	transition: .2s ease-in-out;
 }
-.price {
-	font-size: 22px;
+.category {
 	color: #90c322;
 	font-weight: bold;
 	margin-bottom: 8px;
@@ -1168,6 +1167,10 @@ footer .block span {
     padding: 10px 20px 0 0px;
     display: inline-block;
     vertical-align: top;
+}
+
+.product-grid .products img{
+	max-height: 350px;
 }
  
 @media screen and (max-width: 57em) {

@@ -53,6 +53,7 @@
 			<!-- /.box-header -->
 			<div class="box-body">
 				@include('backend.layouts.partials.modal')
+				
 				<table class="table table-bordered">
 					<tbody>
 						<tr>
@@ -71,13 +72,13 @@
 									{{ csrf_field() }}
 									{{ method_field('DELETE') }}
 									<button type="button" class="btn btn-danger form-delete btn-delete-item"
-									data-title="Delete Category"
-									data-confirm="Are you sure you want to delete <strong>{{ $category->name }}</strong>">Delete
-								</button>
-							</form> 
+										data-title="Delete Category"
+										data-confirm="Are you sure you want to delete <strong>{{ $category->name }}</strong>">Delete
+									</button>
+								</form> 
+							</td>
 						</td>
-					</td>
-				</tr>
+					</tr>
 				@endforeach
 			</tbody>
 		</table>
