@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('bower_components/admin-lte/plugins/iCheck/square/blue.css') }}">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <meta http-equiv="refresh" content="5; url={{ URL::to('frontend') }}" />
+    <meta http-equiv="refresh" content="5; url={{ URL::to('/') }}" />
 </head>
 <body class="hold-transition login-page">
     <div class="login-box">

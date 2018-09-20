@@ -6,7 +6,8 @@ return [
 	],
 
 	'admin' => [
-		'role_admin' => 1
+		'role_admin' => 1,
+		'role_user' => 0
 	],
 
 	'user' => [
