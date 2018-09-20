@@ -17,7 +17,11 @@
 <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
+<<<<<<< HEAD
 <link rel="stylesheet" href="{{ asset('frontend/css/rateit.css') }}">
+=======
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+>>>>>>> b4b8e39a734f1369f6fc7eefbdff2d0dcb129f6a
 
 <!-- jS -->
 <script src="{{ asset('frontend/js/jquery.min.js')}}" type="text/javascript"></script>

@@ -9,10 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-	return view('welcome');
-});
-
 Route::get('login','LoginController@create')->name('login.index');
 Route::post('login','LoginController@store')->name('login.store');
 Route::get('logout','LogoutController@logout')->name('logout');
@@ -21,12 +17,12 @@ Route::group(['middleware' => 'admin'], function () {
 		Route::get('/', 'HomeController@index')->name('dashboard');
 
 	//CRUD Category
-	   	Route::get('categories', 'CategoryController@index')->name('categories.index');
-	    Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
-	    Route::post('categories', 'CategoryController@store')->name('categories.store');
-	    Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('categories.edit');
-	    Route::put('/categories/update/{id}', 'CategoryController@update')->name('categories.update');
-	    Route::delete('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
+		Route::get('categories', 'CategoryController@index')->name('categories.index');
+		Route::get('categories/create', 'CategoryController@create')->name('categories.create'); 
+		Route::post('categories', 'CategoryController@store')->name('categories.store');
+		Route::get('/categories/{id}/edit', 'CategoryController@edit')->name('categories.edit');
+		Route::put('/categories/update/{id}', 'CategoryController@update')->name('categories.update');
+		Route::delete('categories/{id}', 'CategoryController@destroy')->name('categories.destroy');
 		
 	//CRUD Book
 		Route::get('books', 'BookController@index')->name('books.index');
@@ -40,17 +36,31 @@ Route::group(['middleware' => 'admin'], function () {
 		Route::get('users', 'UserController@index')->name('users.index');
 		Route::get('users/{id}', 'UserController@show')->name('users.show');
 		Route::post('users/update/{aid}', 'UserController@getAjax');
+		Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy');
+		Route::delete('users/{id}/review/{id_book}', 'UserController@deleteReview')->name('users.delete_review');
 	});
 });
 
+<<<<<<< HEAD
 Route::group([ 'namespace' => 'User'], function () {
 	Route::get('/', 'HomeController@index')->name('index');
 	Route::get('/index', 'HomeController@index')->name('index');  
 	Route::get('/book','BookController@show')->name('all_book');
 	Route::get('/detail/{id}','DetailController@show')->name('detail');
+=======
+Route::group([ 'namespace' => 'User','as' => 'user.'], function () { 
+	Route::get('/', 'HomeController@getbook')->name('index');  
+	Route::get('/book','BookController@show')->name('show');
+	Route::get('/detail','DetailController@show')->name('detail');
+>>>>>>> b4b8e39a734f1369f6fc7eefbdff2d0dcb129f6a
 	Route::get('/category','CategoryController@show')->name('category');
-	Route::get('/author','AuthorController@show')->name('all_author');
+	Route::get('search', 'HomeController@search')->name('search'); 
 	Route::get('/contact','ContactController@show')->name('contact');
+<<<<<<< HEAD
 	Route::get('/registered' , 'RegisterController@index')->name('registered');
 	Route::get('/comment/{id}' , 'RatingController@postComment')->name('postComment');
+=======
+	Route::get('/registered/create' , 'RegisterController@create')->name('registered.create');
+	Route::post('/registered' , 'RegisterController@store')->name('registered.store');
+>>>>>>> b4b8e39a734f1369f6fc7eefbdff2d0dcb129f6a
 });

@@ -2,7 +2,9 @@
 <html>
 <head>
 	<title>EBOOK-@yield('title')</title>
+	<base href="{{asset('')}}">  
     @include('frontend.layouts.head')
+    @stack('css')
 </head>
 <body>
     @include('frontend.layouts.header')
